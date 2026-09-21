@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "",
+    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design",
+    "href": "labs/lab1/lab1.html#design",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "",
+    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#block-diagrams",
+    "href": "labs/lab1/lab1.html#block-diagrams",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Block Diagrams",
+    "text": "Block Diagrams\n\n\nTop-level hierarchy and LED gates\n\n\n\n\nTop-level ports, oscillator, counter, decoder, XOR/AND gates, and reset inversion.\n\n\n\n\n\nCounter and decoder internals\n\n\n\n\nCounter register-transfer behavior, reset priority, enable, rollover, and blink output.\n\n\n\n\n\nDecoder input/output table for all sixteen hexadecimal values."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#circuit-schematic",
+    "href": "labs/lab1/lab1.html#circuit-schematic",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Circuit Schematic",
+    "text": "Circuit Schematic\nEach cathode connects through its own resistor to the FPGA. Both common anodes connect to 3.3 V; the decimal point is unused.\n\n\nDisplay schematic and wiring\n\n\n\n\nExternal display circuit with component values, display pin numbers, and FPGA pin labels.\n\n\n\n\n\nSignal\nDisplay pin\nFPGA adapter label\n\n\n\n\nA / segments[0]\n7\nP3\n\n\nB / segments[1]\n6\nP4\n\n\nC / segments[2]\n4\nP44\n\n\nD / segments[3]\n2\nP6\n\n\nE / segments[4]\n1\nP9\n\n\nF / segments[5]\n9\nP11\n\n\nG / segments[6]\n10\nP18\n\n\nCommon anodes\n3 and 8\n3.3 V\n\n\nDecimal point\n5\nUnconnected\n\n\n\nOnboard DIP switches and LEDs use the development board’s existing circuitry. Switch inputs use internal pull-ups. TODO: confirm this pin table against the final Radiant Signal/Pad report and add the final reset_n/enable pin assignments."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#simulation",
+    "href": "labs/lab1/lab1.html#simulation",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Simulation",
+    "text": "Simulation\nQuesta testbenches reported PASS for the decoder, counter, and top-level connections.\n\n\nHexadecimal decoder waveform\n\n\n\n\nQuesta decoder simulation supplied during testing.\n\n\nInputs step from 0 to F; each produces the expected segment pattern. For example, 0 gives 7'h40 and 8 gives 7'h00. Zero bits illuminate segments.\n\n\n\nCounter waveform\n\n\n\n\nQuesta counter simulation supplied during testing.\n\n\nWith the test maximum set to 3, the count cycles 0 → 1 → 2 → 3 → 0. Rollover toggles blink. Disabling holds both values; reset clears them on the next rising clock edge. Initial red values occur before the first reset clock edge.\n\n\n\nTop-level waveform\n\n\n\n\nQuesta top-level simulation supplied during testing.\n\n\nThe simulated oscillator period is approximately 20.832 ns. The test checks both LED expressions, decoder connections, reset, enable, and blinking with MAX_COUNT=3. This shortened test verifies connections; it does not measure the hardware’s 2.4 Hz blink rate."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#calculations",
+    "href": "labs/lab1/lab1.html#calculations",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Calculations",
+    "text": "Calculations\nTo add later: segment current and LED blink frequency calculations."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#results",
+    "href": "labs/lab1/lab1.html#results",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\n\nCheck\nStatus\n\n\n\n\nRadiant synthesis, mapping, routing, and export\nCompleted\n\n\nFPGA programming\nCompleted\n\n\nSwitch-controlled display and LEDs\nWorking at the final hardware check\n\n\nDecoder, counter, and top-level simulations\nPASS reported\n\n\nAll sixteen digits unique; adjacent switches follow bit order\nTODO — record explicit hardware check\n\n\nEqual brightness; unselected segments completely off\nTODO — record observation\n\n\nMeasured blink frequency\nTODO — add measurement\n\n\nSegment current / timing calculations\nTo add later\n\n\nMCU board test\nDeferred: J-Link connection issue\n\n\n\n\n\nHardware evidence\n\nTODO — add a clear board/display photo and, if available, a short demonstration video.\n\n\nRequirements statement: FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#ai-prototype-and-reflection",
+    "href": "labs/lab1/lab1.html#ai-prototype-and-reflection",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "AI Prototype and Reflection",
+    "text": "AI Prototype and Reflection\nAI assisted with the HDL draft, testbenches, debugging, and report diagrams. Simulation and hardware checks were used to evaluate the design. TODO: add the required AI prototype code/transcript and your own brief reflection; do not treat assisted development alone as completion of the separate prototype exercise."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#time-spent",
+    "href": "labs/lab1/lab1.html#time-spent",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Time Spent",
+    "text": "Time Spent\n20 hours."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#references",
+    "href": "labs/lab1/lab1.html#references",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "References",
+    "text": "References\n\nLab 1 instructions\nLab 1 specifications"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 4, 2024\n\n\nBen Phung\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "I am Ben Phung, an Engineering student at Harvey Mudd College and this is my E155 Portfolio. This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html",
+    "href": "labs/lab2/lab2.html",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "",
+    "text": "Two independently controlled hexadecimal digits were time-multiplexed through one seven-segment decoder. A 4 × 4 keypad scanner drove four open-collector rows and displayed the sensed columns on four LEDs."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#introduction",
+    "href": "labs/lab2/lab2.html#introduction",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "",
+    "text": "Two independently controlled hexadecimal digits were time-multiplexed through one seven-segment decoder. A 4 × 4 keypad scanner drove four open-collector rows and displayed the sensed columns on four LEDs."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#design",
+    "href": "labs/lab2/lab2.html#design",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Design",
+    "text": "Design\n\n\n\nFunction\nImplementation\n\n\n\n\nDisplay inputs\nTwo 4-bit DIP-switch values\n\n\nSegment decoder\nOne shared hex_to_seven_segment instance\n\n\nDigit selection\nMultiplexing counter and two PNP switches\n\n\nKeypad rows\nFour rotating open-collector NPN outputs\n\n\nKeypad columns\nPull-up resistors and four FPGA inputs\n\n\nIndicators\nled[3:0] = ~col_n[3:0]\n\n\n\n\nBlock Diagram\n\n\n\n\n\n\nFigure 1: Lab 2 HDL block diagram.\n\n\n\n\n\nSchematic\n\n\n\n\n\n\nFigure 2: Lab 2 circuit schematic.\n\n\n\n\n\nSource Code\nGitHub repository\n\n\nDesign files\n\n\nlab2_tr.sv\nkeypad_scanner.sv\nblink_counter.sv\nhex_to_seven_segment.sv"
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#calculations",
+    "href": "labs/lab2/lab2.html#calculations",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Calculations",
+    "text": "Calculations\nThe calculations below verify the FPGA pin currents and circuit timing.\n\n\n\n\n\n\nFigure 3: Lab 2 current and timing calculations."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#simulation",
+    "href": "labs/lab2/lab2.html#simulation",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Simulation",
+    "text": "Simulation\n\nKeypad Scanner\n\n\n\n\n\n\nFigure 4: Scanner reset, enable, and four row transitions.\n\n\n\nPASS: scanner reset, enable, pause, and all four row transitions.\n\n\nTop Level\n\n\n\n\n\n\nFigure 5: Multiplexing and LED-output simulation.\n\n\n\nPASS: one decoder is shared, the digits alternate, and the LED outputs invert the column inputs.\n\n\nTestbench files\n\n\ntb_keypad_scanner.sv\ntb_lab2_tr.sv"
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#hardware-results",
+    "href": "labs/lab2/lab2.html#hardware-results",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Hardware Results",
+    "text": "Hardware Results\n\n\n\nTest\nResult\n\n\n\n\nTwo independent hexadecimal digits\nPass\n\n\nOne shared decoder\nPass\n\n\nNo visible digit bleeding\nPass\n\n\nNo visible flicker\nPass\n\n\nFour rotating keypad rows\nPass\n\n\nKeypress displayed on corresponding LED\nPass\n\n\nTwo simultaneous keypresses\nPass\n\n\n\n\n\nHardware photograph\n\n\n\n\nCompleted Lab 2 breadboard."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#requirements",
+    "href": "labs/lab2/lab2.html#requirements",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Requirements",
+    "text": "Requirements\nThe design met all requirements."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#ai-prototype",
+    "href": "labs/lab2/lab2.html#ai-prototype",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "AI Prototype",
+    "text": "AI Prototype\n\nReflection: # AI Prototype Summary\nAI was used to generate an initial HDL structure, testbenches, and wiring plan. The prototype suggested reusing the Lab 1 counter, sharing one seven-segment decoder between both digits, and scanning the keypad rows with a counter. The generated design provided a useful starting point but required corrections to match the active-low display signals, actual FPGA pin assignments, component values, and physical wiring. QuestaSim verified the digital behavior, while hardware testing was still necessary to find wiring and power problems. This showed that AI was helpful for organizing and checking the design, but its output needed to be compared carefully against the datasheets, lab specifications, and assembled circuit."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#conclusion",
+    "href": "labs/lab2/lab2.html#conclusion",
+    "title": "Lab 2: Multiplexed Seven-Segment Display",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe FPGA successfully multiplexed two hexadecimal digits and scanned the 4 × 4 keypad. Total time: 15 hours."
+  }
+]
