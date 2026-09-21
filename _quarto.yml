@@ -1,0 +1,29 @@
+project:
+  type: website
+  title: "Ben Phung"
+
+website:
+  title: "E155 Portfolio"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: blog.qmd
+        text: Blog
+      - text: "Labs"
+        menu:
+          - text: "Lab 1"
+            href: labs/lab1/lab1.qmd
+          - text: "Lab 2"
+            href: labs/lab2/lab2.qmd   
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

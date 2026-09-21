@@ -1,0 +1,7 @@
+# Quarto-generated files
+/.quarto/
+/_site/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

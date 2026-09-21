@@ -1,0 +1,156 @@
+---
+title: "Lab 1: FPGA and Board Testing"
+author: "Ben Phung"
+format:
+  html:
+    toc: true
+    number-sections: false
+    code-fold: true
+    code-summary: "Show code"
+    code-copy: true
+---
+
+<!-- Replace TODO entries before publishing. The diagrams describe the later
+     lab1_tr design with reset_n, enable, and segments ports. Compare against
+     your final HDL and Radiant pin assignments before submitting. -->
+
+## Design
+
+Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal **2.4 Hz**.
+
+| Item | Implementation |
+|---|---|
+| FPGA | iCE40UP5K, SG48 package |
+| Clock | Internal HSOSC, nominal 48 MHz |
+| Display | HDSP-511A, single digit, common anode |
+| Segment resistors | Seven 220 Ω resistors |
+| Decoder | Combinational `case`; active-low `segments[6:0]` = G–A |
+| Counter | Width 24; maximum 9,999,999; reset and enable |
+| LED logic | `led[0] = s[1] ^ s[0]`; `led[1] = s[3] & s[2]` |
+
+**Code repository:** https://github.com/bphung-01/E155-Lab-Redo
+
+## Block Diagrams
+
+<details>
+<summary>Top-level hierarchy and LED gates</summary>
+
+![Top-level ports, oscillator, counter, decoder, XOR/AND gates, and reset inversion.](images/lab1-top.svg){width=100%}
+
+</details>
+
+<details>
+<summary>Counter and decoder internals</summary>
+
+![Counter register-transfer behavior, reset priority, enable, rollover, and blink output.](images/lab1-counter.svg){width=100%}
+
+![Decoder input/output table for all sixteen hexadecimal values.](images/lab1-decoder.svg){width=100%}
+
+</details>
+
+## Circuit Schematic
+
+Each cathode connects through its own resistor to the FPGA. Both common anodes connect to 3.3 V; the decimal point is unused.
+
+<details>
+<summary>Display schematic and wiring</summary>
+
+![External display circuit with component values, display pin numbers, and FPGA pin labels.](images/lab1-schematic.svg){width=100%}
+
+| Signal | Display pin | FPGA adapter label |
+|---|---:|---|
+| A / `segments[0]` | 7 | P3 |
+| B / `segments[1]` | 6 | P4 |
+| C / `segments[2]` | 4 | P44 |
+| D / `segments[3]` | 2 | P6 |
+| E / `segments[4]` | 1 | P9 |
+| F / `segments[5]` | 9 | P11 |
+| G / `segments[6]` | 10 | P18 |
+| Common anodes | 3 and 8 | 3.3 V |
+| Decimal point | 5 | Unconnected |
+
+Onboard DIP switches and LEDs use the development board's existing circuitry. Switch inputs use internal pull-ups. **TODO:** confirm this pin table against the final Radiant Signal/Pad report and add the final `reset_n`/`enable` pin assignments.
+
+</details>
+
+## Simulation
+
+Questa testbenches reported PASS for the decoder, counter, and top-level connections.
+
+<details>
+<summary>Hexadecimal decoder waveform</summary>
+
+![Questa decoder simulation supplied during testing.](images/wave-decoder.png){width=100%}
+
+Inputs step from `0` to `F`; each produces the expected segment pattern. For example, `0` gives `7'h40` and `8` gives `7'h00`. Zero bits illuminate segments.
+
+</details>
+
+<details>
+<summary>Counter waveform</summary>
+
+![Questa counter simulation supplied during testing.](images/wave-counter.png){width=100%}
+
+With the test maximum set to 3, the count cycles `0 → 1 → 2 → 3 → 0`. Rollover toggles `blink`. Disabling holds both values; reset clears them on the next rising clock edge. Initial red values occur before the first reset clock edge.
+
+</details>
+
+<details>
+<summary>Top-level waveform</summary>
+
+![Questa top-level simulation supplied during testing.](images/wave-top.png){width=100%}
+
+The simulated oscillator period is approximately **20.832 ns**. The test checks both LED expressions, decoder connections, reset, enable, and blinking with `MAX_COUNT=3`. This shortened test verifies connections; it does not measure the hardware's 2.4 Hz blink rate.
+
+</details>
+
+## Calculations
+
+**To add later:** segment current and LED blink frequency calculations.
+
+<!-- When ready, place calculations.png in images/ and uncomment:
+<details>
+<summary>Current and timing calculations</summary>
+
+![Current and timing calculations.](images/calculations.png){width=100%}
+
+</details>
+-->
+
+## Results
+
+| Check | Status |
+|---|---|
+| Radiant synthesis, mapping, routing, and export | Completed |
+| FPGA programming | Completed |
+| Switch-controlled display and LEDs | Working at the final hardware check |
+| Decoder, counter, and top-level simulations | PASS reported |
+| All sixteen digits unique; adjacent switches follow bit order | TODO — record explicit hardware check |
+| Equal brightness; unselected segments completely off | TODO — record observation |
+| Measured blink frequency | TODO — add measurement |
+| Segment current / timing calculations | To add later |
+| MCU board test | Deferred: J-Link connection issue |
+
+<details>
+<summary>Hardware evidence</summary>
+
+TODO — add a clear board/display photo and, if available, a short demonstration video.
+
+<!-- ![Working Lab 1 hardware.](images/hardware.jpg){width=80%} -->
+
+</details>
+
+**Requirements statement:** FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session.
+
+## AI Prototype and Reflection
+
+AI assisted with the HDL draft, testbenches, debugging, and report diagrams. Simulation and hardware checks were used to evaluate the design. **TODO:** add the required AI prototype code/transcript and your own brief reflection; do not treat assisted development alone as completion of the separate prototype exercise.
+
+## Time Spent
+
+**20 hours.**
+
+## References
+
+- [Lab 1 instructions](https://hmc-e155.github.io/lab/lab1/)
+- [Lab 1 specifications](https://hmc-e155.github.io/lab/lab1/specs.html)
