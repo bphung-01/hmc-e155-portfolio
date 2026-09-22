@@ -4,15 +4,12 @@ author: "Ben Phung"
 format:
   html:
     toc: true
+    lightbox: true
     number-sections: false
     code-fold: true
     code-summary: "Show code"
     code-copy: true
 ---
-
-<!-- Replace TODO entries before publishing. The diagrams describe the later
-     lab1_tr design with reset_n, enable, and segments ports. Compare against
-     your final HDL and Radiant pin assignments before submitting. -->
 
 ## Design
 
@@ -32,19 +29,14 @@ Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a th
 
 ## Block Diagrams
 
-<details>
-<summary>Top-level hierarchy and LED gates</summary>
+The block diagram shows the complete Lab 1 FPGA design, including the internal oscillator, counter, seven-segment decoder, LED logic, and top-level connections.
 
-![Top-level ports, oscillator, counter, decoder, XOR/AND gates, and reset inversion.](images/lab1-top.svg){width=100%}
+<details>
+<summary>View complete Lab 1 block diagram</summary>
+
+![Complete Lab 1 block diagram.](images/lab1blockdiagram.png){width=100%}
 
 </details>
-
-<details>
-<summary>Counter and decoder internals</summary>
-
-![Counter register-transfer behavior, reset priority, enable, rollover, and blink output.](images/lab1-counter.svg){width=100%}
-
-![Decoder input/output table for all sixteen hexadecimal values.](images/lab1-decoder.svg){width=100%}
 
 </details>
 
@@ -55,7 +47,7 @@ Each cathode connects through its own resistor to the FPGA. Both common anodes c
 <details>
 <summary>Display schematic and wiring</summary>
 
-![External display circuit with component values, display pin numbers, and FPGA pin labels.](images/lab1-schematic.svg){width=100%}
+![External display circuit with component values, display pin numbers, and FPGA pin labels.](images/lab1schematic.png){width=100%}
 
 | Signal | Display pin | FPGA adapter label |
 |---|---:|---|
@@ -98,7 +90,7 @@ With the test maximum set to 3, the count cycles `0 → 1 → 2 → 3 → 0`. Ro
 <details>
 <summary>Top-level waveform</summary>
 
-![Questa top-level simulation supplied during testing.](images/wave-top.png){width=100%}
+![Top-level simulation waveform.](images/wave-top.png){width=100%}
 
 The simulated oscillator period is approximately **20.832 ns**. The test checks both LED expressions, decoder connections, reset, enable, and blinking with `MAX_COUNT=3`. This shortened test verifies connections; it does not measure the hardware's 2.4 Hz blink rate.
 
@@ -106,13 +98,7 @@ The simulated oscillator period is approximately **20.832 ns**. The test checks 
 
 ## Calculations
 
-**To add later:** segment current and LED blink frequency calculations.
-
-<!-- When ready, place calculations.png in images/ and uncomment:
-<details>
-<summary>Current and timing calculations</summary>
-
-![Current and timing calculations.](images/calculations.png){width=100%}
+![Current and timing calculations.](images/lab1calculations.png){width=100%}
 
 </details>
 -->
@@ -131,20 +117,16 @@ The simulated oscillator period is approximately **20.832 ns**. The test checks 
 | Segment current / timing calculations | To add later |
 | MCU board test | Deferred: J-Link connection issue |
 
-<details>
-<summary>Hardware evidence</summary>
-
-TODO — add a clear board/display photo and, if available, a short demonstration video.
-
-<!-- ![Working Lab 1 hardware.](images/hardware.jpg){width=80%} -->
-
 </details>
 
 **Requirements statement:** FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session.
 
 ## AI Prototype and Reflection
 
-AI assisted with the HDL draft, testbenches, debugging, and report diagrams. Simulation and hardware checks were used to evaluate the design. **TODO:** add the required AI prototype code/transcript and your own brief reflection; do not treat assisted development alone as completion of the separate prototype exercise.
+I prompted generative AI to create an automatic testbench for the hexadecimal seven-segment decoder. Instead of manually testing each switch combination, the AI-generated approach stored the 16 expected segment patterns and used a loop with assertions to test every input from `0x0` through `0xF`.
+
+The first version required minor syntax corrections before compiling in Questa. After correcting it, the testbench passed all 16 input-output pairs. This prototype showed that AI can reduce repetitive testbench code, but the generated code still needs to be understood, compiled, and verified by the designer.
+
 
 ## Time Spent
 
