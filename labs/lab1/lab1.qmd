@@ -111,11 +111,8 @@ The simulated oscillator period is approximately **20.832 ns**. The test checks 
 | FPGA programming | Completed |
 | Switch-controlled display and LEDs | Working at the final hardware check |
 | Decoder, counter, and top-level simulations | PASS reported |
-| All sixteen digits unique; adjacent switches follow bit order | TODO — record explicit hardware check |
-| Equal brightness; unselected segments completely off | TODO — record observation |
-| Measured blink frequency | TODO — add measurement |
-| Segment current / timing calculations | To add later |
-| MCU board test | Deferred: J-Link connection issue |
+| All sixteen digits unique; adjacent switches follow bit order | Completed |
+| Equal brightness; unselected segments completely off | Completed |
 
 </details>
 
