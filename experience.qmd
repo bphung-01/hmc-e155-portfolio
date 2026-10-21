@@ -1,0 +1,32 @@
+---
+title: "Experience"
+subtitle: "Engineering work, teams, and tools"
+---
+
+## Partnerships for Global Surgery
+**Electromechanical Engineering Intern · August 2026–present**
+
+Working with surgeons and engineers on a reusable pediatric bronchoscopy device. I design miniature camera integration and mechanical packaging and evaluate visualization, sealing, heat, durability, and cleaning trade-offs. [Explore the device work](projects.qmd#pediatric-bronchoscopy).
+
+## Data Pillar
+**Engineering Intern · May–August 2025**
+
+Developed Python tools for data processing, collaborated on C++ data-pipeline modules, and used MATLAB analysis and client feedback to guide backend improvements.
+
+## MuddSub
+**PCB Team Lead · January 2026–present**
+
+Design and iterate custom boards for an autonomous underwater vehicle using KiCad and Altium, then verify board behavior on the bench. I have also contributed to structural chassis design, waterproofing, buoyancy, and component packaging.
+
+## Adaptive Design at Mudd
+**Design Engineer · January 2024–present**
+
+Prototype assistive devices for community members using CAD and 3D printing, including a GIC checkerboard and wheelchair components.
+
+## Technical toolkit
+
+| Area | Tools and methods |
+|---|---|
+| Embedded and digital | STM32, Arduino, Raspberry Pi, FPGA, RISC-V, SPI, UART, C/C++, SystemVerilog |
+| Design and fabrication | SolidWorks, KiCad, Altium, 3D printing, machining, laser cutting |
+| Analysis | Python, MATLAB, COMSOL, LTspice, oscilloscope and logic-analyzer debugging |

@@ -1,0 +1,44 @@
+---
+title: "Microprocessors"
+subtitle: "E155 · FPGA, STM32, and hardware verification"
+---
+
+These reports document my work in E155 at Harvey Mudd College. Each report links design choices, simulation, hardware results, and open checks.
+
+::: {.lab-grid}
+::: {.lab-card}
+### 01 · FPGA and board bring-up
+
+Four switches select a hexadecimal digit; the FPGA drives a seven-segment display, LED logic, and a blink counter. The report includes simulations and board observations, with some final measurements still to add.
+
+[Read Lab 1 →](labs/lab1/lab1.qmd)
+:::
+
+::: {.lab-card}
+### 02 · Display and keypad
+
+A shared decoder drives two multiplexed hexadecimal digits. A 4 × 4 keypad scanner reads row and column activity and shows keypresses on LEDs.
+
+[Read Lab 2 →](labs/lab2/lab2.qmd)
+:::
+
+::: {.lab-card}
+### 04 · Digital audio
+
+An STM32L432KC uses hardware timers to play *Für Elise* through an LM386 amplifier, with measured pitch checks and a volume control.
+
+[Read Lab 4 →](labs/lab4/lab4.qmd)
+:::
+
+::: {.lab-card}
+### 05 · Motor velocity
+
+Encoder interrupts track shaft direction and position; a timer turns counts into a velocity estimate reported four times per second.
+
+[Read Lab 5 →](labs/lab5/lab5.qmd)
+:::
+:::
+
+## Course project
+
+My [laser tag system](projects.qmd#laser-tag-system) extends this work with an STM32, FPGA, custom PCB, IR blasters and receivers, and a local Wi-Fi scoreboard. The system is in development.

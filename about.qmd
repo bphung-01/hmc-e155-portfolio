@@ -1,5 +1,10 @@
 ---
 title: "About"
+subtitle: "Ben Phung · Los Angeles, California"
 ---
 
-About this site
+I study engineering at **Harvey Mudd College** and expect to graduate in **May 2028**. I’m drawn to projects that require both hands-on design and careful verification: circuits that must behave on a bench, mechanisms that have to fit, and systems that need to work outside the lab.
+
+My recent work includes miniature medical-device packaging, underwater robotics, PCB design, and microprocessor systems. Across those projects, I enjoy understanding a failure mode, measuring it, and turning that evidence into a better design.
+
+You can reach me at [bphung.college@gmail.com](mailto:bphung.college@gmail.com) or browse my [GitHub profile](https://github.com/bphung-01).

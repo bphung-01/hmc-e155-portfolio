@@ -1,1 +1,35 @@
-/* css styles */
+:root { --ink:#17283a; --muted:#536777; --line:#d9e3e8; --accent:#155c72; --pale:#f1f7f8; }
+body { color:var(--ink); }
+.navbar { border-bottom:1px solid var(--line); box-shadow:none; }
+.navbar-brand { font-weight:750; letter-spacing:-.025em; }
+.navbar-nav .nav-link { font-weight:550; }
+#quarto-content { padding-top:0; }
+main.content { max-width:920px; }
+h1,h2,h3 { letter-spacing:-.035em; }
+h1 { font-weight:760; }
+h2 { font-weight:720; margin-top:2.6rem; }
+.lead, .subtitle { color:var(--muted); }
+.hero-wrap { background:linear-gradient(132deg,#eaf3f4 0%,#f8fbfa 57%,#e6edf2 100%); border-bottom:1px solid var(--line); }
+.hero-inner { max-width:1120px; margin:auto; padding:6.2rem 1.5rem 6rem; }
+.hero-inner h1 { max-width:850px; font-size:clamp(2.6rem,5.8vw,5.4rem); line-height:1.07; margin:1.3rem 0; }
+.hero-inner p { max-width:690px; font-size:1.16rem; line-height:1.7; color:var(--muted); }
+.eyebrow,.card-tag { color:var(--accent); font-size:.75rem; letter-spacing:.16em; font-weight:800; }
+.button { display:inline-block; margin:1.25rem .75rem .2rem 0; padding:.8rem 1.15rem; border-radius:5px; text-decoration:none; font-weight:700; }
+.button-primary { background:var(--accent); color:white; }
+.button-primary:hover { color:white; background:#0e4557; }
+.button-outline { border:1px solid var(--accent); color:var(--accent); }
+.button-outline:hover { color:#0e4557; background:white; }
+.section-shell { max-width:1120px; margin:auto; padding:3rem 1.5rem 4rem; }
+.section-shell h2 { margin-top:0; }
+.section-alt { border-top:1px solid var(--line); }
+.project-grid,.lab-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.project-card,.lab-card { border:1px solid var(--line); padding:1.45rem; border-radius:8px; background:#fff; }
+.project-card h3,.lab-card h3 { margin:.7rem 0; font-size:1.32rem; }
+.project-card p,.lab-card p { color:var(--muted); font-size:.96rem; }
+.project-card a { font-weight:700; }
+.lab-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.text-link { font-weight:650; }
+.quarto-title-banner { background:var(--pale); color:var(--ink); }
+.quarto-title .subtitle { font-size:1.15rem; }
+main.content > h2 { padding-top:.2rem; border-top:1px solid var(--line); }
+@media(max-width:750px){ .project-grid,.lab-grid { grid-template-columns:1fr; } .hero-inner { padding:4.2rem 1.2rem; } .hero-inner h1 { font-size:2.75rem; } }

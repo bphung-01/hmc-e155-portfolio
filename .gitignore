@@ -1,6 +1,12 @@
-# Quarto-generated files
+# Quarto render output
 /.quarto/
 /_site/
+/_freeze/
+/site_libs/
+/**/*.html
+/*-listing.json
+/listings.json
+/search.json
 
 # Operating-system files
 .DS_Store

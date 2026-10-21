@@ -1,29 +1,42 @@
 project:
   type: website
-  title: "Ben Phung"
+  output-dir: _site
 
 website:
-  title: "E155 Portfolio"
+  title: "Ben Phung"
+  site-url: "https://bphung-01.github.io/hmc-e155-portfolio/"
+  description: "Engineering portfolio of Ben Phung"
   navbar:
+    background: light
     left:
-      - href: index.qmd
-        text: Home
-      - href: blog.qmd
-        text: Blog
-      - text: "Labs"
-        menu:
-          - text: "Lab 1"
-            href: labs/lab1/lab1.qmd
-          - text: "Lab 2"
-            href: labs/lab2/lab2.qmd   
+      - text: Home
+        href: index.qmd
+      - text: Projects
+        href: projects.qmd
+      - text: Microprocessors
+        href: microps.qmd
+      - text: Experience
+        href: experience.qmd
+      - text: About
+        href: about.qmd
+      - text: Blog
+        href: blog.qmd
+    right:
+      - icon: github
+        href: https://github.com/bphung-01
+        aria-label: GitHub
+      - icon: envelope
+        href: mailto:bphung.college@gmail.com
+        aria-label: Email
+  page-footer:
+    center: "© 2026 Ben Phung · Built with Quarto"
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
-    toc: true
+    toc: false
+    anchor-sections: false
 
-
-
+execute:
+  freeze: auto

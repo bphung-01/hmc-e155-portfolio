@@ -1,13 +1,63 @@
 ---
-title: "E155 Portfolio"
-image: images/headshot.png
-about:
-    template: jolla
-    links:
-        - icon: github
-          text: GitHub
-          href: https://github.com/bphung-01
+title: "Ben Phung"
+page-layout: full
+title-block-banner: false
 ---
-I am Ben Phung, an Engineering student at Harvey Mudd College and this is my E155 Portfolio.
-This is a Quarto website.
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+::: {.hero-wrap}
+::: {.hero-inner}
+::: {.eyebrow}
+ENGINEERING PORTFOLIO · HARVEY MUDD COLLEGE
+:::
+
+# I build hardware, test it, and make the next version better.
+
+I’m **Ben Phung**, an engineering student working across embedded systems, robotics, medical devices, and manufacturing. I like projects that move from a sketch and schematic to a working prototype—and then survive the measurements that reveal what needs to change.
+
+[Explore projects](projects.qmd){.button .button-primary} [Microprocessors lab work](microps.qmd){.button .button-outline}
+:::
+:::
+
+::: {.section-shell}
+## Selected work
+
+::: {.project-grid}
+::: {.project-card}
+::: {.card-tag}
+MEDICAL DEVICE · MECHANICAL + OPTICAL
+:::
+### Pediatric bronchoscopy
+A compact, reusable endoscope concept that packages a 2.0 mm camera within a 2.5 mm stainless-steel housing. Current design work examines visibility, sealing, sterilization, and the surgeon’s field of view.
+
+[View project →](projects.qmd#pediatric-bronchoscopy)
+:::
+
+::: {.project-card}
+::: {.card-tag}
+ROBOTICS · SENSORS
+:::
+### Autonomous underwater robot
+Integrated pressure, temperature, pH, and light sensing for a waterproof robot deployed at Dana Point. Calibration and field data informed the next iteration.
+
+[View project →](projects.qmd#autonomous-underwater-robot)
+:::
+
+::: {.project-card}
+::: {.card-tag}
+FPGA · STM32 · SPI
+:::
+### Microprocessor labs
+FPGA display logic, keypad scanning, STM32 audio, and motor encoder interrupts documented in Quarto lab reports.
+
+[Explore labs →](microps.qmd)
+:::
+:::
+:::
+
+::: {.section-shell .section-alt}
+## How I work
+
+I use CAD and PCB tools to design, C and SystemVerilog to bring up hardware, and bench tests or field measurements to decide what to fix. My recent work spans a pediatric endoscope, underwater vehicles, and STM32/FPGA systems.
+
+[Experience](experience.qmd){.text-link} · [About me](about.qmd){.text-link} · [Email me](mailto:bphung.college@gmail.com){.text-link}
+:::
