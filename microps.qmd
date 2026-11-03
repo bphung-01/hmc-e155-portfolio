@@ -39,6 +39,14 @@ Encoder interrupts track shaft direction and position; a timer turns counts into
 :::
 :::
 
+::: {.lab-card}
+### 06 · SPI and IoT
+
+An STM32L432KC reads a DS1722 temperature sensor over SPI and uses an ESP8266 to display temperature and control an LED through a local webpage.
+
+[Read Lab 6 →](labs/lab6/lab6.qmd)
+:::
+
 ## Course project
 
 My [laser tag system](projects.qmd#laser-tag-system) extends this work with an STM32, FPGA, custom PCB, IR blasters and receivers, and a local Wi-Fi scoreboard. The system is in development.

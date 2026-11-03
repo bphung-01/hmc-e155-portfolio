@@ -57,7 +57,7 @@ FPGA display logic, keypad scanning, STM32 audio, and motor encoder interrupts d
 ::: {.section-shell .section-alt}
 ## How I work
 
-I use CAD and PCB tools to design, C and SystemVerilog to bring up hardware, and bench tests or field measurements to decide what to fix. My recent work spans a pediatric endoscope, underwater vehicles, and STM32/FPGA systems.
+I use CAD and PCB tools to design, C and SystemVerilog to bring up hardware, and bench tests or field measurements to decide what to fix. My recent work spans a pediatric bronchoscopy system, underwater vehicles, and STM32/FPGA systems.
 
 [Experience](experience.qmd){.text-link} · [About me](about.qmd){.text-link} · [Email me](mailto:bphung.college@gmail.com){.text-link}
 :::
