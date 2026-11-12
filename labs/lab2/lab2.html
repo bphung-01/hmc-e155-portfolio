@@ -9,7 +9,7 @@
 <meta name="author" content="Ben Phung">
 <meta name="dcterms.date" content="2026-09-15">
 
-<title>Lab 2: Multiplexed Seven-Segment Display – E155 Portfolio</title>
+<title>Lab 2: Multiplexed Seven-Segment Display – Ben Phung</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -38,16 +38,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../Images/headshot.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ea1971949f186b5d7ecce1fd3cf000e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -87,8 +87,12 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../Images/headshot.png" alt="" class="navbar-logo light-content">
+    <img src="../../Images/headshot.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">E155 Portfolio</span>
+    <span class="navbar-title">Ben Phung</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -102,24 +106,41 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../microps.html"> 
+<span class="menu-text">Microprocessors</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../experience.html"> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Images/Ben-Phung-Resume.pdf"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Labs</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
-        <li>
-    <a class="dropdown-item" href="../../labs/lab1/lab1.html">
- <span class="dropdown-text">Lab 1</span></a>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bphung-01"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../labs/lab2/lab2.html">
- <span class="dropdown-text">Lab 2</span></a>
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bphung.college@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -191,11 +212,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<h2 data-anchor-id="introduction">Introduction</h2>
 <p>Two independently controlled hexadecimal digits were time-multiplexed through one seven-segment decoder. A 4 × 4 keypad scanner drove four open-collector rows and displayed the sensed columns on four LEDs.</p>
 </section>
 <section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
+<h2 data-anchor-id="design">Design</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -231,8 +252,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <section id="block-diagram" class="level3">
-<h3 class="anchored" data-anchor-id="block-diagram">Block Diagram</h3>
-<div id="fig-block-diagram" class="quarto-float quarto-figure quarto-figure-center anchored">
+<h3 data-anchor-id="block-diagram">Block Diagram</h3>
+<div id="fig-block-diagram" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-block-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="images/Lab 2.pdf" class="img-fluid" style="width:100.0%">
@@ -244,8 +265,8 @@ Figure&nbsp;1: Lab 2 HDL block diagram.
 </div>
 </section>
 <section id="schematic" class="level3">
-<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
-<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<h3 data-anchor-id="schematic">Schematic</h3>
+<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="images/schematic.pdf" class="img-fluid" style="width:100.0%">
@@ -257,7 +278,7 @@ Figure&nbsp;2: Lab 2 circuit schematic.
 </div>
 </section>
 <section id="source-code" class="level3">
-<h3 class="anchored" data-anchor-id="source-code">Source Code</h3>
+<h3 data-anchor-id="source-code">Source Code</h3>
 <p><a href="https://github.com/bphung-01/E155-Lab2">GitHub repository</a></p>
 <details>
 <summary>
@@ -273,9 +294,9 @@ Design files
 </section>
 </section>
 <section id="calculations" class="level2">
-<h2 class="anchored" data-anchor-id="calculations">Calculations</h2>
+<h2 data-anchor-id="calculations">Calculations</h2>
 <p>The calculations below verify the FPGA pin currents and circuit timing.</p>
-<div id="fig-calculations" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-calculations" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-calculations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="images/calculations.pdf" class="img-fluid" style="width:90.0%">
@@ -287,10 +308,10 @@ Figure&nbsp;3: Lab 2 current and timing calculations.
 </div>
 </section>
 <section id="simulation" class="level2">
-<h2 class="anchored" data-anchor-id="simulation">Simulation</h2>
+<h2 data-anchor-id="simulation">Simulation</h2>
 <section id="keypad-scanner" class="level3">
-<h3 class="anchored" data-anchor-id="keypad-scanner">Keypad Scanner</h3>
-<div id="fig-scanner-waveform" class="quarto-float quarto-figure quarto-figure-center anchored">
+<h3 data-anchor-id="keypad-scanner">Keypad Scanner</h3>
+<div id="fig-scanner-waveform" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scanner-waveform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/scanner_wave.png" class="img-fluid figure-img" style="width:100.0%">
@@ -303,8 +324,8 @@ Figure&nbsp;4: Scanner reset, enable, and four row transitions.
 <pre class="text"><code>PASS: scanner reset, enable, pause, and all four row transitions.</code></pre>
 </section>
 <section id="top-level" class="level3">
-<h3 class="anchored" data-anchor-id="top-level">Top Level</h3>
-<div id="fig-top-waveform" class="quarto-float quarto-figure quarto-figure-center anchored">
+<h3 data-anchor-id="top-level">Top Level</h3>
+<div id="fig-top-waveform" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-top-waveform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/top_wave.png" class="img-fluid figure-img" style="width:100.0%">
@@ -327,7 +348,7 @@ Testbench files
 </section>
 </section>
 <section id="hardware-results" class="level2">
-<h2 class="anchored" data-anchor-id="hardware-results">Hardware Results</h2>
+<h2 data-anchor-id="hardware-results">Hardware Results</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -379,17 +400,17 @@ Hardware photograph
 </details>
 </section>
 <section id="requirements" class="level2">
-<h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
+<h2 data-anchor-id="requirements">Requirements</h2>
 <p>The design met all requirements.</p>
 </section>
 <section id="ai-prototype" class="level2">
-<h2 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h2>
+<h2 data-anchor-id="ai-prototype">AI Prototype</h2>
 <details>
 <p><strong>Reflection:</strong> # AI Prototype Summary</p>
 <p>AI was used to generate an initial HDL structure, testbenches, and wiring plan. The prototype suggested reusing the Lab 1 counter, sharing one seven-segment decoder between both digits, and scanning the keypad rows with a counter. The generated design provided a useful starting point but required corrections to match the active-low display signals, actual FPGA pin assignments, component values, and physical wiring. QuestaSim verified the digital behavior, while hardware testing was still necessary to find wiring and power problems. This showed that AI was helpful for organizing and checking the design, but its output needed to be compared carefully against the datasheets, lab specifications, and assembled circuit.</p>
 </details></section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>The FPGA successfully multiplexed two hexadecimal digits and scanned the 4 × 4 keypad. Total time: 15 hours.</p>
 
 
@@ -398,13 +419,6 @@ Hardware photograph
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -469,7 +483,7 @@ Hardware photograph
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/bphung-01\.github\.io\/hmc-e155-portfolio\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -797,6 +811,19 @@ Hardware photograph
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Ben Phung · Built with Quarto</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

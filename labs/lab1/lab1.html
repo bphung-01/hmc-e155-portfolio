@@ -8,7 +8,7 @@
 
 <meta name="author" content="Ben Phung">
 
-<title>Lab 1: FPGA and Board Testing – E155 Portfolio</title>
+<title>Lab 1: FPGA and Board Testing – Ben Phung</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,16 +37,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../Images/headshot.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-574f58f4068bb8f43535e6e9c10c5508.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3be04e9191975886ffbbdc1e6b376307.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -86,8 +89,12 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../Images/headshot.png" alt="" class="navbar-logo light-content">
+    <img src="../../Images/headshot.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">E155 Portfolio</span>
+    <span class="navbar-title">Ben Phung</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -101,24 +108,41 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../microps.html"> 
+<span class="menu-text">Microprocessors</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../experience.html"> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Images/Ben-Phung-Resume.pdf"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Labs</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
-        <li>
-    <a class="dropdown-item" href="../../labs/lab1/lab1.html">
- <span class="dropdown-text">Lab 1</span></a>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bphung-01"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../labs/lab2/lab2.html">
- <span class="dropdown-text">Lab 2</span></a>
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bphung.college@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -175,11 +199,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- Replace TODO entries before publishing. The diagrams describe the later
-     lab1_tr design with reset_n, enable, and segments ports. Compare against
-     your final HDL and Radiant pin assignments before submitting. -->
 <section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
+<h2 data-anchor-id="design">Design</h2>
 <p>Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal <strong>2.4 Hz</strong>.</p>
 <table class="caption-top table">
 <thead>
@@ -222,38 +243,23 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Code repository:</strong> https://github.com/bphung-01/E155-Lab-Redo</p>
 </section>
 <section id="block-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="block-diagrams">Block Diagrams</h2>
+<h2 data-anchor-id="block-diagrams">Block Diagrams</h2>
+<p>The block diagram shows the complete Lab 1 FPGA design, including the internal oscillator, counter, seven-segment decoder, LED logic, and top-level connections.</p>
 <details>
 <summary>
-Top-level hierarchy and LED gates
+View complete Lab 1 block diagram
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/lab1-top.svg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Top-level ports, oscillator, counter, decoder, XOR/AND gates, and reset inversion.</figcaption>
+<p><a href="images/lab1blockdiagram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Complete Lab 1 block diagram."><img src="images/lab1blockdiagram.png" class="img-fluid figure-img" style="width:100.0%" alt="Complete Lab 1 block diagram."></a></p>
+<figcaption>Complete Lab 1 block diagram.</figcaption>
 </figure>
 </div>
 </details>
-<details>
-<summary>
-Counter and decoder internals
-</summary>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab1-counter.svg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Counter register-transfer behavior, reset priority, enable, rollover, and blink output.</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab1-decoder.svg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Decoder input/output table for all sixteen hexadecimal values.</figcaption>
-</figure>
-</div>
-</details>
+
 </section>
 <section id="circuit-schematic" class="level2">
-<h2 class="anchored" data-anchor-id="circuit-schematic">Circuit Schematic</h2>
+<h2 data-anchor-id="circuit-schematic">Circuit Schematic</h2>
 <p>Each cathode connects through its own resistor to the FPGA. Both common anodes connect to 3.3 V; the decimal point is unused.</p>
 <details>
 <summary>
@@ -261,7 +267,7 @@ Display schematic and wiring
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/lab1-schematic.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/lab1schematic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="External display circuit with component values, display pin numbers, and FPGA pin labels."><img src="images/lab1schematic.png" class="img-fluid figure-img" style="width:100.0%" alt="External display circuit with component values, display pin numbers, and FPGA pin labels."></a></p>
 <figcaption>External display circuit with component values, display pin numbers, and FPGA pin labels.</figcaption>
 </figure>
 </div>
@@ -325,7 +331,7 @@ Display schematic and wiring
 </details>
 </section>
 <section id="simulation" class="level2">
-<h2 class="anchored" data-anchor-id="simulation">Simulation</h2>
+<h2 data-anchor-id="simulation">Simulation</h2>
 <p>Questa testbenches reported PASS for the decoder, counter, and top-level connections.</p>
 <details>
 <summary>
@@ -333,7 +339,7 @@ Hexadecimal decoder waveform
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/wave-decoder.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/wave-decoder.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Questa decoder simulation supplied during testing."><img src="images/wave-decoder.png" class="img-fluid figure-img" style="width:100.0%" alt="Questa decoder simulation supplied during testing."></a></p>
 <figcaption>Questa decoder simulation supplied during testing.</figcaption>
 </figure>
 </div>
@@ -345,7 +351,7 @@ Counter waveform
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/wave-counter.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><a href="images/wave-counter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Questa counter simulation supplied during testing."><img src="images/wave-counter.png" class="img-fluid figure-img" style="width:100.0%" alt="Questa counter simulation supplied during testing."></a></p>
 <figcaption>Questa counter simulation supplied during testing.</figcaption>
 </figure>
 </div>
@@ -357,27 +363,26 @@ Top-level waveform
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/wave-top.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Questa top-level simulation supplied during testing.</figcaption>
+<p><a href="images/wave-top.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Top-level simulation waveform."><img src="images/wave-top.png" class="img-fluid figure-img" style="width:100.0%" alt="Top-level simulation waveform."></a></p>
+<figcaption>Top-level simulation waveform.</figcaption>
 </figure>
 </div>
 <p>The simulated oscillator period is approximately <strong>20.832 ns</strong>. The test checks both LED expressions, decoder connections, reset, enable, and blinking with <code>MAX_COUNT=3</code>. This shortened test verifies connections; it does not measure the hardware’s 2.4 Hz blink rate.</p>
 </details>
 </section>
 <section id="calculations" class="level2">
-<h2 class="anchored" data-anchor-id="calculations">Calculations</h2>
-<p><strong>To add later:</strong> segment current and LED blink frequency calculations.</p>
-<!-- When ready, place calculations.png in images/ and uncomment:
-<details>
-<summary>Current and timing calculations</summary>
+<h2 data-anchor-id="calculations">Calculations</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/lab1calculations.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Current and timing calculations."><img src="images/lab1calculations.png" class="img-fluid figure-img" style="width:100.0%" alt="Current and timing calculations."></a></p>
+<figcaption>Current and timing calculations.</figcaption>
+</figure>
+</div>
 
-![Current and timing calculations.](images/calculations.png){width=100%}
-
-</details>
--->
+<p>–&gt;</p>
 </section>
 <section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
+<h2 data-anchor-id="results">Results</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -408,45 +413,28 @@ Top-level waveform
 </tr>
 <tr class="odd">
 <td>All sixteen digits unique; adjacent switches follow bit order</td>
-<td>TODO — record explicit hardware check</td>
+<td>Completed</td>
 </tr>
 <tr class="even">
 <td>Equal brightness; unselected segments completely off</td>
-<td>TODO — record observation</td>
-</tr>
-<tr class="odd">
-<td>Measured blink frequency</td>
-<td>TODO — add measurement</td>
-</tr>
-<tr class="even">
-<td>Segment current / timing calculations</td>
-<td>To add later</td>
-</tr>
-<tr class="odd">
-<td>MCU board test</td>
-<td>Deferred: J-Link connection issue</td>
+<td>Completed</td>
 </tr>
 </tbody>
 </table>
-<details>
-<summary>
-Hardware evidence
-</summary>
-<p>TODO — add a clear board/display photo and, if available, a short demonstration video.</p>
-<!-- ![Working Lab 1 hardware.](images/hardware.jpg){width=80%} -->
-</details>
+
 <p><strong>Requirements statement:</strong> FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session.</p>
 </section>
 <section id="ai-prototype-and-reflection" class="level2">
-<h2 class="anchored" data-anchor-id="ai-prototype-and-reflection">AI Prototype and Reflection</h2>
-<p>AI assisted with the HDL draft, testbenches, debugging, and report diagrams. Simulation and hardware checks were used to evaluate the design. <strong>TODO:</strong> add the required AI prototype code/transcript and your own brief reflection; do not treat assisted development alone as completion of the separate prototype exercise.</p>
+<h2 data-anchor-id="ai-prototype-and-reflection">AI Prototype and Reflection</h2>
+<p>I prompted generative AI to create an automatic testbench for the hexadecimal seven-segment decoder. Instead of manually testing each switch combination, the AI-generated approach stored the 16 expected segment patterns and used a loop with assertions to test every input from <code>0x0</code> through <code>0xF</code>.</p>
+<p>The first version required minor syntax corrections before compiling in Questa. After correcting it, the testbench passed all 16 input-output pairs. This prototype showed that AI can reduce repetitive testbench code, but the generated code still needs to be understood, compiled, and verified by the designer.</p>
 </section>
 <section id="time-spent" class="level2">
-<h2 class="anchored" data-anchor-id="time-spent">Time Spent</h2>
+<h2 data-anchor-id="time-spent">Time Spent</h2>
 <p><strong>20 hours.</strong></p>
 </section>
 <section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<h2 data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://hmc-e155.github.io/lab/lab1/">Lab 1 instructions</a></li>
 <li><a href="https://hmc-e155.github.io/lab/lab1/specs.html">Lab 1 specifications</a></li>
@@ -458,13 +446,6 @@ Hardware evidence
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -529,7 +510,7 @@ Hardware evidence
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/bphung-01\.github\.io\/hmc-e155-portfolio\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -857,6 +838,51 @@ Hardware evidence
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Ben Phung · Built with Quarto</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

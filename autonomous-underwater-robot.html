@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Autonomous Underwater Robot – Ben Phung</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Images/headshot.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ea1971949f186b5d7ecce1fd3cf000e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./Images/headshot.png" alt="" class="navbar-logo light-content">
+    <img src="./Images/headshot.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ben Phung</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./microps.html"> 
+<span class="menu-text">Microprocessors</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./experience.html"> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Images/Ben-Phung-Resume.pdf"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bphung-01"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bphung.college@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mission" id="toc-mission" class="nav-link active" data-scroll-target="#mission">Mission</a></li>
+  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture">System architecture</a></li>
+  <li><a href="#sensor-and-circuit-design" id="toc-sensor-and-circuit-design" class="nav-link" data-scroll-target="#sensor-and-circuit-design">Sensor and circuit design</a></li>
+  <li><a href="#mechanical-integration" id="toc-mechanical-integration" class="nav-link" data-scroll-target="#mechanical-integration">Mechanical integration</a></li>
+  <li><a href="#testing-and-field-deployment" id="toc-testing-and-field-deployment" class="nav-link" data-scroll-target="#testing-and-field-deployment">Testing and field deployment</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#what-the-failures-taught-us" id="toc-what-the-failures-taught-us" class="nav-link" data-scroll-target="#what-the-failures-taught-us">What the failures taught us</a></li>
+  <li><a href="#team-and-next-iteration" id="toc-team-and-next-iteration" class="nav-link" data-scroll-target="#team-and-next-iteration">Team and next iteration</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Autonomous Underwater Robot</h1>
+<p class="subtitle lead">E80 · Depth-resolved environmental sensing at Dana Point</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="./projects.html">← Back to all projects</a></p>
+<section class="project-overview" aria-label="Project overview">
+  <div class="project-overview-media">
+    <img src="Images/e80/auv-side.png" alt="Side view of the autonomous underwater robot">
+  </div>
+  <div class="project-overview-body">
+    <span class="tag">E80 · Experimental Engineering · Spring 2026</span>
+    <p><strong>Overview</strong><br>
+    Our four-person team designed, calibrated, and deployed a low-cost autonomous underwater vehicle that measured pressure, temperature, pH, and relative light intensity as a function of depth. The final field test at Dana Point produced a successful 2.61 m profile.</p>
+    <p><strong>My focus</strong><br>
+    Analog signal conditioning, sensor calibration, waterproof electrical integration, field debugging, and analysis of the depth-resolved dataset.</p>
+    <p><strong>Skills</strong><br>
+    Op-amp circuits, Teensy ADC acquisition, sensor calibration, MATLAB, waterproofing, mechanical integration, and field testing.</p>
+    <div class="project-links">
+      <a class="action action-primary" href="Images/E80 Final report.docx.pdf" target="_blank">Read Final Report</a>
+      <a class="action action-outline" href="Images/E80_Poster.pptx.pdf" target="_blank">View Poster</a>
+    </div>
+  </div>
+</section>
+<div class="project-facts">
+<div>
+<span>Maximum depth</span><strong>2.61 ± 0.05 m</strong>
+</div>
+<div>
+<span>Pressure residual</span><strong>0.0462 m RMS</strong>
+</div>
+<div>
+<span>Temperature trend</span><strong>23.1 → 18.0 °C</strong>
+</div>
+<div>
+<span>Light reduction</span><strong>30% and 38%</strong>
+</div>
+</div>
+<section id="mission" class="level2">
+<h2 data-anchor-id="mission">Mission</h2>
+<p>Water quality can change substantially within the first few meters below the surface, but collecting repeatable measurements at multiple depths usually requires specialized equipment. We set out to determine whether a small, low-cost AUV could gather useful environmental data during a controlled vertical dive.</p>
+<p>The robot needed to carry four analog sensing channels, maintain a consistent sensor orientation, protect its electronics from salt water, and return recoverable data after deployment. The sensing budget was constrained to roughly $50, which motivated the use of inexpensive solar panels as relative light sensors and concentrated most of the budget on the pH probe.</p>
+</section>
+<section id="system-architecture" class="level2">
+<h2 data-anchor-id="system-architecture">System architecture</h2>
+<p>Pressure served as the independent depth coordinate for every other measurement. Each analog sensor passed through a channel-specific conditioning circuit before reaching the Teensy ADC. The deployment log was then converted from ADC counts to voltage and from voltage to engineering units with empirical calibration equations.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  P[MPX5700 pressure] --&gt; CP[Offset + gain]
+  T[47 kΩ thermistor] --&gt; CT[Divider + buffer + offset]
+  H[Glass pH electrode] --&gt; CH[High-impedance interface + shielding]
+  L[Two solar panels] --&gt; CL[Attenuation + offset]
+  CP --&gt; ADC[Teensy ADC]
+  CT --&gt; ADC
+  CH --&gt; ADC
+  CL --&gt; ADC
+  ADC --&gt; LOG[Deployment log]
+  LOG --&gt; MATLAB[MATLAB calibration and analysis]
+  MATLAB --&gt; DEPTH[Depth-resolved profiles]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sensor-and-circuit-design" class="level2">
+<h2 data-anchor-id="sensor-and-circuit-design">Sensor and circuit design</h2>
+<p>The raw sensor outputs occupied only part of the Teensy’s 0-3.3 V input range, so the analog front end used buffers, attenuation, offset, and gain stages to increase usable resolution while preventing overvoltage. A 12 V battery powered the robot, and an onboard regulator supplied a stable 5 V rail to the sensors and MCP601/MCP602 op-amps.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Channel</th>
+<th>Sensor and purpose</th>
+<th>Conditioning and calibration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Depth</td>
+<td>MPX5700 pressure sensor</td>
+<td>Offset and gain mapped the expected 0-3 m signal into the ADC range; pool calibration produced <code>h = -1.4708V + 3.9236</code>.</td>
+</tr>
+<tr class="even">
+<td>Temperature</td>
+<td>Murata 47 kΩ NTC thermistor</td>
+<td>A divider and unity-gain buffer prevented loading before the offset stage; processing used <code>T = -11.854V + 32.424</code>.</td>
+</tr>
+<tr class="odd">
+<td>pH</td>
+<td>Glass-electrode interface module</td>
+<td>A high-input-impedance path, added gain, and a grounded Faraday cage reduced noise; buffer calibration produced <code>pH = 0.912V + 6.538</code>.</td>
+</tr>
+<tr class="even">
+<td>Relative light</td>
+<td>Two ZW-5050-3V solar panels</td>
+<td>Attenuation protected the ADC from bright conditions; a quadratic calibration converted voltage to estimated lumens.</td>
+</tr>
+</tbody>
+</table>
+<div id="fig-e80-calibration" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-e80-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images/e80/calibration-curves.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-e80-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Calibration curves for pressure, temperature, relative light, and pH. The empirical fits were used to process the field data.
+</figcaption>
+</figure>
+</div>
+<div id="fig-e80-circuits" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-e80-circuits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images/e80/sensor-circuits.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-e80-circuits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: pH and solar-panel interface designs. Both channels use offset and gain stages to map their expected outputs into the ADC range.
+</figcaption>
+</figure>
+</div>
+<p>The pH circuit required extra care because the glass electrode and its interface were sensitive to high source impedance, long leads, motor PWM, and nearby wiring. We placed that channel on a separate breadboard inside a grounded copper-and-aluminum Faraday cage. The shielding reduced electrical noise, but it could not correct the chemistry mismatch between freshwater buffer calibration and seawater deployment.</p>
+</section>
+<section id="mechanical-integration" class="level2">
+<h2 data-anchor-id="mechanical-integration">Mechanical integration</h2>
+<div id="fig-e80-mechanical" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-e80-mechanical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images/e80/mechanical-integration.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-e80-mechanical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Mechanical drawing, aerial view, and side view of the completed robot with sensor locations labeled.
+</figcaption>
+</figure>
+</div>
+<p>The PVC frame was designed primarily for vertical movement. The pressure sensor, thermistor, and pH probe faced downward so their sensing surfaces sampled approximately the same depth. The solar panels faced upward to receive incident light, and the electronics enclosure sat near the center of the frame. Buoyant components were placed above heavier components to provide passive restoring stability.</p>
+<p>The estimated robot mass was <strong>3.3701 kg</strong>, while the calculated buoyant force was <strong>39.43 N</strong>. The center of buoyancy was estimated at 0.135 m above the bottom of the frame, slightly above the 0.116 m center of mass. That separation helped the vehicle return toward an upright orientation after small disturbances.</p>
+<p>The original design used four vertical motors. Two motors drew excessive current and produced motherboard reliability problems, so the final configuration used two diagonal vertical thrusters. This reduced electrical load while preserving a balanced vertical force arrangement.</p>
+</section>
+<section id="testing-and-field-deployment" class="level2">
+<h2 data-anchor-id="testing-and-field-deployment">Testing and field deployment</h2>
+<p>The robot progressed through pool calibration, freshwater integration testing, and final saltwater deployment. Roberts Pool provided a controlled 0-3 m reference for the pressure channel. A later test at pHake Lake exposed a major waterproofing failure: water entered the electronics enclosure, activated motor-controller warnings, and caused several sensor channels to rail or short.</p>
+<p>That failure changed the Dana Point procedure. Cable penetrations were resealed with marine epoxy, the empty enclosure was leak-checked before reinstalling electronics, and the team adopted a staged-depth plan. A 10 m tether provided immediate recovery, and 0.5 m tape marks supplied a visual depth reference. Before each launch, the serial monitor was used to confirm plausible outputs from all four sensor channels.</p>
+<div class="image-pair">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/e80/auv-top.png" class="img-fluid figure-img" alt="Top view of the autonomous underwater robot"></p>
+<figcaption>Top view of the completed AUV showing the central electronics enclosure and sensor placement.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/e80/deployment.jpg" class="img-fluid figure-img" alt="A team member retrieving the underwater robot with a tether"></p>
+<figcaption>Tethered recovery of the AUV during field testing.</figcaption>
+</figure>
+</div>
+</div>
+<p>The final dataset was recorded on <strong>April 25, 2026</strong>. Early complications reduced the planned 9 m profile to a safer 3 m target, allowing the team to collect a complete descend-hold-return dataset without risking the vehicle.</p>
+</section>
+<section id="results" class="level2">
+<h2 data-anchor-id="results">Results</h2>
+<div id="fig-e80-timeseries" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-e80-timeseries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images/e80/deployment-timeseries.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:92.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-e80-timeseries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Dana Point time series. Pressure defines the dive profile; temperature and both light channels change during descent, while the pH channel clips.
+</figcaption>
+</figure>
+</div>
+<div id="fig-e80-depth-results" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-e80-depth-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images/e80/depth-results.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:92.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-e80-depth-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Measurements plotted against pressure-derived depth with uncertainty and model comparisons.
+</figcaption>
+</figure>
+</div>
+<div class="result-grid">
+<section id="pressure" class="level3 result-card">
+<h3 data-anchor-id="pressure">Pressure</h3>
+<p>The pressure channel was the strongest quantitative result. It captured the complete descend-hold-return motion and measured a maximum depth of <strong>2.61 ± 0.05 m</strong>. Its pool-calibration RMS residual was only <strong>0.0462 m</strong>.</p>
+</section>
+<section id="temperature" class="level3 result-card">
+<h3 data-anchor-id="temperature">Temperature</h3>
+<p>The thermistor decreased from <strong>23.1 ± 0.3 °C</strong> before immersion to <strong>18.0 ± 0.6 °C</strong> at the deepest interval. A field thermometer measured 18.7 °C at the surface, so the channel demonstrated a useful relative trend but retained an absolute offset.</p>
+</section>
+<section id="relative-light" class="level3 result-card">
+<h3 data-anchor-id="relative-light">Relative light</h3>
+<p>The two solar-panel channels fell by approximately <strong>30 ± 3%</strong> and <strong>38 ± 6%</strong>. Exponential fits yielded attenuation coefficients of 0.16 ± 0.08 m⁻¹ and 0.24 ± 0.11 m⁻¹, although tilt, waves, shadowing, and broadband response limit quantitative interpretation.</p>
+</section>
+<section id="ph" class="level3 result-card">
+<h3 data-anchor-id="ph">pH</h3>
+<p>The pH output converged near <strong>6.54</strong>, while field ground truth was approximately <strong>7.4</strong>. The nearly constant, clipped response was excluded as environmental data and treated as evidence that the probe required seawater-specific calibration and longer settling time.</p>
+</section>
+</div>
+</section>
+<section id="what-the-failures-taught-us" class="level2">
+<h2 data-anchor-id="what-the-failures-taught-us">What the failures taught us</h2>
+<p>The project produced useful data because failures were treated as design information rather than hidden from the final analysis.</p>
+<ul>
+<li><strong>Waterproofing must be verified before electronics are installed.</strong> The pHake Lake flood led to separate enclosure testing, cleaner penetrator holes, marine epoxy sealing, and immediate tethered recovery.</li>
+<li><strong>Calibration must match the deployment environment.</strong> Low-salinity pH buffers did not reproduce the liquid-junction behavior of the glass electrode in seawater.</li>
+<li><strong>Relative and absolute accuracy are different.</strong> The thermistor clearly followed a cooling trend, but its offset against the field thermometer prevented a strong absolute-temperature claim.</li>
+<li><strong>The sensor can disturb the measurement.</strong> Solar-panel orientation, robot tilt, surface ripples, and frame shadows all affected the apparent light profile.</li>
+<li><strong>One successful dive is not enough for repeatability.</strong> Future deployments should use repeated descents with 20-30 second holds at fixed depths to separate real water-column structure from sensor lag and vehicle motion.</li>
+</ul>
+</section>
+<section id="team-and-next-iteration" class="level2">
+<h2 data-anchor-id="team-and-next-iteration">Team and next iteration</h2>
+<p>This was a team project with <strong>Luke Pratt, Megan Tran, and Lucy Will</strong>. The next version should use seawater-matched pH standards, sealed modular gain settings, improved high-impedance shielding, and repeated fixed-depth profiles. The tether, staged-depth testing, and serial-monitor preflight checks should remain because they made field failures recoverable.</p>
+<div class="project-links project-links-bottom">
+  <a class="action action-primary" href="Images/E80 Final report.docx.pdf" target="_blank">Read Final Report</a>
+  <a class="action action-outline" href="Images/E80_Poster.pptx.pdf" target="_blank">View Project Poster</a>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bphung-01\.github\.io\/hmc-e155-portfolio\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Ben Phung · Built with Quarto</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

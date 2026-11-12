@@ -1,94 +1,290 @@
 [
   {
-    "objectID": "labs/lab1/lab1.html",
-    "href": "labs/lab1/lab1.html",
-    "title": "Lab 1: FPGA and Board Testing",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+    "text": "Partnerships for Global Surgery · Sponsored engineering project · 2026–present\nA pediatric rigid bronchoscope should remain usable and durable in hospitals with very different resources. I’m working with a seven-person Clinic team and clinical advisors on an affordable system that integrates a rigid tube, handle, distal-camera endoscope, forceps, and suction. My contributions include miniature-camera selection and integration, handle ideation, camera-cleaning prototypes, and thermal testing. The current concept uses a 2.0 mm camera, a 5.7 mm outer-diameter bronchoscope, and a 720 × 720, 30 fps video feed.\nCurrent stage: Work in progress—requirements development, detailed design, and preliminary prototype evaluation. Manufacturing, simulated-use testing, iteration, and broader validation remain ahead.\nRead the full bronchoscope project →"
   },
   {
-    "objectID": "labs/lab1/lab1.html#design",
-    "href": "labs/lab1/lab1.html#design",
-    "title": "Lab 1: FPGA and Board Testing",
+    "objectID": "projects.html#pediatric-bronchoscopy",
+    "href": "projects.html#pediatric-bronchoscopy",
+    "title": "Projects",
     "section": "",
-    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+    "text": "Partnerships for Global Surgery · Sponsored engineering project · 2026–present\nA pediatric rigid bronchoscope should remain usable and durable in hospitals with very different resources. I’m working with a seven-person Clinic team and clinical advisors on an affordable system that integrates a rigid tube, handle, distal-camera endoscope, forceps, and suction. My contributions include miniature-camera selection and integration, handle ideation, camera-cleaning prototypes, and thermal testing. The current concept uses a 2.0 mm camera, a 5.7 mm outer-diameter bronchoscope, and a 720 × 720, 30 fps video feed.\nCurrent stage: Work in progress—requirements development, detailed design, and preliminary prototype evaluation. Manufacturing, simulated-use testing, iteration, and broader validation remain ahead.\nRead the full bronchoscope project →"
   },
   {
-    "objectID": "labs/lab1/lab1.html#block-diagrams",
-    "href": "labs/lab1/lab1.html#block-diagrams",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Block Diagrams",
-    "text": "Block Diagrams\n\n\nTop-level hierarchy and LED gates\n\n\n\n\nTop-level ports, oscillator, counter, decoder, XOR/AND gates, and reset inversion.\n\n\n\n\n\nCounter and decoder internals\n\n\n\n\nCounter register-transfer behavior, reset priority, enable, rollover, and blink output.\n\n\n\n\n\nDecoder input/output table for all sixteen hexadecimal values."
+    "objectID": "projects.html#autonomous-underwater-robot",
+    "href": "projects.html#autonomous-underwater-robot",
+    "title": "Projects",
+    "section": "Autonomous underwater robot",
+    "text": "Autonomous underwater robot\nExperimental Engineering · 2026\nOur four-person team built an AUV for depth-resolved environmental sensing at Dana Point. I designed analog signal-conditioning circuits for pressure, thermistor, pH, and relative-light measurements; supported waterproof mechanical integration; and used calibration and live serial data to debug the system. The final deployment reached 2.61 ± 0.05 m, captured cooling and reduced light with depth, and exposed why the pH channel needs seawater-specific calibration.\nRead the full AUV project →"
   },
   {
-    "objectID": "labs/lab1/lab1.html#circuit-schematic",
-    "href": "labs/lab1/lab1.html#circuit-schematic",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Circuit Schematic",
-    "text": "Circuit Schematic\nEach cathode connects through its own resistor to the FPGA. Both common anodes connect to 3.3 V; the decimal point is unused.\n\n\nDisplay schematic and wiring\n\n\n\n\nExternal display circuit with component values, display pin numbers, and FPGA pin labels.\n\n\n\n\n\nSignal\nDisplay pin\nFPGA adapter label\n\n\n\n\nA / segments[0]\n7\nP3\n\n\nB / segments[1]\n6\nP4\n\n\nC / segments[2]\n4\nP44\n\n\nD / segments[3]\n2\nP6\n\n\nE / segments[4]\n1\nP9\n\n\nF / segments[5]\n9\nP11\n\n\nG / segments[6]\n10\nP18\n\n\nCommon anodes\n3 and 8\n3.3 V\n\n\nDecimal point\n5\nUnconnected\n\n\n\nOnboard DIP switches and LEDs use the development board’s existing circuitry. Switch inputs use internal pull-ups. TODO: confirm this pin table against the final Radiant Signal/Pad report and add the final reset_n/enable pin assignments."
+    "objectID": "projects.html#muddsub-electronics",
+    "href": "projects.html#muddsub-electronics",
+    "title": "Projects",
+    "section": "MuddSub AUV electronics",
+    "text": "MuddSub AUV electronics\nPCB Team Member · 2026–present\nContribute to PCB design and verification for MuddSub’s eight-thruster autonomous underwater vehicle. The team’s Rev. 1 electrical stack separates power distribution from real-time signal control: a power board generates 12 V, 5 V, and 3.3 V rails, while a Teensy 4.1 signal board handles thruster PWM and embedded interfaces. I also contribute to waterproof packaging, buoyancy, chassis integration, and serviceability.\nRead the full MuddSub project → · Visit MuddSub"
   },
   {
-    "objectID": "labs/lab1/lab1.html#simulation",
-    "href": "labs/lab1/lab1.html#simulation",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Simulation",
-    "text": "Simulation\nQuesta testbenches reported PASS for the decoder, counter, and top-level connections.\n\n\nHexadecimal decoder waveform\n\n\n\n\nQuesta decoder simulation supplied during testing.\n\n\nInputs step from 0 to F; each produces the expected segment pattern. For example, 0 gives 7'h40 and 8 gives 7'h00. Zero bits illuminate segments.\n\n\n\nCounter waveform\n\n\n\n\nQuesta counter simulation supplied during testing.\n\n\nWith the test maximum set to 3, the count cycles 0 → 1 → 2 → 3 → 0. Rollover toggles blink. Disabling holds both values; reset clears them on the next rising clock edge. Initial red values occur before the first reset clock edge.\n\n\n\nTop-level waveform\n\n\n\n\nQuesta top-level simulation supplied during testing.\n\n\nThe simulated oscillator period is approximately 20.832 ns. The test checks both LED expressions, decoder connections, reset, enable, and blinking with MAX_COUNT=3. This shortened test verifies connections; it does not measure the hardware’s 2.4 Hz blink rate."
+    "objectID": "projects.html#filament-waste-collection",
+    "href": "projects.html#filament-waste-collection",
+    "title": "Projects",
+    "section": "Filament waste collection",
+    "text": "Filament waste collection\nEngineering Design and Manufacturing · 2025\nWorked with the Harvey Mudd Makerspace on a collection system for the 3D-printing lab. Our five-person team prototyped a perimeter track and chute interface using CAD, 3D printing, laser cutting, and machining. Steward trials on a six-printer prototype surfaced the next mechanical changes: tighter track tolerance and a lighter, stiffer drive system. A related disposal workflow reduced manual disposal time by approximately 50% according to the resume project record."
   },
   {
-    "objectID": "labs/lab1/lab1.html#calculations",
-    "href": "labs/lab1/lab1.html#calculations",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Calculations",
-    "text": "Calculations\nTo add later: segment current and LED blink frequency calculations."
+    "objectID": "projects.html#multicycle-risc-v-processor",
+    "href": "projects.html#multicycle-risc-v-processor",
+    "title": "Projects",
+    "section": "Multicycle RISC-V processor",
+    "text": "Multicycle RISC-V processor\nComputer Engineering · 2025\nImplemented a hierarchical 32-bit RISC-V processor in SystemVerilog with a controller, datapath, ALU, register file, immediate generator, finite-state machine, and unified memory. The processor reuses its ALU and memory across multiple cycles and supports arithmetic, loads, stores, branches, jumps, and AUIPC. Program-level simulation ended with the expected write of 0x1067 to address 84.\nRead the full processor project →"
   },
   {
-    "objectID": "labs/lab1/lab1.html#results",
-    "href": "labs/lab1/lab1.html#results",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Results",
-    "text": "Results\n\n\n\n\n\n\n\nCheck\nStatus\n\n\n\n\nRadiant synthesis, mapping, routing, and export\nCompleted\n\n\nFPGA programming\nCompleted\n\n\nSwitch-controlled display and LEDs\nWorking at the final hardware check\n\n\nDecoder, counter, and top-level simulations\nPASS reported\n\n\nAll sixteen digits unique; adjacent switches follow bit order\nTODO — record explicit hardware check\n\n\nEqual brightness; unselected segments completely off\nTODO — record observation\n\n\nMeasured blink frequency\nTODO — add measurement\n\n\nSegment current / timing calculations\nTo add later\n\n\nMCU board test\nDeferred: J-Link connection issue\n\n\n\n\n\nHardware evidence\n\nTODO — add a clear board/display photo and, if available, a short demonstration video.\n\n\nRequirements statement: FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session."
+    "objectID": "projects.html#laser-tag-system",
+    "href": "projects.html#laser-tag-system",
+    "title": "Projects",
+    "section": "Laser tag system",
+    "text": "Laser tag system\nMicroprocessors project · 2026 · in progress\nDeveloping an infrared laser-tag game with two blasters and two vests. The system concept combines hit detection and three-life game logic, sound and LED feedback, and an ESP8266-based local scoreboard. The hardware architecture combines an STM32 MCU, FPGA, and a custom PCB; implementation and game testing are ongoing.\nCode and PCB repository"
   },
   {
-    "objectID": "labs/lab1/lab1.html#ai-prototype-and-reflection",
-    "href": "labs/lab1/lab1.html#ai-prototype-and-reflection",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "AI Prototype and Reflection",
-    "text": "AI Prototype and Reflection\nAI assisted with the HDL draft, testbenches, debugging, and report diagrams. Simulation and hardware checks were used to evaluate the design. TODO: add the required AI prototype code/transcript and your own brief reflection; do not treat assisted development alone as completion of the separate prototype exercise."
+    "objectID": "projects.html#more-work",
+    "href": "projects.html#more-work",
+    "title": "Projects",
+    "section": "More work",
+    "text": "More work\nWith Adaptive Design at Mudd, I prototype assistive devices using CAD and 3D printing. See experience for this role, sponsored engineering work, team projects, and internship experience."
   },
   {
-    "objectID": "labs/lab1/lab1.html#time-spent",
-    "href": "labs/lab1/lab1.html#time-spent",
-    "title": "Lab 1: FPGA and Board Testing",
-    "section": "Time Spent",
-    "text": "Time Spent\n20 hours."
+    "objectID": "pediatric-bronchoscope.html",
+    "href": "pediatric-bronchoscope.html",
+    "title": "Pediatric Bronchoscope",
+    "section": "",
+    "text": "← Back to all projects"
   },
   {
-    "objectID": "labs/lab1/lab1.html#references",
-    "href": "labs/lab1/lab1.html#references",
-    "title": "Lab 1: FPGA and Board Testing",
+    "objectID": "pediatric-bronchoscope.html#sponsored-project-context",
+    "href": "pediatric-bronchoscope.html#sponsored-project-context",
+    "title": "Pediatric Bronchoscope",
+    "section": "Sponsored project context",
+    "text": "Sponsored project context\nThis is a sponsored engineering project with Partnerships for Global Surgery, developed by a seven-person Harvey Mudd Engineering Clinic team in collaboration with clinical and engineering advisors. The project responds to the cost, fragility, maintenance, training, and supply-chain barriers that can limit access to pediatric rigid bronchoscopy equipment.\nThe team is designing for pediatric patients from approximately 9 months to 6 years old. Affordability goals place the desired system cost below $5,000, with a required ceiling below $10,000. These are targets, not demonstrated final-device performance.\nThe proposed system contains five connected subsystems: the rigid bronchoscope tube, handle, distal-camera endoscope, forceps, and suction. Current work has concentrated on the tube, handle, and endoscope; forceps development, manufacturing, and full-system testing remain future work."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#my-contributions",
+    "href": "pediatric-bronchoscope.html#my-contributions",
+    "title": "Pediatric Bronchoscope",
+    "section": "My contributions",
+    "text": "My contributions\nI have worked on three endoscope-centered subteams:\n\nCamera and handle architecture: selected a miniature distal camera with teammates and generated handle concepts for controlled camera positioning.\nCamera cleaning: prototyped approaches for restoring visibility when saliva or mucus obscures the distal window.\nThermal characterization: helped develop and perform heat testing to understand camera temperature rise and guide cooling and packaging decisions.\n\nBecause the project is collaborative and ongoing, these contributions sit within a broader team effort spanning the bronchoscope tube, ergonomics, forceps, suction, manufacturing, and verification."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#from-cad-to-manufactured-hardware",
+    "href": "pediatric-bronchoscope.html#from-cad-to-manufactured-hardware",
+    "title": "Pediatric Bronchoscope",
+    "section": "From CAD to manufactured hardware",
+    "text": "From CAD to manufactured hardware\n\n\n\n\n\n\n\n\nFigure 1: CAD model showing the handle, viewing head, and long rigid shaft.\n\n\n\nCAD iteration. The model establishes the overall shaft, viewing head, handle, and internal packaging envelope before committing to manufactured hardware.\n\n\n\n\n\n\n\n\nFigure 2: Manufactured pediatric bronchoscope prototype.\n\n\n\nCurrent hardware prototype. This developmental device provides a basis for checking reach, packaging, handling, and interfaces. It is not the completed or clinically validated system.\n\n\nThe CAD and hardware prototype represent the design at different levels of fidelity. The CAD model makes geometry and component placement easier to revise; physical prototypes reveal assembly, handling, and interface issues that are difficult to judge from a screen. Both are expected to change as testing continues."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#system-architecture",
+    "href": "pediatric-bronchoscope.html#system-architecture",
+    "title": "Pediatric Bronchoscope",
+    "section": "System architecture",
+    "text": "System architecture\nThe current bronchoscope concept uses a 30 cm rigid tube with a 5.7 mm outer diameter and 5.0 mm inner diameter for the smallest target patient group. The internal lumen is divided into three channels: a 2.6 mm camera channel and two larger working channels that can carry forceps and suction. The channels end before the distal tip so the operator can see instruments as they enter the airway model.\nThe overall design must maintain visualization while supporting tool manipulation, ventilation and anesthesia flow, and suction. That makes the project a system-integration problem rather than only a camera-packaging problem."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#miniature-endoscope-integration",
+    "href": "pediatric-bronchoscope.html#miniature-endoscope-integration",
+    "title": "Pediatric Bronchoscope",
+    "section": "Miniature endoscope integration",
+    "text": "Miniature endoscope integration\nThe endoscope concept places a 2.0 mm distal camera with integrated illumination inside a roughly 2.5 mm outer-diameter rigid encasing. That leaves very little radial space for alignment, wiring, a protective sapphire window, sealing features, and manufacturing tolerance.\n\n\n\n\n\nflowchart LR\n  CLIN[Clinical visualization needs] --&gt; OPT[Camera, window, and illumination]\n  OPT --&gt; SHAFT[2.5 mm rigid shaft envelope]\n  SHAFT --&gt; HANDLE[Handle and viewing-direction mechanism]\n  HANDLE --&gt; USE[Usable field of view]\n\n  CLEAN[Cleaning and sterilization] --&gt; SEAL[Sealing and material choices]\n  SEAL --&gt; SHAFT\n  HEAT[Camera and LED heat] --&gt; OPT\n  DUR[Repeated-use durability] --&gt; HANDLE\n\n\n\n\n\n\nThe selected camera is designed to provide a 720 × 720 color feed at 30 frames per second through a USB backend. A hardware control supports white-balance calibration. These capabilities still need to be evaluated in representative lighting, working-distance, fogging, and simulated-airway conditions.\nA preliminary bench observation recorded a camera temperature of approximately 47.2 °C after 15 minutes of continuous operation. That result informs the design, but it is not a completed thermal verification. The planned test places the camera in a body-temperature mock-airway environment and compares its maximum temperature against the team’s draft acceptance criterion."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#design-questions",
+    "href": "pediatric-bronchoscope.html#design-questions",
+    "title": "Pediatric Bronchoscope",
+    "section": "Design questions",
+    "text": "Design questions\n\n\n\n\n\n\n\n\nArea\nCurrent engineering question\nEvidence needed\n\n\n\n\nCamera packaging\nCan the camera, wiring, and protective features fit inside the shaft without damaging the optical path?\nCross-sectional fit checks, assembly trials, and tolerance analysis\n\n\nVisualization\nIs the 720 × 720 feed functionally sufficient at clinically relevant distances?\nWhite-balance, frame-rate, latency, working-distance, and simulated-use tests\n\n\nDistal sealing\nCan the camera be protected behind a sealed window without creating glare, distortion, or fluid ingress?\nLeak testing and optical comparison before and after sealing\n\n\nThermal behavior\nDo the camera and LEDs remain within acceptable temperatures during a procedure?\nInstrumented temperature testing over the expected operating time\n\n\nCleaning\nCan visibility be restored quickly after simulated saliva or mucus obscures the distal window?\nTimed cleaning cycles and before/after image scoring\n\n\nHandling\nDoes the handle support controlled positioning and viewing-direction adjustment?\nErgonomic evaluation and repeatability testing with clinicians\n\n\nIntegrated use\nCan users locate and retrieve representative foreign bodies through the live video feed?\nSimulated-airway trials with forceps, suction, fog, and representative objects"
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#engineering-trade-offs",
+    "href": "pediatric-bronchoscope.html#engineering-trade-offs",
+    "title": "Pediatric Bronchoscope",
+    "section": "Engineering trade-offs",
+    "text": "Engineering trade-offs\n\nOptical access versus protection\nA protective window can isolate the camera from moisture and cleaning chemicals, but every additional optical interface can introduce reflection, fogging, contamination, or distortion. Window material, thickness, surface finish, and camera spacing therefore affect both sealing and image quality.\n\n\nSmall diameter versus assembly margin\nThe narrow shaft is valuable for pediatric use, but the difference between the camera diameter and tube diameter leaves little room for alignment and tolerance. A design that fits nominal CAD dimensions may still be difficult to assemble consistently, so prototype fit checks are essential.\n\n\nIllumination versus heat\nMore LED output can improve visibility, but it also adds heat inside a confined metal package. Illumination performance must therefore be evaluated together with temperature rise rather than as a separate subsystem.\n\n\nReuse versus serviceability\nSealing the device permanently may improve protection, while a serviceable design may be easier to repair or replace. The eventual architecture must balance cleaning, durability, manufacturing, sterilization, and the practical maintenance capabilities of the intended hospitals."
+  },
+  {
+    "objectID": "pediatric-bronchoscope.html#current-stage-and-verification-plan",
+    "href": "pediatric-bronchoscope.html#current-stage-and-verification-plan",
+    "title": "Pediatric Bronchoscope",
+    "section": "Current stage and verification plan",
+    "text": "Current stage and verification plan\nThe project is currently in requirements development, detailed design, and preliminary prototype evaluation. The fall work establishes system architecture, design criteria, early prototypes, and test protocols; it does not represent a finished device.\nPlanned spring work includes manufacturing the current design, testing it in simulated bronchoscopy conditions, revising failed or weak areas, and producing a later prototype for another round of verification. Draft tests cover usability, thermal behavior, image quality, camera cleaning, and foreign-object removal. Results will determine which requirements are actually met and which subsystems need further iteration.\nEven after those tests, additional professional, regulatory, reprocessing, and clinical work would be required before the system could be considered ready for patient use."
+  },
+  {
+    "objectID": "muddsub.html",
+    "href": "muddsub.html",
+    "title": "MuddSub AUV Electronics",
+    "section": "",
+    "text": "← Back to all projects"
+  },
+  {
+    "objectID": "muddsub.html#the-vehicle",
+    "href": "muddsub.html#the-vehicle",
+    "title": "MuddSub AUV Electronics",
+    "section": "The vehicle",
+    "text": "The vehicle\nMuddSub is Harvey Mudd College’s student-run autonomous underwater robotics team. The team designs and builds Alfie, an AUV intended to perceive its environment, navigate independently, and complete RoboSub competition tasks.\nThat mission makes the electrical system a tightly coupled part of the vehicle. Power electronics must support propulsion and compute loads; the signal architecture must connect sensors, thrusters, and higher-level autonomy; and every board must fit inside a pressure-conscious, serviceable mechanical package."
+  },
+  {
+    "objectID": "muddsub.html#rev.-1-power-and-signal-boards",
+    "href": "muddsub.html#rev.-1-power-and-signal-boards",
+    "title": "MuddSub AUV Electronics",
+    "section": "Rev. 1 power and signal boards",
+    "text": "Rev. 1 power and signal boards\n\n\n\n\n\n\n\n\nFigure 1: MuddSub Power Board Revision 1 render.\n\n\n\nPower Board Rev. 1. Distributes energy from separate thruster and electronics batteries and generates regulated rails for vehicle compute, navigation, tether, and control hardware.\n\n\n\n\n\n\n\n\nFigure 2: MuddSub Signal Board Revision 1 render.\n\n\n\nSignal Board Rev. 1. Centers the real-time interfaces around a Teensy 4.1, with thruster PWM and breakouts for the serial buses used across the vehicle.\n\n\nThese are team-designed boards. My work as a PCB team member includes helping turn subsystem requirements into reviewable schematics and layouts, checking interfaces between boards, and supporting verification before the electronics are sealed inside the vehicle."
+  },
+  {
+    "objectID": "muddsub.html#electrical-architecture",
+    "href": "muddsub.html#electrical-architecture",
+    "title": "MuddSub AUV Electronics",
+    "section": "Electrical architecture",
+    "text": "Electrical architecture\n\n\n\n\n\nflowchart LR\n  TB[Thruster battery] --&gt; PWR[Power board]\n  EB[Electronics battery] --&gt; PWR\n  PWR --&gt; R12[12 V rail]\n  PWR --&gt; R5[5 V rail]\n  PWR --&gt; R33[3.3 V rail]\n  R12 --&gt; JET[Jetson compute]\n  R5 --&gt; DVL[DVL + peripherals]\n  R33 --&gt; SIG[Signal board]\n  SIG --&gt; PWM[8-channel thruster PWM]\n  SIG --&gt; BUS[I²C · SPI · UART]\n  PWM --&gt; THR[Thrusters]\n\n\n\n\n\n\nThe power board accepts independent propulsion and electronics battery inputs. Switching regulators create the voltage rails needed by the Jetson computer, Doppler velocity log, tether hardware, and signal electronics. Keeping these loads organized on a common board simplifies distribution while making rail status and inter-board connections easier to inspect.\nThe signal board provides the low-level connection between the vehicle computer and physical hardware. A Teensy 4.1 produces PWM commands for eight thrusters and exposes I²C, SPI, UART, digital I/O, relay, and hardware-kill connections for vehicle subsystems."
+  },
+  {
+    "objectID": "muddsub.html#my-contributions",
+    "href": "muddsub.html#my-contributions",
+    "title": "MuddSub AUV Electronics",
+    "section": "My contributions",
+    "text": "My contributions\n\nPCB design and review\nI contribute to translating system-level needs into board requirements, reviewing schematics and layouts, and checking connector pinouts and power assumptions across the electrical stack. The goal is not only a board that routes successfully, but a board the team can assemble, probe, debug, and revise.\n\n\nBring-up and verification\nMy validation work is organized around staged bring-up: inspect assembly and continuity first, apply current-limited power, verify each regulated rail, then add the controller and connected subsystems. Signal-board checks include programmed PWM outputs, serial-bus connectivity, connector mapping, and safe behavior through the hardware-kill path.\n\n\nVehicle integration\nI also contribute outside the PCB boundary. Chassis layout, waterproofing, buoyancy, connector access, cable routing, and serviceability all affect whether the electronics can operate reliably underwater. Those mechanical constraints feed back into board shape, mounting-hole placement, connector orientation, and test access."
+  },
+  {
+    "objectID": "muddsub.html#verification-approach",
+    "href": "muddsub.html#verification-approach",
+    "title": "MuddSub AUV Electronics",
+    "section": "Verification approach",
+    "text": "Verification approach\n\n\n\n\n\n\n\n\nArea\nWhat we check\nWhy it matters\n\n\n\n\nPower entry\nPolarity, continuity, protection, and current-limited startup\nPrevents a wiring or assembly error from damaging the full stack\n\n\nRegulated rails\n12 V, 5 V, and 3.3 V output level, ripple, and behavior under load\nConfirms compute, sensor, and control hardware receive stable power\n\n\nThruster control\nPWM timing and channel mapping across all eight outputs\nEnsures software commands reach the intended thruster\n\n\nDigital interfaces\nI²C, SPI, UART, and GPIO continuity and communication\nVerifies sensors and peripheral boards can exchange data\n\n\nSafety path\nRelay and hardware-kill behavior\nProvides a hardware-level way to stop propulsion\n\n\nIntegration\nFit, mounting, cable access, thermal behavior, and enclosure interfaces\nConnects successful bench behavior to reliable operation in the vehicle"
+  },
+  {
+    "objectID": "muddsub.html#current-stage",
+    "href": "muddsub.html#current-stage",
+    "title": "MuddSub AUV Electronics",
+    "section": "Current stage",
+    "text": "Current stage\nThe Rev. 1 renders document the present board architecture. Fabrication, bring-up, load testing, vehicle integration, and subsequent revisions are part of the continuing process; the page will evolve as measured results replace design intent.\n\n  Visit MuddSub\n  All Projects"
+  },
+  {
+    "objectID": "labs/lab6/lab6.html",
+    "href": "labs/lab6/lab6.html",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "",
+    "text": "This lab connects an STM32L432KC microcontroller, a DS1722 temperature sensor, and an ESP8266 Wi-Fi module to create a browser-controlled temperature monitor. The STM32 reads the sensor through a CMSIS-based SPI driver and communicates with the ESP8266 over UART. The webpage provides temperature information and controls for the onboard LED."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#introduction",
+    "href": "labs/lab6/lab6.html#introduction",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "",
+    "text": "This lab connects an STM32L432KC microcontroller, a DS1722 temperature sensor, and an ESP8266 Wi-Fi module to create a browser-controlled temperature monitor. The STM32 reads the sensor through a CMSIS-based SPI driver and communicates with the ESP8266 over UART. The webpage provides temperature information and controls for the onboard LED."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#design-and-testing-methodology",
+    "href": "labs/lab6/lab6.html#design-and-testing-methodology",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nSPI1 uses PA5 for SCLK, PB4 for MISO, and PB5 for MOSI. PB0 controls the DS1722’s active-high chip enable. The interface uses eight-bit transfers with CPOL = 0 and CPHA = 1, so SCLK idles low and data is sampled on falling edges.\nThe sensor is configured for continuous 12-bit measurements. Each temperature request reads the LSB and MSB registers in separate transactions. CE stays high while an address and a dummy byte are transmitted, then returns low after the transfer finishes."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#technical-documentation",
+    "href": "labs/lab6/lab6.html#technical-documentation",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe portfolio and lab documentation are available in my GitHub repository.\n\nSchematic\n\n\nExpand to see schematic\n\n\n\n\n\n\n\nFigure 1: DS1722 temperature-sensor connections.\n\n\n\n\nThe DS1722’s VDDD, VDDA, and SERMODE pins connect to 3.3 V, and its ground connects to the MCU ground. SERMODE selects SPI operation. CE connects to PB0, SCLK to PA5, SDO to PB4, and SDI to PB5.\nThe ESP8266 Click module is installed in the motherboard’s mikroBUS socket. The onboard MCU, LED, and socket connections are documented in the development-board schematic. The FPGA–MCU DIP switches are kept open to prevent interference on shared pins.\n\n\nCalculations\nSPI clock:\nWith the baud-rate field set to 3, the clock divider is\n\\[\nD=2^{3+1}=16.\n\\]\nTherefore,\n\\[\nf_{\\mathrm{SCLK}}=\\frac{f_{\\mathrm{SPI1}}}{16}.\n\\]\nFor an 80 MHz SPI1 peripheral clock,\n\\[\nf_{\\mathrm{SCLK}}=5\\text{ MHz},\n\\qquad\nT_{\\mathrm{SCLK}}=200\\text{ ns}.\n\\]\nTemperature conversion:\nThe received bytes are combined into a signed 16-bit value:\n\\[\nT=\\frac{\\operatorname{int16}(256\\,\\mathrm{MSB}+\\mathrm{LSB})}{256}.\n\\]\nFor example, an MSB of 0x19 and LSB of 0x20 give\n\\[\nT=\\frac{25(256)+32}{256}\n=25.125^\\circ\\text{C}.\n\\]\nResolution and signed range:\nThe 12-bit setting provides increments of\n\\[\n\\Delta T=\\frac{1}{16}=0.0625^\\circ\\text{C}.\n\\]\nSigned decoding supports the required endpoints:\n\\[\n\\texttt{0xF600}\\rightarrow -2560/256=-10^\\circ\\text{C},\n\\]\n\\[\n\\texttt{0x1E00}\\rightarrow 7680/256=30^\\circ\\text{C}.\n\\]\n\n\nOscilloscope Trace\n\n\nExpand to see SPI read trace\n\n\n\n\n\n\n\nFigure 2: Complete DS1722 LSB-register read. CH1/yellow: MISO; CH2/green: MOSI; CH4/pink: CE; CH3/blue: SCLK.\n\n\n\n\n\n\nSPI Read Transaction\nThe oscilloscope capture shows one complete read of the DS1722 temperature low-byte register. From top to bottom, the traces are MISO (yellow, CH1), MOSI (green, CH2), CE (pink, CH4), and SCLK (blue, CH3). MOSI connects STM32 pin PB5 to the sensor’s SDI input, while MISO connects the sensor’s SDO output to STM32 pin PB4. PB0 controls CE, and PA5 supplies SCLK.\nAddress transfer. The transaction begins when the STM32 raises CE. The DS1722 uses an active-high chip enable, so CE remains high throughout both clock bursts. During the first eight clocks, the STM32 transmits the register address 00000001 (0x01) on MOSI, most significant bit first. This address selects the temperature low-byte register. The SPI interface uses CPOL = 0 and CPHA = 1: SCLK is low when idle, data changes on rising edges, and the receiving device samples data on falling edges. MOSI therefore rises for the final address bit, and the sensor samples that 1 on the eighth falling edge.\nPause between bytes. After the address byte, SCLK briefly stops while the STM32 finishes the first byte-transfer function and prepares the next transfer. CE stays high, so the sensor remains selected. MOSI holds the final address bit at a high level during this pause. This does not transmit additional ones because no sampling edges occur while the clock is stopped.\nData transfer. During the second eight-clock burst, the STM32 sends a dummy byte of 0x00 on MOSI. Sending this byte generates the clocks needed for the sensor to return its data on MISO. The STM32 samples MISO on each falling edge, and its SPI hardware assembles the received bits into a byte. The returned bit pattern in this capture appears to be 00100000, or 0x20.\nThe initial high MISO level before the response is not temperature data. During the address phase, the DS1722 output is high impedance, meaning the sensor is not actively driving the line. A high voltage during that interval cannot be interpreted as a valid transmitted bit. Only the response during the second clock burst is decoded.\nTemperature interpretation. The low byte contributes the fractional portion of the temperature encoding. For the observed value:\n\\[\n\\frac{\\texttt{0x20}}{256}\n=\n\\frac{32}{256}\n=\n0.125^\\circ\\mathrm{C}.\n\\]\nThis capture alone does not establish the complete temperature. The program reads the high-byte register at address 0x02 in a separate transaction, then combines the two bytes into a signed 16-bit value:\n\\[\nT =\n\\frac{\\operatorname{int16}\\left(256\\,\\mathrm{MSB}+\\mathrm{LSB}\\right)}\n{256}.\n\\]\nFor example, a high byte of 0x16 combined with the captured low byte of 0x20 would represent 22.125°C. This is an illustrative calculation; the high byte is not shown in this capture. The driver performs separate transactions because its register-read function reads one byte at a time. Each transaction contains eight address clocks and eight data clocks, regardless of the sensor’s selected measurement resolution.\nTiming comparison. Using the screenshot’s horizontal scale of 840 ns per division, the interval between consecutive rising edges within a clock burst is approximately 200 ns. One clock cycle transfers one bit, so the estimated bit period and clock frequency are:\n\\[\nT_{\\mathrm{bit}} \\approx 200\\ \\mathrm{ns},\n\\qquad\nf_{\\mathrm{SCLK}} =\n\\frac{1}{T_{\\mathrm{bit}}}\n\\approx 5\\ \\mathrm{MHz}.\n\\]\nThe clock’s high and low intervals appear approximately equal, indicating a duty cycle near 50%. The estimated frequency is consistent with operation near the DS1722’s specified maximum of 5 MHz.\nAfter the final data bit has been received and the SPI transfer has finished, the STM32 lowers CE to end the transaction."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#results-and-discussion",
+    "href": "labs/lab6/lab6.html#results-and-discussion",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\n\n\n\n\n\n\nTest\nObservation\n\n\n\n\nWi-Fi connection\nThe replacement ESP8266 module allowed webpage access\n\n\nLED control\nBrowser commands switched the LED on and off\n\n\nTemperature requests\nLED commands requested a new temperature display\n\n\nSPI read\nCE enclosed an eight-bit address and eight-bit response\n\n\nAddress decoding\nThe captured address appeared to be 0x01\n\n\nResponse decoding\nThe captured LSB appeared to be 0x20"
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#conclusion",
+    "href": "labs/lab6/lab6.html#conclusion",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis lab demonstrated SPI communication between the STM32L432KC and DS1722 and UART communication with the ESP8266. The webpage displays temperature, controls the LED, and allows selection of 8–12-bit sensor resolution. The annotated oscilloscope capture shows a complete register-read transaction with an estimated 200 ns bit period, corresponding to approximately 5 MHz. Debugging the request handling and temperature formatting helped distinguish sensor configuration from how readings are displayed.\nHours spent on lab: [15]"
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#ai-prototype-summary",
+    "href": "labs/lab6/lab6.html#ai-prototype-summary",
+    "title": "Lab 6: SPI and the Internet of Things",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nAI assistance was used to answer this prompt:\nWrite a C function that uses my existing readDS1722() function to read the temperature’s low and high bytes, combine them into a signed 16-bit value, and return the temperature in degrees Celsius.\n\n\nAI-assisted temperature conversion code\n\nfloat readTemperature(void) {\n    uint8_t lsb = readDS1722(DS1722_TEMP_LSB);\n    uint8_t msb = readDS1722(DS1722_TEMP_MSB);\n\n    int16_t rawTemperature =\n        (int16_t)(((uint16_t)msb &lt;&lt; 8) | (uint16_t)lsb);\n\n    return rawTemperature / 256.0f;\n}\n\nReflection: AI helped me write a function that reads the DS1722’s low and high temperature bytes, combines them into a signed 16-bit value, and converts the result to degrees Celsius. Its explanation helped me understand why the high byte is shifted left by eight bits and why the combined value is divided by 256. Using a signed value also allows the function to handle negative temperatures.\nThe generated code was straightforward because it used my existing readDS1722() function. However, it still depended on the SPI driver and wiring working correctly. I found AI useful for explaining the conversion and organizing the code, while checking the datasheet and observing the hardware remained necessary to verify the result."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#references",
+    "href": "labs/lab6/lab6.html#references",
+    "title": "Lab 6: SPI and the Internet of Things",
     "section": "References",
-    "text": "References\n\nLab 1 instructions\nLab 1 specifications"
+    "text": "References\n\nLab 6 specifications\nLab 6 instructions\nLab 6 AI prototype\nDS1722 datasheet"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "E155 Blog",
+    "objectID": "labs/lab4/lab4.html",
+    "href": "labs/lab4/lab4.html",
+    "title": "Lab 4: Digital Audio",
     "section": "",
-    "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 4, 2024\n\n\nBen Phung\n\n\n\n\n\nNo matching items"
+    "text": "The STM32L432KC plays the provided Für Elise score through an LM386 amplifier and an 8 \\Omega speaker. TIM16 generates each square-wave pitch on PA6, while TIM6 measures note and rest durations.\nResult: The design plays the supplied song at the specified pitches and durations, including rests. A 10 k\\Omega potentiometer controls the volume."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "labs/lab4/lab4.html#overview",
+    "href": "labs/lab4/lab4.html#overview",
+    "title": "Lab 4: Digital Audio",
     "section": "",
-    "text": "About this site"
+    "text": "The STM32L432KC plays the provided Für Elise score through an LM386 amplifier and an 8 \\Omega speaker. TIM16 generates each square-wave pitch on PA6, while TIM6 measures note and rest durations.\nResult: The design plays the supplied song at the specified pitches and durations, including rests. A 10 k\\Omega potentiometer controls the volume."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E155 Portfolio",
-    "section": "",
-    "text": "I am Ben Phung, an Engineering student at Harvey Mudd College and this is my E155 Portfolio. This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "objectID": "labs/lab4/lab4.html#hardware",
+    "href": "labs/lab4/lab4.html#hardware",
+    "title": "Lab 4: Digital Audio",
+    "section": "Hardware",
+    "text": "Hardware\n\nCircuit\n\n\n\n\n\n\nFigure 1: External LM386 amplifier schematic. All pin names, pin numbers, component values, polarities, and junctions are labeled.\n\n\n\nThe complete on-board design is available in the E155 Development Board schematic.\nHowever, for this lab, the MCU was placed directly onto the breadboard not using the development board. The LM386 amplifier was connected to the MCU and a potentiometer was added to control the volume."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#software-and-mcu-design",
+    "href": "labs/lab4/lab4.html#software-and-mcu-design",
+    "title": "Lab 4: Digital Audio",
+    "section": "Software and MCU Design",
+    "text": "Software and MCU Design\n\nProgram flow\n\nConfigure flash latency for an 80 MHz system clock.\nConfigure the PLL for an 80 MHz clock.\nconfigure PA6 for alternate function 14 (TIM16_CH1).\nConfigure TIM16 for PWM pitch generation.\nConfigure TIM6 as a 1 ms duration timer.\nRead each {frequency, duration} pair from the supplied score.\nGenerate the pitch or disable the output for a rest.\nStop when a duration of zero is encountered.\n\nThe implementation uses manually defined base addresses, register structures, and bit masks. It does not use the STM32 CMSIS device header.\n\n\nClock configuration\nThe 4 MHz MSI clock is multiplied by the PLL:\n\nf_{SYS}=f_{MSI}\\left(\\frac{N}{M}\\right)\\frac{1}{R}\n\n\nf_{SYS}=4\\text{ MHz}\\left(\\frac{40}{1}\\right)\\frac{1}{2}\n=80\\text{ MHz}\n\n\n\nTimer configuration\nBoth timers use PSC = 79:\n\nf_{\\text{counter}}\n=\n\\frac{f_{\\text{timer input}}}{PSC+1}\n=\n\\frac{80\\text{ MHz}}{79+1}\n=\n1\\text{ MHz}\n\nEach timer count therefore lasts 1 \\mus.\nTIM6 uses ARR = 999:\n\nT_{update}=\\frac{ARR+1}{1\\text{ MHz}}\n=\\frac{1000}{1\\text{ MHz}}\n=1\\text{ ms}\n\nA duration of D milliseconds is generated by waiting for D TIM6 update events.\n\n\nPitch calculations\nFor a desired frequency f_d:\n\nN=\\left\\lfloor\\frac{1{,}000{,}000}{f_d}\\right\\rfloor,\n\\qquad ARR=N-1,\n\\qquad CCR1=\\left\\lfloor\\frac{N}{2}\\right\\rfloor\n\nThe resulting pitch is:\n\nf_a=\\frac{1{,}000{,}000}{ARR+1}\n\n\n\n\nDesired pitch\nN\nARR\nCCR1\nActual pitch\nError\n\n\n\n\n220 Hz\n4545\n4544\n2272\n220.022 Hz\n0.010%\n\n\n1000 Hz\n1000\n999\n500\n1000.000 Hz\n0.000%\n\n\n\nExample for 220 Hz:\n\nN=\\left\\lfloor\\frac{1{,}000{,}000}{220}\\right\\rfloor=4545\n\n\nARR=4545-1=4544\n\n\nf_a=\\frac{1{,}000{,}000}{4545}=220.022\\text{ Hz}\n\n\n\\%\\text{ error}=\\frac{|220.022-220|}{220}\\times100\\%=0.010\\%\n\n\n\nAccuracy of all notes\nFor every nonzero score frequency at or below 1000 Hz, the period contains at least 1000 timer counts. Truncation changes the calculated period by less than one count, so the frequency error is bounded by:\n\n\\%\\text{ error}&lt;\\frac{1}{1000}\\times100\\%=0.1\\%\n\nTherefore, all nonzero notes in the supplied Für Elise score can be reproduced within the required 1% accuracy. Testing 220 Hz and 1000 Hz alone is not a mathematical proof; the timer-resolution bound supplies the proof for the intermediate frequencies.\n\n\nSupported limits\nTIM16 has a 16-bit auto-reload register. With the fixed 1 MHz timer clock:\n\nf_{min}=\\frac{1{,}000{,}000}{65{,}536}=15.26\\text{ Hz}\n\nA meaningful 50% duty-cycle waveform requires at least two timer counts:\n\nf_{max}=\\frac{1{,}000{,}000}{2}=500\\text{ kHz}\n\nThe delay function has 1 ms resolution:\n\nD_{min}=1\\text{ ms}\n\nFor its uint32_t argument:\n\nD_{max}=2^{32}-1\\text{ ms}=49.71\\text{ days}\n\nThe signed int score array limits a stored positive duration to approximately 24.86 days."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#verification",
+    "href": "labs/lab4/lab4.html#verification",
+    "title": "Lab 4: Digital Audio",
+    "section": "Verification",
+    "text": "Verification\n\nPitch measurements\n\n\n\nRequested\nMeasured\nPercent error\nRequirement\n\n\n\n\n220 Hz\n220 Hz\n0.0%\n&lt;1\\%\n\n\n1000 Hz\n995 Hz\n0.5%\n&lt;1\\%\n\n\n\nThe measured frequencies satisfy the 1% requirement.\n\n\nAccuracy of all notes\nThe actual frequency and percent error were calculated for every unique nonzero pitch in the supplied Für Elise score.\n\n\n\nDesired frequency\nActual frequency\nPercent error\n\n\n\n\n262 Hz\n262.055 Hz\n0.0208%\n\n\n330 Hz\n330.033 Hz\n0.0100%\n\n\n349 Hz\n349.040 Hz\n0.0115%\n\n\n392 Hz\n392.003 Hz\n0.0008%\n\n\n416 Hz\n416.146 Hz\n0.0352%\n\n\n440 Hz\n440.141 Hz\n0.0320%\n\n\n494 Hz\n494.071 Hz\n0.0144%\n\n\n523 Hz\n523.013 Hz\n0.0024%\n\n\n587 Hz\n587.199 Hz\n0.0339%\n\n\n623 Hz\n623.053 Hz\n0.0085%\n\n\n659 Hz\n659.196 Hz\n0.0297%\n\n\n699 Hz\n699.301 Hz\n0.0430%\n\n\n1,319 Hz\n1,319.261 Hz\n0.0198%\n\n\n\nThe largest calculated error is:\n\n\\boxed{0.0430\\%}\n\nAll supplied pitches are within the required 1% error. Checking only 220 Hz and 1000 Hz does not prove this because integer truncation produces a different error for each requested frequency. The complete table verifies every unique pitch in the score.\n\n\nFunctional tests\n\n\n\nTest\nResult\n\n\n\n\nPlays provided Für Elise score\nPass\n\n\nCorrect note ordering\nPass\n\n\nCorrect note durations\nPass\n\n\nFrequency-zero rests produce silence\nPass\n\n\nDuration-zero entry ends playback\nPass\n\n\nLM386 drives the 8 \\Omega speaker\nPass\n\n\nPotentiometer changes volume\nPass"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#requirements-summary",
+    "href": "labs/lab4/lab4.html#requirements-summary",
+    "title": "Lab 4: Digital Audio",
+    "section": "Requirements Summary",
+    "text": "Requirements Summary\n\n\n\nRequirement\nStatus\n\n\n\n\nFür Elise playback\nMet\n\n\nCorrect tempo and rests\nMet\n\n\nLM386 amplifier and 8 \\Omega speaker\nMet\n\n\nTimer accessed through memory-mapped registers\nMet\n\n\nManually defined register macros and structures\nMet\n\n\n220 Hz and 1000 Hz within 1%\nMet\n\n\nVolume-control potentiometer\nMet\n\n\nSupported frequency/duration limits documented\nMet\n\n\nAll score frequencies proven within 1%\nMet\n\n\nExtra composition\nTwinkle Twinkle Little Star"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#ai-prototype-and-reflection",
+    "href": "labs/lab4/lab4.html#ai-prototype-and-reflection",
+    "title": "Lab 4: Digital Audio",
+    "section": "AI Prototype and Reflection",
+    "text": "AI Prototype and Reflection\n\nAI Prototype Prompt\n\nCreate register-level STM32L432KC timer code that uses TIM16 to generate pitches on PA6 and TIM6 to control note durations and rests.\n\nAI was used to prototype the timer structure and identify edge cases in pitch generation. The prototype suggested separating pitch generation and note timing between TIM16 and TIM6. It also highlighted the need to handle frequency == 0 before the division used to calculate ARR, preventing division by zero during rests. The final register addresses, bit fields, calculations, wiring, and measured behavior were checked against the STM32 and LM386 documentation and verified on the physical system."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#time-spent",
+    "href": "labs/lab4/lab4.html#time-spent",
+    "title": "Lab 4: Digital Audio",
+    "section": "Time Spent",
+    "text": "Time Spent\nTotal: 20 hours"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#references",
+    "href": "labs/lab4/lab4.html#references",
+    "title": "Lab 4: Digital Audio",
+    "section": "References",
+    "text": "References\n\nLab 4: Digital Audio\nLab 4 Specifications\nTexas Instruments LM386 Datasheet\nE155 Development Board Schematic"
   },
   {
     "objectID": "labs/lab2/lab2.html",
@@ -152,5 +348,376 @@
     "title": "Lab 2: Multiplexed Seven-Segment Display",
     "section": "Conclusion",
     "text": "Conclusion\nThe FPGA successfully multiplexed two hexadecimal digits and scanned the 4 × 4 keypad. Total time: 15 hours."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ben Phung",
+    "section": "",
+    "text": "Harvey Mudd College / Engineering / Class of 2028\n    \n    I design, build, and test hardware across embedded systems, robotics, medical devices, and manufacturing.\n    Embedded SystemsPCB DesignRoboticsPrototyping\n    \n      See Projects\n      Experience\n      Resume"
+  },
+  {
+    "objectID": "index.html#current-work",
+    "href": "index.html#current-work",
+    "title": "Ben Phung",
+    "section": "Current Work",
+    "text": "Current Work\n\n  Sponsored project · In progressPediatric bronchoscopy: integrating and testing a distal-camera system for an affordable rigid scope.\n  RoboticsMuddSub: contributing to PCB design and verification for an autonomous underwater vehicle.\n  BuildingIR laser tag: developing blasters, vests, and a local scoreboard with STM32 and FPGA hardware.\n  CourseworkMicroprocessors: documenting FPGA, STM32, sensor, and communication labs."
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "Ben Phung",
+    "section": "Featured Work",
+    "text": "Featured Work\n\n  Sponsored project · Work in progressPediatric BronchoscopeDistal-camera integration, cleaning concepts, thermal testing, and system verification planning.\n  E80 · Robotics + sensorsAutonomous Underwater RobotDepth-resolved pressure, temperature, pH, and light sensing deployed at Dana Point.\n  MuddSub · PCB team memberAUV Power + Signal BoardsTeam-based power distribution, thruster control, embedded interfaces, and underwater integration.\n  E155 · FPGA + MCUMicroprocessorsFPGA display logic, keypad scanning, STM32 audio, motor interrupts, and SPI.\n  RISC–VPROCESSOR03 / SYSTEMVERILOGComputer engineering · Digital designMulticycle ProcessorA hierarchical 32-bit processor verified through a complete machine-code program.\n  E155 · STM32Digital AudioHardware timers and an LM386 amplifier play a melody with measured pitch checks.\n  E155 · SPI + IoTSPI and the Internet of ThingsAn STM32 reads a DS1722 sensor and uses an ESP8266 for local web control.\n\nAll projects →Microprocessors reports →"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 4, 2024\n\n\nBen Phung\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I study engineering at Harvey Mudd College and expect to graduate in May 2028. I’m drawn to projects that require both hands-on design and careful verification: circuits that must behave on a bench, mechanisms that have to fit, and systems that need to work outside the lab.\nMy recent work includes miniature medical-device packaging, underwater robotics, PCB design, and microprocessor systems. Across those projects, I enjoy understanding a failure mode, measuring it, and turning that evidence into a better design.\nYou can view my résumé, reach me at bphung.college@gmail.com, or browse my GitHub profile."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html",
+    "href": "autonomous-underwater-robot.html",
+    "title": "Autonomous Underwater Robot",
+    "section": "",
+    "text": "← Back to all projects"
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#mission",
+    "href": "autonomous-underwater-robot.html#mission",
+    "title": "Autonomous Underwater Robot",
+    "section": "Mission",
+    "text": "Mission\nWater quality can change substantially within the first few meters below the surface, but collecting repeatable measurements at multiple depths usually requires specialized equipment. We set out to determine whether a small, low-cost AUV could gather useful environmental data during a controlled vertical dive.\nThe robot needed to carry four analog sensing channels, maintain a consistent sensor orientation, protect its electronics from salt water, and return recoverable data after deployment. The sensing budget was constrained to roughly $50, which motivated the use of inexpensive solar panels as relative light sensors and concentrated most of the budget on the pH probe."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#system-architecture",
+    "href": "autonomous-underwater-robot.html#system-architecture",
+    "title": "Autonomous Underwater Robot",
+    "section": "System architecture",
+    "text": "System architecture\nPressure served as the independent depth coordinate for every other measurement. Each analog sensor passed through a channel-specific conditioning circuit before reaching the Teensy ADC. The deployment log was then converted from ADC counts to voltage and from voltage to engineering units with empirical calibration equations.\n\n\n\n\n\nflowchart LR\n  P[MPX5700 pressure] --&gt; CP[Offset + gain]\n  T[47 kΩ thermistor] --&gt; CT[Divider + buffer + offset]\n  H[Glass pH electrode] --&gt; CH[High-impedance interface + shielding]\n  L[Two solar panels] --&gt; CL[Attenuation + offset]\n  CP --&gt; ADC[Teensy ADC]\n  CT --&gt; ADC\n  CH --&gt; ADC\n  CL --&gt; ADC\n  ADC --&gt; LOG[Deployment log]\n  LOG --&gt; MATLAB[MATLAB calibration and analysis]\n  MATLAB --&gt; DEPTH[Depth-resolved profiles]"
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#sensor-and-circuit-design",
+    "href": "autonomous-underwater-robot.html#sensor-and-circuit-design",
+    "title": "Autonomous Underwater Robot",
+    "section": "Sensor and circuit design",
+    "text": "Sensor and circuit design\nThe raw sensor outputs occupied only part of the Teensy’s 0-3.3 V input range, so the analog front end used buffers, attenuation, offset, and gain stages to increase usable resolution while preventing overvoltage. A 12 V battery powered the robot, and an onboard regulator supplied a stable 5 V rail to the sensors and MCP601/MCP602 op-amps.\n\n\n\n\n\n\n\n\nChannel\nSensor and purpose\nConditioning and calibration\n\n\n\n\nDepth\nMPX5700 pressure sensor\nOffset and gain mapped the expected 0-3 m signal into the ADC range; pool calibration produced h = -1.4708V + 3.9236.\n\n\nTemperature\nMurata 47 kΩ NTC thermistor\nA divider and unity-gain buffer prevented loading before the offset stage; processing used T = -11.854V + 32.424.\n\n\npH\nGlass-electrode interface module\nA high-input-impedance path, added gain, and a grounded Faraday cage reduced noise; buffer calibration produced pH = 0.912V + 6.538.\n\n\nRelative light\nTwo ZW-5050-3V solar panels\nAttenuation protected the ADC from bright conditions; a quadratic calibration converted voltage to estimated lumens.\n\n\n\n\n\n\n\n\n\nFigure 1: Calibration curves for pressure, temperature, relative light, and pH. The empirical fits were used to process the field data.\n\n\n\n\n\n\n\n\n\nFigure 2: pH and solar-panel interface designs. Both channels use offset and gain stages to map their expected outputs into the ADC range.\n\n\n\nThe pH circuit required extra care because the glass electrode and its interface were sensitive to high source impedance, long leads, motor PWM, and nearby wiring. We placed that channel on a separate breadboard inside a grounded copper-and-aluminum Faraday cage. The shielding reduced electrical noise, but it could not correct the chemistry mismatch between freshwater buffer calibration and seawater deployment."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#mechanical-integration",
+    "href": "autonomous-underwater-robot.html#mechanical-integration",
+    "title": "Autonomous Underwater Robot",
+    "section": "Mechanical integration",
+    "text": "Mechanical integration\n\n\n\n\n\n\nFigure 3: Mechanical drawing, aerial view, and side view of the completed robot with sensor locations labeled.\n\n\n\nThe PVC frame was designed primarily for vertical movement. The pressure sensor, thermistor, and pH probe faced downward so their sensing surfaces sampled approximately the same depth. The solar panels faced upward to receive incident light, and the electronics enclosure sat near the center of the frame. Buoyant components were placed above heavier components to provide passive restoring stability.\nThe estimated robot mass was 3.3701 kg, while the calculated buoyant force was 39.43 N. The center of buoyancy was estimated at 0.135 m above the bottom of the frame, slightly above the 0.116 m center of mass. That separation helped the vehicle return toward an upright orientation after small disturbances.\nThe original design used four vertical motors. Two motors drew excessive current and produced motherboard reliability problems, so the final configuration used two diagonal vertical thrusters. This reduced electrical load while preserving a balanced vertical force arrangement."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#testing-and-field-deployment",
+    "href": "autonomous-underwater-robot.html#testing-and-field-deployment",
+    "title": "Autonomous Underwater Robot",
+    "section": "Testing and field deployment",
+    "text": "Testing and field deployment\nThe robot progressed through pool calibration, freshwater integration testing, and final saltwater deployment. Roberts Pool provided a controlled 0-3 m reference for the pressure channel. A later test at pHake Lake exposed a major waterproofing failure: water entered the electronics enclosure, activated motor-controller warnings, and caused several sensor channels to rail or short.\nThat failure changed the Dana Point procedure. Cable penetrations were resealed with marine epoxy, the empty enclosure was leak-checked before reinstalling electronics, and the team adopted a staged-depth plan. A 10 m tether provided immediate recovery, and 0.5 m tape marks supplied a visual depth reference. Before each launch, the serial monitor was used to confirm plausible outputs from all four sensor channels.\n\n\n\n\nTop view of the completed AUV showing the central electronics enclosure and sensor placement.\n\n\n\n\n\nTethered recovery of the AUV during field testing.\n\n\n\nThe final dataset was recorded on April 25, 2026. Early complications reduced the planned 9 m profile to a safer 3 m target, allowing the team to collect a complete descend-hold-return dataset without risking the vehicle."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#results",
+    "href": "autonomous-underwater-robot.html#results",
+    "title": "Autonomous Underwater Robot",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\nFigure 4: Dana Point time series. Pressure defines the dive profile; temperature and both light channels change during descent, while the pH channel clips.\n\n\n\n\n\n\n\n\n\nFigure 5: Measurements plotted against pressure-derived depth with uncertainty and model comparisons.\n\n\n\n\n\nPressure\nThe pressure channel was the strongest quantitative result. It captured the complete descend-hold-return motion and measured a maximum depth of 2.61 ± 0.05 m. Its pool-calibration RMS residual was only 0.0462 m.\n\n\nTemperature\nThe thermistor decreased from 23.1 ± 0.3 °C before immersion to 18.0 ± 0.6 °C at the deepest interval. A field thermometer measured 18.7 °C at the surface, so the channel demonstrated a useful relative trend but retained an absolute offset.\n\n\nRelative light\nThe two solar-panel channels fell by approximately 30 ± 3% and 38 ± 6%. Exponential fits yielded attenuation coefficients of 0.16 ± 0.08 m⁻¹ and 0.24 ± 0.11 m⁻¹, although tilt, waves, shadowing, and broadband response limit quantitative interpretation.\n\n\npH\nThe pH output converged near 6.54, while field ground truth was approximately 7.4. The nearly constant, clipped response was excluded as environmental data and treated as evidence that the probe required seawater-specific calibration and longer settling time."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#what-the-failures-taught-us",
+    "href": "autonomous-underwater-robot.html#what-the-failures-taught-us",
+    "title": "Autonomous Underwater Robot",
+    "section": "What the failures taught us",
+    "text": "What the failures taught us\nThe project produced useful data because failures were treated as design information rather than hidden from the final analysis.\n\nWaterproofing must be verified before electronics are installed. The pHake Lake flood led to separate enclosure testing, cleaner penetrator holes, marine epoxy sealing, and immediate tethered recovery.\nCalibration must match the deployment environment. Low-salinity pH buffers did not reproduce the liquid-junction behavior of the glass electrode in seawater.\nRelative and absolute accuracy are different. The thermistor clearly followed a cooling trend, but its offset against the field thermometer prevented a strong absolute-temperature claim.\nThe sensor can disturb the measurement. Solar-panel orientation, robot tilt, surface ripples, and frame shadows all affected the apparent light profile.\nOne successful dive is not enough for repeatability. Future deployments should use repeated descents with 20-30 second holds at fixed depths to separate real water-column structure from sensor lag and vehicle motion."
+  },
+  {
+    "objectID": "autonomous-underwater-robot.html#team-and-next-iteration",
+    "href": "autonomous-underwater-robot.html#team-and-next-iteration",
+    "title": "Autonomous Underwater Robot",
+    "section": "Team and next iteration",
+    "text": "Team and next iteration\nThis was a team project with Luke Pratt, Megan Tran, and Lucy Will. The next version should use seawater-matched pH standards, sealed modular gain settings, improved high-impedance shielding, and repeated fixed-depth profiles. The tether, staged-depth testing, and serial-monitor preflight checks should remain because they made field failures recoverable.\n\n  Read Final Report\n  View Project Poster"
+  },
+  {
+    "objectID": "experience.html",
+    "href": "experience.html",
+    "title": "Experience",
+    "section": "",
+    "text": "Sponsored engineering project · 2026–present · In progress\n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
+  },
+  {
+    "objectID": "experience.html#pediatric-bronchoscope",
+    "href": "experience.html#pediatric-bronchoscope",
+    "title": "Experience",
+    "section": "",
+    "text": "Sponsored engineering project · 2026–present · In progress\n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
+  },
+  {
+    "objectID": "experience.html#data-pillar",
+    "href": "experience.html#data-pillar",
+    "title": "Experience",
+    "section": "Data Pillar",
+    "text": "Data Pillar\nEngineering Intern · May–August 2025\nDeveloped Python tools for data processing, collaborated on C++ data-pipeline modules, and used MATLAB analysis and client feedback to guide backend improvements."
+  },
+  {
+    "objectID": "experience.html#muddsub",
+    "href": "experience.html#muddsub",
+    "title": "Experience",
+    "section": "MuddSub",
+    "text": "MuddSub\n\n  \n    \n  \n  \n    PCB Team Member · January 2026–present\n    AUV power and signal electronics\n    Contribute to team-based board design and validation for MuddSub's eight-thruster autonomous underwater vehicle, including regulated power, thruster control, embedded interfaces, and the mechanical realities of underwater integration.\n    Beyond the boards\n    Contribute to chassis packaging, waterproofing, buoyancy, connector access, and serviceability so the electrical stack can be installed and tested as part of the complete vehicle.\n    \n      Full Project Page →\n      Team Website"
+  },
+  {
+    "objectID": "experience.html#adaptive-design-at-mudd",
+    "href": "experience.html#adaptive-design-at-mudd",
+    "title": "Experience",
+    "section": "Adaptive Design at Mudd",
+    "text": "Adaptive Design at Mudd\nDesign Engineer · January 2024–present\nPrototype assistive devices for community members using CAD and 3D printing, including a GIC checkerboard and wheelchair components."
+  },
+  {
+    "objectID": "experience.html#technical-toolkit",
+    "href": "experience.html#technical-toolkit",
+    "title": "Experience",
+    "section": "Technical toolkit",
+    "text": "Technical toolkit\n\n\n\n\n\n\n\nArea\nTools and methods\n\n\n\n\nEmbedded and digital\nSTM32, Arduino, Raspberry Pi, FPGA, RISC-V, SPI, UART, C/C++, SystemVerilog\n\n\nDesign and fabrication\nSolidWorks, KiCad, Altium, 3D printing, machining, laser cutting\n\n\nAnalysis\nPython, MATLAB, COMSOL, LTspice, oscilloscope and logic-analyzer debugging"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "",
+    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design",
+    "href": "labs/lab1/lab1.html#design",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "",
+    "text": "Four switches select a hexadecimal digit. Two LEDs implement XOR/AND logic; a third blinks at a nominal 2.4 Hz.\n\n\n\nItem\nImplementation\n\n\n\n\nFPGA\niCE40UP5K, SG48 package\n\n\nClock\nInternal HSOSC, nominal 48 MHz\n\n\nDisplay\nHDSP-511A, single digit, common anode\n\n\nSegment resistors\nSeven 220 Ω resistors\n\n\nDecoder\nCombinational case; active-low segments[6:0] = G–A\n\n\nCounter\nWidth 24; maximum 9,999,999; reset and enable\n\n\nLED logic\nled[0] = s[1] ^ s[0]; led[1] = s[3] & s[2]\n\n\n\nCode repository: https://github.com/bphung-01/E155-Lab-Redo"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#block-diagrams",
+    "href": "labs/lab1/lab1.html#block-diagrams",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Block Diagrams",
+    "text": "Block Diagrams\nThe block diagram shows the complete Lab 1 FPGA design, including the internal oscillator, counter, seven-segment decoder, LED logic, and top-level connections.\n\n\nView complete Lab 1 block diagram\n\n\n\n\nComplete Lab 1 block diagram."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#circuit-schematic",
+    "href": "labs/lab1/lab1.html#circuit-schematic",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Circuit Schematic",
+    "text": "Circuit Schematic\nEach cathode connects through its own resistor to the FPGA. Both common anodes connect to 3.3 V; the decimal point is unused.\n\n\nDisplay schematic and wiring\n\n\n\n\nExternal display circuit with component values, display pin numbers, and FPGA pin labels.\n\n\n\n\n\nSignal\nDisplay pin\nFPGA adapter label\n\n\n\n\nA / segments[0]\n7\nP3\n\n\nB / segments[1]\n6\nP4\n\n\nC / segments[2]\n4\nP44\n\n\nD / segments[3]\n2\nP6\n\n\nE / segments[4]\n1\nP9\n\n\nF / segments[5]\n9\nP11\n\n\nG / segments[6]\n10\nP18\n\n\nCommon anodes\n3 and 8\n3.3 V\n\n\nDecimal point\n5\nUnconnected\n\n\n\nOnboard DIP switches and LEDs use the development board’s existing circuitry. Switch inputs use internal pull-ups. TODO: confirm this pin table against the final Radiant Signal/Pad report and add the final reset_n/enable pin assignments."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#simulation",
+    "href": "labs/lab1/lab1.html#simulation",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Simulation",
+    "text": "Simulation\nQuesta testbenches reported PASS for the decoder, counter, and top-level connections.\n\n\nHexadecimal decoder waveform\n\n\n\n\nQuesta decoder simulation supplied during testing.\n\n\nInputs step from 0 to F; each produces the expected segment pattern. For example, 0 gives 7'h40 and 8 gives 7'h00. Zero bits illuminate segments.\n\n\n\nCounter waveform\n\n\n\n\nQuesta counter simulation supplied during testing.\n\n\nWith the test maximum set to 3, the count cycles 0 → 1 → 2 → 3 → 0. Rollover toggles blink. Disabling holds both values; reset clears them on the next rising clock edge. Initial red values occur before the first reset clock edge.\n\n\n\nTop-level waveform\n\n\n\n\nTop-level simulation waveform.\n\n\nThe simulated oscillator period is approximately 20.832 ns. The test checks both LED expressions, decoder connections, reset, enable, and blinking with MAX_COUNT=3. This shortened test verifies connections; it does not measure the hardware’s 2.4 Hz blink rate."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#calculations",
+    "href": "labs/lab1/lab1.html#calculations",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Calculations",
+    "text": "Calculations\n\n\n\nCurrent and timing calculations.\n\n\n\n–&gt;"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#results",
+    "href": "labs/lab1/lab1.html#results",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\n\nCheck\nStatus\n\n\n\n\nRadiant synthesis, mapping, routing, and export\nCompleted\n\n\nFPGA programming\nCompleted\n\n\nSwitch-controlled display and LEDs\nWorking at the final hardware check\n\n\nDecoder, counter, and top-level simulations\nPASS reported\n\n\nAll sixteen digits unique; adjacent switches follow bit order\nCompleted\n\n\nEqual brightness; unselected segments completely off\nCompleted\n\n\n\n\nRequirements statement: FPGA functionality and the listed simulations were demonstrated. Full completion remains subject to the outstanding checks above; the MCU test was not completed in the recorded session."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#ai-prototype-and-reflection",
+    "href": "labs/lab1/lab1.html#ai-prototype-and-reflection",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "AI Prototype and Reflection",
+    "text": "AI Prototype and Reflection\nI prompted generative AI to create an automatic testbench for the hexadecimal seven-segment decoder. Instead of manually testing each switch combination, the AI-generated approach stored the 16 expected segment patterns and used a loop with assertions to test every input from 0x0 through 0xF.\nThe first version required minor syntax corrections before compiling in Questa. After correcting it, the testbench passed all 16 input-output pairs. This prototype showed that AI can reduce repetitive testbench code, but the generated code still needs to be understood, compiled, and verified by the designer."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#time-spent",
+    "href": "labs/lab1/lab1.html#time-spent",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "Time Spent",
+    "text": "Time Spent\n20 hours."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#references",
+    "href": "labs/lab1/lab1.html#references",
+    "title": "Lab 1: FPGA and Board Testing",
+    "section": "References",
+    "text": "References\n\nLab 1 instructions\nLab 1 specifications"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html",
+    "href": "labs/lab3/lab3.html",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "",
+    "text": "In Lab 3, I extended the Lab 2 keypad and multiplexed display system to record key presses. The FPGA scans a 4 × 4 keypad and displays the two most recently accepted hexadecimal keys, with the newest key on the right. The design synchronizes the keypad inputs, filters changes across scans, rejects simultaneous keys, and prevents a held key from being recorded repeatedly. I reused the Lab 2 display circuitry."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#introduction",
+    "href": "labs/lab3/lab3.html#introduction",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "",
+    "text": "In Lab 3, I extended the Lab 2 keypad and multiplexed display system to record key presses. The FPGA scans a 4 × 4 keypad and displays the two most recently accepted hexadecimal keys, with the newest key on the right. The design synchronizes the keypad inputs, filters changes across scans, rejects simultaneous keys, and prevents a held key from being recorded repeatedly. I reused the Lab 2 display circuitry."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Design and testing methodology",
+    "text": "Design and testing methodology\nThe column synchronizer brings the asynchronous, active-low keypad columns into the FPGA clock domain. The keypad scanner drives the rows and produces a 16-bit key map for each scan. The debouncer accepts a key map after it remains consistent; the decoder determines whether zero, one, or multiple keys are active and produces a hexadecimal key code. The controller decides when to shift a new key into the two display registers. The existing multiplexing circuit selects which register drives the shared seven-segment decoder.\nI tested the new modules individually before simulating the complete system. The testbenches exercised reset, key changes, held keys, multiple keys, and the resulting display updates.\n\nBlock diagram\n\n\n\n\n\n\nFigure 1: Top-level block diagram of the Lab 3 FPGA design.\n\n\n\n\n\n\n\n\n\nFigure 2: Detailed drawings of the column synchronizer, keypad scanner, debouncer, decoder, and controller.\n\n\n\n\n\nController FSM\n\n\n\n\n\n\nFigure 3: State transition diagram for the keypad controller.\n\n\n\nThe controller starts in Ready. A stable single-key sample is accepted once and moves the controller to Hold. Repeated samples of the same held key do not change the display. If additional keys are pressed, the controller moves to Multiple and holds the displayed digits. When the multiple-key input becomes one stable key, it accepts that remaining key and returns to Hold.\n\n\nState transition table\n\n\n\n\n\n\n\n\n\nCurrent state\nInput condition\nNext state\nDisplay action\n\n\n\n\nReady\n!stable_valid or no key pressed\nReady\nHold both digits\n\n\nReady\nstable_valid && one_key\nHold\nMove the right digit left; load key_code on the right\n\n\nReady\nstable_valid && any_key && !one_key\nMultiple\nHold both digits\n\n\nHold\nstable_valid && !any_key\nReady\nHold both digits\n\n\nHold\nstable_valid && any_key && !one_key\nMultiple\nHold both digits\n\n\nHold\nstable_valid && one_key && key_code != held_key\nHold\nMove the right digit left; load key_code on the right\n\n\nHold\nOtherwise\nHold\nHold both digits\n\n\nMultiple\nstable_valid && !any_key\nReady\nHold both digits\n\n\nMultiple\nstable_valid && one_key\nHold\nMove the right digit left; load key_code on the right\n\n\nMultiple\nOtherwise\nMultiple\nHold both digits\n\n\nAny state\nreset asserted\nReady\nClear both digits to 0\n\n\n\nThe display updates when the controller accepts a stable single key from Ready, a different key replaces the held key, or a multiple-key input becomes one stable key.\n\n\nCircuit schematic\n\n\n\n\n\n\nFigure 4: Keypad and display circuit schematic.\n\n\n\n\n\nSynthesis\nThe LSE synthesis report showed no latch or tristate inference warnings.\n\n\nSource code\nView the Lab 3 source code on GitHub"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#simulation-results",
+    "href": "labs/lab3/lab3.html#simulation-results",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Simulation results",
+    "text": "Simulation results\n\nColumn synchronizer\n\n\n\n\n\n\nNoteColumn synchronizer waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Column synchronizer simulation.\n\n\n\n\n\n\nThe active-low column input col_n can change between clock edges. In the waveform, the new value reaches col_first_n on a rising edge and reaches col_sync_n on the following rising edge. Reset returns both register stages to 1111, which represents no pressed columns. The column_synchronizer_tb simulation passed.\n\n\nKey decoder\n\n\n\n\n\n\nNoteKey decoder waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Key decoder simulation.\n\n\n\n\n\n\nThe decoder testbench changes the 16-bit key map and checks any_key, one_key, and key_code. A map with one active bit produces a valid single-key indication and its hexadecimal code. An empty map indicates no key; a map with multiple active bits does not indicate exactly one key. The key_decoder_tb simulation passed.\n\n\nKeypad debouncer\n\n\n\n\n\n\nNoteKeypad debouncer waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: Keypad debouncer simulation.\n\n\n\n\n\n\nThe debouncer testbench presents changing keys values at successive scan_valid pulses. Brief changes do not immediately replace stable_keys. Once a value satisfies the implemented stability condition, stable_keys updates and stable_valid pulses. The keypad_debouncer_tb simulation passed.\n\n\nKeypad controller\n\n\n\n\n\n\nNoteKeypad controller waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 8: Keypad controller simulation.\n\n\n\n\n\n\nThe controller testbench checks the two display values after stable key samples. An accepted key shifts the previous right digit to the left and places the new code on the right. The waveform also exercises release, held-key behavior, and multiple-key inputs. The keypad_controller_tb simulation passed.\n\n\nKeypad scanner\n\n\n\n\n\n\nNoteKeypad scanner waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 9: Keypad scanner simulation showing the active-low row sequence.\n\n\n\n\n\n\nThe scanner waveform shows row_drive[3:0] cycling through 1110, 1101, 1011, and 0111. Each value drives one keypad row low while leaving the other three rows high. This allows the FPGA to examine one row at a time and determine the position of a pressed key from the active row and synchronized column inputs. Reset returns the row output to its initial state. The keypad scanner simulation passed.\n\n\nComplete system\n\n\n\n\n\n\nFigure 10: Top-level Lab 3 simulation.\n\n\n\nThe top-level testbench connects the synchronized columns, row scanning, debouncing, decoding, controller, and display values. The waveform shows key inputs propagating through these stages and the two hexadecimal values updating on accepted presses. It also includes simultaneous-key cases and reset. The lab3_tr_tb simulation passed."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#hardware-results-and-requirements",
+    "href": "labs/lab3/lab3.html#hardware-results-and-requirements",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Hardware results and requirements",
+    "text": "Hardware results and requirements\nIt worked on Hardware!\nThe keypad correctly displayed the two most recent hexadecimal keys, with each press registering once and the newest digit appearing on the right. Held and simultaneous keys did not produce unwanted entries, and reset cleared the display to 00. An initially missing segment was caused by two touching resistors; separating them restored normal operation."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#ai-prototype-summary",
+    "href": "labs/lab3/lab3.html#ai-prototype-summary",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nAI assistance was used to answer this prompt:\n\nWrite SystemVerilog logic that determines whether a 16-bit keypad map contains any key or exactly one key.\n\n\n\nAI-assisted key detection code\n\nassign any_key = |keys;\nassign one_key = any_key &&\n                 ((keys & (keys - 16'b1)) == 16'b0);\n\nReflection: AI showed me a shorter way to detect whether exactly one keypad key is active. My current key_decoder uses a case statement that sets one_key for each valid one-key pattern. The generated expression instead uses the fact that a value with exactly one set bit becomes zero when ANDed with one less than itself.\nMy code already uses |keys for any_key, so that part was not an improvement. The 16-entry case is still needed to map each key position to its hexadecimal key_code. The new expression could replace only the one_key checks. I checked that both methods agree for all 65,536 two-state key maps, but I have not compared their synthesized resource usage."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#hours-spent",
+    "href": "labs/lab3/lab3.html#hours-spent",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Hours spent",
+    "text": "Hours spent\nI spent 20 hours on Lab 3."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html",
+    "href": "labs/lab5/lab5.html",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "",
+    "text": "Motor, encoder, power supply, and MCU connections."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#circuit",
+    "href": "labs/lab5/lab5.html#circuit",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "",
+    "text": "Motor, encoder, power supply, and MCU connections."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#program-flow",
+    "href": "labs/lab5/lab5.html#program-flow",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "Program Flow",
+    "text": "Program Flow\n\n\n\nMain loop and encoder interrupt handlers.\n\n\nTIM2 counts microseconds. Both rising and falling edges of encoder channels A and B trigger interrupts."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#calculations",
+    "href": "labs/lab5/lab5.html#calculations",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "Calculations",
+    "text": "Calculations\nBoth edges of both encoder channels are counted:\n\\[\nN = 408 \\times 4 = 1632\\text{ counts/rev}.\n\\]\nAngular resolution:\n\\[\n\\Delta\\theta = \\frac{360^\\circ}{1632}\n= 0.221^\\circ/\\text{count}.\n\\]\nUpdate rate:\n\\[\nf_{\\text{report}} = \\frac{1}{0.250}\n= 4\\text{ Hz}.\n\\]\nVelocity: For count change \\(\\Delta C\\) over elapsed time \\(\\Delta t\\) in seconds,\n\\[\nv = \\frac{\\Delta C}{1632\\Delta t}.\n\\]\nApproximately 46,000 counts over 10 seconds gives\n\\[\nv = \\frac{46{,}000}{1632(10)}\n\\approx 2.82\\text{ rev/s}.\n\\]\nVelocity resolution: One count in a 250 ms window corresponds to\n\\[\n\\Delta v = \\frac{1}{1632(0.250)}\n\\approx 0.00245\\text{ rev/s}.\n\\]\nLow-speed estimate: Using the interval between consecutive same-direction edges,\n\\[\n|v| = \\frac{10^6}{1632T_{\\text{edge}}}\\text{ rev/s},\n\\]\nwhere \\(T_{\\text{edge}}\\) is in microseconds.\nDirection: The order of changes in channels A and B determines whether the encoder count increases or decreases."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#results",
+    "href": "labs/lab5/lab5.html#results",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\n\nTest\nObservation\n\n\n\n\nMotor stopped\nCount remained constant and terminal reported 0.000 rev/s\n\n\nShaft turned forward by hand\nEncoder count increased\n\n\nShaft turned backward by hand\nEncoder count decreased\n\n\nOne manual revolution\nApproximately 1600 counts\n\n\nMotor powered at 12 V\nApproximately 2.8 rev/s\n\n\nVisual speed measurement\nApproximately 3.0 rev/s\n\n\nTerminal update rate\nApproximately 4 updates/s\n\n\nBoth encoder channels\nRising and falling edges enabled\n\n\n\n\n\nTerminal output and measured results\n\n\n\n\nTest condition\nTerminal result\n\n\n\n\nMotor stopped\nVelocity: 0.000 rev/s\n\n\nShaft turned forward\nCount increased\n\n\nShaft turned backward\nCount decreased\n\n\nMotor powered at 12 V\nApproximately 2.8 rev/s\n\n\nTen-second powered test\nApproximately 46,000 counts\n\n\nReporting rate\nApproximately 4 updates per second"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#interrupts-compared-with-polling",
+    "href": "labs/lab5/lab5.html#interrupts-compared-with-polling",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "Interrupts Compared with Polling",
+    "text": "Interrupts Compared with Polling\nApproximately 46,000 encoder transitions were counted in 10 seconds:\n\\[\nf_{\\text{edge}} = \\frac{46{,}000}{10}\n= 4600\\text{ transitions/s}.\n\\]\nThe average time between transitions was\n\\[\nT_{\\text{edge}} = \\frac{10^6}{4600}\n\\approx217\\ \\mu\\text{s}.\n\\]\nA polling interval of 100 μs would require 10,000 pin checks per second, compared with approximately 4,600 encoder interrupts per second at this speed. Polling repeatedly checks the inputs even when nothing changes; interrupts require processing only when an edge occurs.\nPolling must remain faster than the shortest edge interval, including time spent calculating and printing. Interrupts allow encoder counting to continue during those main-loop operations, provided interrupt latency and processing time are short enough.\nThis is a calculated comparison; a separate polling implementation was not tested. The 217 μs value is an average and does not guarantee that a particular polling interval captures every edge."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#ai-prototype-and-reflection",
+    "href": "labs/lab5/lab5.html#ai-prototype-and-reflection",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "AI Prototype and Reflection",
+    "text": "AI Prototype and Reflection\nPrompt: “Write a C function that determines a quadrature encoder’s direction and updates a signed count using its previous and current A/B states. Count both rising and falling edges of both channels, and explain how the function handles unexpected signal changes.”\nStore A in bit 1 and B in bit 0. Call this function with the current state whenever either channel changes. Initialize previous to the actual encoder state before enabling interrupts.\n#include &lt;stdint.h&gt;\n\nstatic uint8_t previous;\nvolatile int32_t prototype_count = 0;\n\nvoid processEncoderState(uint8_t current) {\n    // Rows represent the previous state;\n    // columns represent the current state.\n    static const int8_t steps[16] = {\n         0,  1, -1,  0,\n        -1,  0,  0,  1,\n         1,  0,  0, -1,\n         0, -1,  1,  0\n    };\n\n    current &= 3U;\n    uint8_t index = (previous &lt;&lt; 2) | current;\n\n    prototype_count += steps[index];\n    previous = current;\n}\nEach valid transition adds or subtracts one count. Unchanged states and two-bit jumps contribute zero. After an invalid transition, the function resynchronizes to the current state; it cannot recover missed counts. The positive direction depends on the channel wiring.\n\nReflection: I asked AI to generate an alternative direction decoder using a lookup table. It produced a compact function that handles forward, reverse, unchanged, and invalid transitions. The response also identified the need to initialize the previous state before enabling interrupts. However, this function alone does not configure interrupts or calculate velocity. I preferred explicit if/else statements in my final project because they were easier to explain line by line. This separate prototype was reviewed but not hardware-tested."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#completion",
+    "href": "labs/lab5/lab5.html#completion",
+    "title": "Lab 5: Motor Velocity with Encoder Interrupts",
+    "section": "Completion",
+    "text": "Completion\n\nTime spent: 12"
+  },
+  {
+    "objectID": "microps.html",
+    "href": "microps.html",
+    "title": "Microprocessors",
+    "section": "",
+    "text": "These reports document design choices, simulation, hardware results, and open checks from E155 at Harvey Mudd College."
+  },
+  {
+    "objectID": "microps.html#course-project",
+    "href": "microps.html#course-project",
+    "title": "Microprocessors",
+    "section": "Course Project",
+    "text": "Course Project\nMy laser tag system extends this work with an STM32, FPGA, custom PCB, IR blasters and receivers, and a local Wi-Fi scoreboard. The system is in development."
+  },
+  {
+    "objectID": "multicycle-processor.html",
+    "href": "multicycle-processor.html",
+    "title": "Multicycle RISC-V Processor",
+    "section": "",
+    "text": "← Back to all projects"
+  },
+  {
+    "objectID": "multicycle-processor.html#what-i-built",
+    "href": "multicycle-processor.html#what-i-built",
+    "title": "Multicycle RISC-V Processor",
+    "section": "What I built",
+    "text": "What I built\nThe design is organized as a hierarchy of small reusable modules. A controller decodes the current instruction and advances a finite-state machine. The datapath holds the program counter, instruction, register operands, memory data, and ALU result between cycles. A unified memory stores both instructions and data, so an address multiplexer selects either the program counter during instruction fetch or the computed data address during a load or store.\n\n\n\n\n\nflowchart LR\n  MEM[Unified memory]\n  CTRL[Controller]\n\n  subgraph PATH[Datapath]\n    PC[Program counter]\n    IR[Instruction register]\n    RF[32 × 32 register file]\n    EXT[Immediate extension]\n    ALU[ALU]\n    AOUT[ALUOut register]\n    MDR[Memory-data register]\n  end\n\n  PC --&gt;|instruction address| MEM\n  MEM --&gt;|instruction| IR\n  MEM --&gt;|load data| MDR\n  IR --&gt; RF\n  IR --&gt; EXT\n  RF --&gt;|operands| ALU\n  EXT --&gt;|immediate| ALU\n  PC --&gt; ALU\n  ALU --&gt; AOUT\n  AOUT --&gt;|data address| MEM\n  RF --&gt;|store data| MEM\n  IR --&gt;|opcode and function fields| CTRL\n  ALU --&gt;|zero| CTRL\n  CTRL -. control signals .-&gt; PC\n  CTRL -. control signals .-&gt; RF\n  CTRL -. control signals .-&gt; ALU\n\n\n\n\n\n\nThe structural modules include parameterized registers, two- and three-input multiplexers, an ALU, a 32-register file, immediate extension logic, instruction and ALU decoders, the main finite-state machine, and the top-level processor and memory wrappers."
+  },
+  {
+    "objectID": "multicycle-processor.html#multicycle-control",
+    "href": "multicycle-processor.html#multicycle-control",
+    "title": "Multicycle RISC-V Processor",
+    "section": "Multicycle control",
+    "text": "Multicycle control\nEach instruction begins in the same fetch and decode states. Later states depend on the opcode. Intermediate values are stored in registers so the ALU can be reused for incrementing the program counter, forming an address, performing an arithmetic operation, and evaluating a branch.\n\n\n\n\n\n\n\n\nState or path\nMain operation\nImportant control action\n\n\n\n\nFetch\nRead the instruction and calculate PC + 4\nWrite the instruction register and program counter\n\n\nDecode\nRead source registers and form the immediate\nSelect the next execution path from the opcode\n\n\nLoad/store address\nCalculate rs1 + immediate\nSave the effective address in ALUOut\n\n\nLoad\nRead unified memory, then write rd\nSelect memory data for register writeback\n\n\nStore\nWrite rs2 to unified memory\nAssert MemWrite for one cycle\n\n\nR-type / I-type ALU\nPerform the decoded ALU operation\nWrite the saved ALU result to rd\n\n\nBranch\nCompare register operands\nUpdate the PC only when the branch condition is true\n\n\nJAL\nSave the return address and redirect the PC\nWrite PC + 4 to rd and load the jump target\n\n\nAUIPC\nAdd the upper immediate to the instruction PC\nWrite the sum directly to rd\n\n\n\n\nExtending the processor for AUIPC\nThe original immediate path handled I-, S-, B-, and J-type encodings. I added an ImmIsU control signal so the extender can recognize the U-type format and concatenate Instr[31:12] with twelve zeros. The opcode decoder routes AUIPC to a new controller state, where the ALU adds that immediate to the saved instruction address and writes the result back to the destination register.\nThis change touched the instruction decoder, immediate extender, controller interface, datapath, and main state machine. Keeping it as a separate control path made the extension explicit without changing the behavior of the existing instruction formats."
+  },
+  {
+    "objectID": "multicycle-processor.html#supported-instruction-behavior",
+    "href": "multicycle-processor.html#supported-instruction-behavior",
+    "title": "Multicycle RISC-V Processor",
+    "section": "Supported instruction behavior",
+    "text": "Supported instruction behavior\nThe submitted design exercises the following processor paths:\n\nArithmetic and logic: add, sub, and, or, and slt\nImmediate arithmetic through I-type ALU instructions\nMemory access: lw and sw\nControl flow: conditional branch and jal\nPC-relative address generation: auipc\n\nThe ALU produces addition, subtraction, bitwise AND, bitwise OR, and signed less-than results. Its zero output feeds the branch decision logic. Register x0 remains hardwired to zero because reads return zero and writes to address zero are suppressed."
+  },
+  {
+    "objectID": "multicycle-processor.html#verification-strategy",
+    "href": "multicycle-processor.html#verification-strategy",
+    "title": "Multicycle RISC-V Processor",
+    "section": "Verification strategy",
+    "text": "Verification strategy\nI loaded the test program from memfile.dat and observed the top-level processor interface throughout the run. The waveform tracks the clock, reset, memory write data, data address, and MemWrite. This gives a compact end-to-end check: a correct final store depends on all preceding instructions producing the right register values and control-flow decisions.\n\n\n\n\n\n\nFigure 1: Full simulation waveform for the machine-code test program. The short MemWrite pulse near the end marks the final store.\n\n\n\nThe full waveform shows the address and write-data buses changing as the processor fetches instructions and executes memory operations. MemWrite remains low during instruction fetches and calculations, then pulses only during the store state.\n\nFinal memory write\n\n\n\n\n\n\nFigure 2: Detailed view of the final store. WriteData holds 0x00001067; the following store cycle presents address 0x00000054 and asserts MemWrite.\n\n\n\nThe zoomed view captures the result of the complete test. WriteData has settled to 0x00001067 before the store, and the data address advances to 0x00000054, which is byte address 84. The controller then asserts MemWrite, committing the value to unified memory. Because this is the expected terminal write, it demonstrates that the processor reached the correct point in the program with the correct computed result."
+  },
+  {
+    "objectID": "multicycle-processor.html#what-i-learned",
+    "href": "multicycle-processor.html#what-i-learned",
+    "title": "Multicycle RISC-V Processor",
+    "section": "What I learned",
+    "text": "What I learned\nThis project made the boundary between datapath and control much more concrete. A multicycle processor is less about writing one large block of logic and more about coordinating when each value becomes valid, where it is stored, and which shared resource uses it next. Most debugging came down to following those values one cycle at a time through the finite-state machine.\nAdding AUIPC also showed how an ISA feature propagates through the entire design. Even a seemingly small instruction requires agreement among encoding, immediate generation, ALU inputs, controller sequencing, and register writeback. The final program-level waveform was therefore more valuable than checking the new state in isolation.\nOpen the submitted final report"
   }
 ]
