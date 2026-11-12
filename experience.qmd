@@ -3,10 +3,25 @@ title: "Experience"
 subtitle: "Engineering work, teams, and tools"
 ---
 
-## Partnerships for Global Surgery
-**Electromechanical Engineering Intern · August 2026–present**
+## Partnerships for Global Surgery: Sponsored Engineering Project {#pediatric-bronchoscope}
 
-Working with surgeons and engineers on a reusable pediatric bronchoscopy device. I design miniature camera integration and mechanical packaging and evaluate visualization, sealing, heat, durability, and cleaning trade-offs. [Explore the device work](projects.qmd#pediatric-bronchoscopy).
+```{=html}
+<section class="project-overview sponsored-overview" aria-label="Partnerships for Global Surgery project">
+  <div class="project-overview-media sponsored-overview-media">
+    <img src="Images/bronchoscope/bronchoscope-cad.png" alt="CAD model of the pediatric bronchoscope">
+  </div>
+  <div class="project-overview-body">
+    <span class="tag">Sponsored engineering project · 2026–present · In progress</span>
+    <p><strong>Pediatric rigid bronchoscope</strong><br>
+    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.</p>
+    <p><strong>My ownership</strong><br>
+    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.</p>
+    <a class="action action-outline" href="pediatric-bronchoscope.html">Full Project Page →</a>
+  </div>
+</section>
+```
+
+![Manufactured pediatric bronchoscope prototype.](Images/bronchoscope/bronchoscope-prototype.png){.sponsored-device fig-alt="Manufactured pediatric bronchoscope prototype"}
 
 ## Data Pillar
 **Engineering Intern · May–August 2025**
@@ -14,9 +29,25 @@ Working with surgeons and engineers on a reusable pediatric bronchoscopy device.
 Developed Python tools for data processing, collaborated on C++ data-pipeline modules, and used MATLAB analysis and client feedback to guide backend improvements.
 
 ## MuddSub
-**PCB Team Lead · January 2026–present**
 
-Design and iterate custom boards for an autonomous underwater vehicle using KiCad and Altium, then verify board behavior on the bench. I have also contributed to structural chassis design, waterproofing, buoyancy, and component packaging.
+```{=html}
+<section class="project-overview sponsored-overview" aria-label="MuddSub PCB project">
+  <div class="project-overview-media sponsored-overview-media muddsub-experience-media">
+    <img src="Images/muddsub/muddsub-power.jpg" alt="MuddSub Power Board Revision 1 render">
+  </div>
+  <div class="project-overview-body">
+    <span class="tag">PCB Team Member · January 2026–present</span>
+    <p><strong>AUV power and signal electronics</strong><br>
+    Contribute to team-based board design and validation for MuddSub's eight-thruster autonomous underwater vehicle, including regulated power, thruster control, embedded interfaces, and the mechanical realities of underwater integration.</p>
+    <p><strong>Beyond the boards</strong><br>
+    Contribute to chassis packaging, waterproofing, buoyancy, connector access, and serviceability so the electrical stack can be installed and tested as part of the complete vehicle.</p>
+    <div class="project-links">
+      <a class="action action-outline" href="muddsub.html">Full Project Page →</a>
+      <a class="action action-outline" href="https://muddsub.org/" target="_blank" rel="noopener">Team Website</a>
+    </div>
+  </div>
+</section>
+```
 
 ## Adaptive Design at Mudd
 **Design Engineer · January 2024–present**

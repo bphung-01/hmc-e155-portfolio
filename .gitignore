@@ -12,3 +12,6 @@
 .DS_Store
 Thumbs.db
 **/*.quarto_ipynb
+
+# Private working references (not for publication)
+/Images/PGS Midyear Report.pdf

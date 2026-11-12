@@ -7,4 +7,4 @@ I study engineering at **Harvey Mudd College** and expect to graduate in **May 2
 
 My recent work includes miniature medical-device packaging, underwater robotics, PCB design, and microprocessor systems. Across those projects, I enjoy understanding a failure mode, measuring it, and turning that evidence into a better design.
 
-You can reach me at [bphung.college@gmail.com](mailto:bphung.college@gmail.com) or browse my [GitHub profile](https://github.com/bphung-01).
+You can [view my résumé](Images/Ben-Phung-Resume.pdf), reach me at [bphung.college@gmail.com](mailto:bphung.college@gmail.com), or browse my [GitHub profile](https://github.com/bphung-01).

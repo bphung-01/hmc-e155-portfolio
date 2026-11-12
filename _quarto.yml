@@ -4,10 +4,12 @@ project:
 
 website:
   title: "Ben Phung"
+  favicon: Images/headshot.png
   site-url: "https://bphung-01.github.io/hmc-e155-portfolio/"
   description: "Engineering portfolio of Ben Phung"
   navbar:
     background: light
+    logo: Images/headshot.png
     left:
       - text: Home
         href: index.qmd
@@ -19,6 +21,8 @@ website:
         href: experience.qmd
       - text: About
         href: about.qmd
+      - text: Resume
+        href: Images/Ben-Phung-Resume.pdf
       - text: Blog
         href: blog.qmd
     right:

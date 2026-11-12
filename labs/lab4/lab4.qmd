@@ -18,8 +18,6 @@ The STM32L432KC plays the provided *Für Elise* score through an LM386 amplifier
 
 **Result:** The design plays the supplied song at the specified pitches and durations, including rests. A 10 k$\Omega$ potentiometer controls the volume.
 
-**Source code:** [E155 Lab 4 GitHub repository](YOUR_GITHUB_REPOSITORY_URL)
-
 ## Hardware
 
 ### Circuit

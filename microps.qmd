@@ -3,50 +3,19 @@ title: "Microprocessors"
 subtitle: "E155 · FPGA, STM32, and hardware verification"
 ---
 
-These reports document my work in E155 at Harvey Mudd College. Each report links design choices, simulation, hardware results, and open checks.
+These reports document design choices, simulation, hardware results, and open checks from E155 at Harvey Mudd College.
 
-::: {.lab-grid}
-::: {.lab-card}
-### 01 · FPGA and board bring-up
+```{=html}
+<div class="card-grid">
+  <a class="work-card" href="labs/lab1/lab1.html"><div class="thumb thumb-contain"><img src="labs/lab1/images/lab1schematic.png" alt="FPGA and board testing schematic" loading="lazy"></div><div class="card-body"><span class="tag">Lab 01 · FPGA</span><h3>FPGA and Board Testing</h3><p>Switches select a hexadecimal digit while the FPGA drives a seven-segment display, LED logic, and a blink counter.</p></div></a>
+  <a class="work-card" href="labs/lab2/lab2.html"><div class="thumb"><img src="labs/lab2/images/breadboard.jpg" alt="Multiplexed seven-segment display and keypad breadboard circuit" loading="lazy"></div><div class="card-body"><span class="tag">Lab 02 · Digital logic</span><h3>Multiplexed Seven-Segment Display</h3><p>A shared decoder drives two hexadecimal digits, and a basic keypad scanner shows keypresses on LEDs.</p></div></a>
+  <a class="work-card" href="labs/lab3/lab3.html"><div class="thumb thumb-contain"><img src="labs/lab3/images/lab3-schematic.png" alt="Keypad scanner circuit schematic" loading="lazy"></div><div class="card-body"><span class="tag">Lab 03 · FPGA</span><h3>Keypad Scanner</h3><p>A 4 × 4 keypad scanner combines synchronized inputs, debouncing, and controller logic.</p></div></a>
+  <a class="work-card" href="labs/lab4/lab4.html"><div class="thumb thumb-contain"><img src="labs/lab4/images/schematic.jpg" alt="STM32 audio circuit schematic" loading="lazy"></div><div class="card-body"><span class="tag">Lab 04 · STM32</span><h3>Digital Audio</h3><p>Hardware timers play <em>Für Elise</em> through an LM386 amplifier, with pitch checks and volume control.</p></div></a>
+  <a class="work-card" href="labs/lab5/lab5.html"><div class="thumb thumb-contain"><img src="labs/lab5/images/lab5flowdiagram.png" alt="Motor velocity measurement flow diagram" loading="lazy"></div><div class="card-body"><span class="tag">Lab 05 · Interrupts</span><h3>Motor Velocity with Encoder Interrupts</h3><p>Encoder interrupts track shaft direction and position; a timer turns counts into a velocity estimate.</p></div></a>
+  <a class="work-card" href="labs/lab6/lab6.html"><div class="thumb thumb-contain"><img src="labs/lab6/images/L6schematic.png" alt="SPI temperature sensor and ESP8266 schematic" loading="lazy"></div><div class="card-body"><span class="tag">Lab 06 · SPI + IoT</span><h3>SPI and the Internet of Things</h3><p>An STM32 reads a DS1722 over SPI and uses an ESP8266 for local temperature display and LED control.</p></div></a>
+</div>
+```
 
-Four switches select a hexadecimal digit; the FPGA drives a seven-segment display, LED logic, and a blink counter. The report includes simulations and board observations, with some final measurements still to add.
-
-[Read Lab 1 →](labs/lab1/lab1.qmd)
-:::
-
-::: {.lab-card}
-### 02 · Display and keypad
-
-A shared decoder drives two multiplexed hexadecimal digits. A 4 × 4 keypad scanner reads row and column activity and shows keypresses on LEDs.
-
-[Read Lab 2 →](labs/lab2/lab2.qmd)
-:::
-
-::: {.lab-card}
-### 04 · Digital audio
-
-An STM32L432KC uses hardware timers to play *Für Elise* through an LM386 amplifier, with measured pitch checks and a volume control.
-
-[Read Lab 4 →](labs/lab4/lab4.qmd)
-:::
-
-::: {.lab-card}
-### 05 · Motor velocity
-
-Encoder interrupts track shaft direction and position; a timer turns counts into a velocity estimate reported four times per second.
-
-[Read Lab 5 →](labs/lab5/lab5.qmd)
-:::
-:::
-
-::: {.lab-card}
-### 06 · SPI and IoT
-
-An STM32L432KC reads a DS1722 temperature sensor over SPI and uses an ESP8266 to display temperature and control an LED through a local webpage.
-
-[Read Lab 6 →](labs/lab6/lab6.qmd)
-:::
-
-## Course project
+## Course Project
 
 My [laser tag system](projects.qmd#laser-tag-system) extends this work with an STM32, FPGA, custom PCB, IR blasters and receivers, and a local Wi-Fi scoreboard. The system is in development.
