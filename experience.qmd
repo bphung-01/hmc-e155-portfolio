@@ -13,7 +13,7 @@ subtitle: "Engineering work, teams, and tools"
   <div class="project-overview-body">
     <span class="tag">Sponsored engineering project · 2026–present · In progress</span>
     <a class="project-partner" href="https://partnershipsforglobalsurgery.org/" target="_blank" rel="noopener" aria-label="Visit Partnerships for Global Surgery">
-      <img src="Images/bronchoscope/pgs-logo.png" alt="Partnerships for Global Surgery logo" loading="lazy">
+      <img src="Images/bronchoscope/pgs-wordmark.svg" alt="Partnerships for Global Surgery" loading="lazy">
     </a>
     <p><strong>Pediatric rigid bronchoscope</strong><br>
     Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.</p>

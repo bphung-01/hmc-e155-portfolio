@@ -5,7 +5,7 @@ subtitle: "Selected design, prototyping, and verification work"
 
 ## Pediatric bronchoscopy {#pediatric-bronchoscopy}
 
-<a class="project-partner project-partner-list" href="https://partnershipsforglobalsurgery.org/" target="_blank" rel="noopener" aria-label="Visit Partnerships for Global Surgery"><img src="Images/bronchoscope/pgs-logo.png" alt="Partnerships for Global Surgery logo" loading="lazy"></a>
+<a class="project-partner project-partner-list" href="https://partnershipsforglobalsurgery.org/" target="_blank" rel="noopener" aria-label="Visit Partnerships for Global Surgery"><img src="Images/bronchoscope/pgs-wordmark.svg" alt="Partnerships for Global Surgery" loading="lazy"></a>
 
 **Partnerships for Global Surgery · Sponsored engineering project · 2026–present**
 

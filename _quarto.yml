@@ -17,6 +17,8 @@ website:
         href: projects.qmd
       - text: Microprocessors
         href: microps.qmd
+      - text: E80
+        href: e80.qmd
       - text: Experience
         href: experience.qmd
       - text: About
