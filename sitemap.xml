@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/projects.html</loc>
-    <lastmod>2026-11-12T01:22:41.527Z</lastmod>
+    <lastmod>2026-11-19T23:41:31.108Z</lastmod>
   </url>
   <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/pediatric-bronchoscope.html</loc>
-    <lastmod>2026-11-12T01:09:27.427Z</lastmod>
+    <lastmod>2026-11-19T23:41:31.107Z</lastmod>
   </url>
   <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/muddsub.html</loc>
-    <lastmod>2026-11-12T01:22:42.761Z</lastmod>
+    <lastmod>2026-11-19T23:41:31.106Z</lastmod>
   </url>
   <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/labs/lab6/lab6.html</loc>
@@ -29,6 +29,22 @@
     <lastmod>2026-11-12T01:22:39.279Z</lastmod>
   </url>
   <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab7/lab7.html</loc>
+    <lastmod>2026-11-19T23:41:31.102Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab5/lab5.html</loc>
+    <lastmod>2026-11-19T23:41:31.087Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab3/lab3.html</loc>
+    <lastmod>2026-11-19T23:41:31.071Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab1/lab1.html</loc>
+    <lastmod>2026-11-19T23:41:31.050Z</lastmod>
+  </url>
+  <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/blog.html</loc>
     <lastmod>2026-09-21T09:11:25.362Z</lastmod>
   </url>
@@ -41,8 +57,24 @@
     <lastmod>2026-11-12T00:28:42.421Z</lastmod>
   </url>
   <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80.html</loc>
+    <lastmod>2026-11-19T23:41:31.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab2/lab2.html</loc>
+    <lastmod>2026-11-19T23:41:31.058Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab4/lab4.html</loc>
+    <lastmod>2026-11-19T23:41:31.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bphung-01.github.io/hmc-e155-portfolio/e80labs/lab6/lab6.html</loc>
+    <lastmod>2026-11-19T23:41:31.096Z</lastmod>
+  </url>
+  <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/experience.html</loc>
-    <lastmod>2026-11-12T01:22:40.368Z</lastmod>
+    <lastmod>2026-11-19T23:41:31.103Z</lastmod>
   </url>
   <url>
     <loc>https://bphung-01.github.io/hmc-e155-portfolio/labs/lab1/lab1.html</loc>

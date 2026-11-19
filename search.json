@@ -25,7 +25,7 @@
     "href": "projects.html#muddsub-electronics",
     "title": "Projects",
     "section": "MuddSub AUV electronics",
-    "text": "MuddSub AUV electronics\nPCB Team Member · 2026–present\nContribute to PCB design and verification for MuddSub’s eight-thruster autonomous underwater vehicle. The team’s Rev. 1 electrical stack separates power distribution from real-time signal control: a power board generates 12 V, 5 V, and 3.3 V rails, while a Teensy 4.1 signal board handles thruster PWM and embedded interfaces. I also contribute to waterproof packaging, buoyancy, chassis integration, and serviceability.\nRead the full MuddSub project → · Visit MuddSub"
+    "text": "MuddSub AUV electronics\n\nPCB Team Member · 2026–present\nContribute to PCB design and verification for MuddSub’s eight-thruster autonomous underwater vehicle. The team’s Rev. 1 electrical stack separates power distribution from real-time signal control: a power board generates 12 V, 5 V, and 3.3 V rails, while a Teensy 4.1 signal board handles thruster PWM and embedded interfaces. I also contribute to waterproof packaging, buoyancy, chassis integration, and serviceability.\nRead the full MuddSub project → · Visit MuddSub"
   },
   {
     "objectID": "projects.html#filament-waste-collection",
@@ -371,6 +371,223 @@
     "text": "Featured Work\n\n  Sponsored project · Work in progressPediatric BronchoscopeDistal-camera integration, cleaning concepts, thermal testing, and system verification planning.\n  E80 · Robotics + sensorsAutonomous Underwater RobotDepth-resolved pressure, temperature, pH, and light sensing deployed at Dana Point.\n  MuddSub · PCB team memberAUV Power + Signal BoardsTeam-based power distribution, thruster control, embedded interfaces, and underwater integration.\n  E155 · FPGA + MCUMicroprocessorsFPGA display logic, keypad scanning, STM32 audio, motor interrupts, and SPI.\n  RISC–VPROCESSOR03 / SYSTEMVERILOGComputer engineering · Digital designMulticycle ProcessorA hierarchical 32-bit processor verified through a complete machine-code program.\n  E155 · STM32Digital AudioHardware timers and an LM386 amplifier play a melody with measured pitch checks.\n  E155 · SPI + IoTSPI and the Internet of ThingsAn STM32 reads a DS1722 sensor and uses an ESP8266 for local web control.\n\nAll projects →Microprocessors reports →"
   },
   {
+    "objectID": "e80labs/lab7/lab7.html",
+    "href": "e80labs/lab7/lab7.html",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#overview",
+    "href": "e80labs/lab7/lab7.html#overview",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Overview",
+    "text": "Overview\nThe Project Jump Start moved the robot from timed open-loop motion to sensor feedback. We extended the logging firmware, tested IMU-based position estimates, calibrated the pressure sensor for depth, and implemented proportional depth control for an autonomous dive.\nResult: The calibrated depth sensor drove a P-controller that tracked a two-step dive and then returned the robot to the surface. IMU dead reckoning drifted by meters within seconds, which ruled it out for position estimation.\nTeam: Team 46 (four members) · Course project overview"
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#firmware-changes",
+    "href": "e80labs/lab7/lab7.html#firmware-changes",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Firmware Changes",
+    "text": "Firmware Changes\nWe added magnetometer output to printRollPitchHeading() and extended the main-loop printer to report the ADC, GPS, state estimators, depth controller, motors, and IMU.\n\n\nShow printer changes\n\nString SensorIMU::printRollPitchHeading(void) {\n  String printString = \"IMU:\";\n  printString += \" roll: \";    printString += String(state.roll);    printString += \"[deg],\";\n  printString += \" pitch: \";   printString += String(state.pitch);   printString += \"[deg],\";\n  printString += \" heading: \"; printString += String(state.heading); printString += \"[deg]\";\n  printString += String(state.magX); printString += \"[uT]\";\n  return printString;\n}\nif (currentTime - printer.lastExecutionTime &gt; LOOP_PERIOD) {\n  printer.lastExecutionTime = currentTime;\n  printer.printValue(0,  adc.printSample());\n  printer.printValue(1,  button_sampler.printState());\n  printer.printValue(2,  logger.printState());\n  printer.printValue(3,  gps.printState());\n  printer.printValue(4,  xy_state_estimator.printState());\n  printer.printValue(5,  z_state_estimator.printState());\n  printer.printValue(6,  depth_control.printWaypointUpdate());\n  printer.printValue(7,  depth_control.printString());\n  printer.printValue(8,  motor_driver.printState());\n  printer.printValue(9,  imu.printRollPitchHeading());\n  printer.printValue(10, imu.printAccels());\n  printer.printToSerial();\n}\n\nLOOP_PERIOD in TimingOffsets.h is 99 ms, so the main loop samples at\n\nf_{samp} = \\frac{1}{0.099\\ \\text{s}} \\approx 10.1\\ \\text{Hz}"
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#position-from-the-imu",
+    "href": "e80labs/lab7/lab7.html#position-from-the-imu",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Position from the IMU",
+    "text": "Position from the IMU\nWe moved the board stack 0.5 m forward and back, then double-integrated the accelerometer data to estimate position.\n\n\n\n\n\n\n\nFigure 1: Estimated x–y path vs. the ideal 0.5 m path.\n\n\n\n\n\n\n\n\n\nFigure 2: y position vs. time with the theoretical uncertainty bounds for integrated noise.\n\n\n\n\nIntegrating accelerometer noise twice makes the position error grow without bound. Within 10 s the estimate drifted several meters from a 0.5 m move, although it stayed inside the theoretical bounds. Navigation needs an external reference, such as GPS at the surface or depth from pressure."
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#pressure-to-depth-calibration",
+    "href": "e80labs/lab7/lab7.html#pressure-to-depth-calibration",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Pressure-to-Depth Calibration",
+    "text": "Pressure-to-Depth Calibration\n\n\n\n\n\n\nFigure 3: Depth vs. Teensy-reported voltage with a linear fit and uncertainty bounds.\n\n\n\n\n\n\nParameter\nValue\n\n\n\n\ndepthCal_slope\n0.859784 m/V\n\n\ndepthCal_intercept\n−0.994977 m"
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#proportional-depth-control",
+    "href": "e80labs/lab7/lab7.html#proportional-depth-control",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Proportional Depth Control",
+    "text": "Proportional Depth Control\ndepth_des   = wayPoints[currentWayPoint];\ndepth       = state-&gt;z;\ndepth_error = depth_des - depth;\nuV = Kp * depth_error;\nif (uV &gt;  200) uV =  200;   // saturate control effort\nif (uV &lt; -200) uV = -200;\n\n\n\n\n\n\nFigure 4: Measured and desired depth (top) and vertical control effort (bottom) during the dive.\n\n\n\nThe robot followed the 0.5 m and 1.0 m waypoints, overshooting to about 1.27 m before climbing back to the surface. At the instructor’s suggestion, we ran with K_p = 500 and an ascent effort of −250, which made the control effort aggressive and noisy. Effort decays as depth approaches the setpoint and then saturates during the ascent, which is the expected behavior of P-control on depth."
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#takeaways",
+    "href": "e80labs/lab7/lab7.html#takeaways",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nDead reckoning from an accelerometer alone is unusable after a few seconds.\nA calibrated pressure sensor is a reliable depth reference for closed-loop control.\nWith P-control, the gain trades response speed against overshoot; a derivative term or a lower gain would reduce the overshoot."
+  },
+  {
+    "objectID": "e80labs/lab7/lab7.html#references",
+    "href": "e80labs/lab7/lab7.html#references",
+    "title": "Project Jump Start: Navigation and Depth Control",
+    "section": "References",
+    "text": "References\n\nE80 project overview\nE80 source code"
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html",
+    "href": "e80labs/lab5/lab5.html",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#overview",
+    "href": "e80labs/lab5/lab5.html#overview",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "Overview",
+    "text": "Overview\nOur team of four used Fourier analysis to listen for three acoustic beacons in the test tank and to estimate position from received amplitude. We characterized FFTs on the oscilloscope and in MATLAB, built a two-stage microphone amplifier, mapped signal strength against distance, and studied aliasing at different Teensy sample rates.\nResult: We identified the beacons as 9, 13, and 11 kHz. Amplitude followed the expected V \\propto 1/r decay, with multipath ripple on top. Sampling at 10 kS/s aliased the beacons below 5 kHz, so we set a minimum rate of 30 kS/s for the tank.\nTeam: Team 46 (four members) · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#fft-fundamentals",
+    "href": "e80labs/lab5/lab5.html#fft-fundamentals",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "FFT Fundamentals",
+    "text": "FFT Fundamentals\nAn 11 kHz square wave is odd, so its Fourier series contains only odd sine harmonics:\n\nf(t) = \\frac{4A}{\\pi}\\sum_{n\\ \\text{odd}} \\frac{1}{n}\\sin\\!\\left(2\\pi n f_0 t\\right)\n\nThe spectrum therefore has peaks at f_0, 3f_0, 5f_0, \\dots = 11, 33, 55, 77, 99 kHz, with amplitudes falling as 1/n.\n\n\n\n\n\n\nFigure 1: MATLAB FFT of the 11 kHz square wave with a Hanning window, showing the odd harmonics.\n\n\n\nWindowing: an FFT treats the capture as periodic. A rectangular window (no window) leaves discontinuities at the edges, which spread energy into neighboring bins (leakage). A Hanning window tapers the edges to zero, which gives a cleaner spectrum but wider peaks and lower amplitudes. We applied an amplitude correction factor of 2 to compensate.\n\n\nShow MATLAB FFT code\n\nt = scope_296(:,1);  v = scope_296(:,2);\nN  = length(v);\nFs = 1/mean(diff(t));\nf  = (0:N-1)*(Fs/N);\n\nv_windowed = v .* hann(N);         % Hanning window\nY  = fft(v_windowed);\nP2 = abs(Y/N);\nP1 = P2(1:N/2+1);\nP1(2:end-1) = 2*P1(2:end-1);       % one-sided spectrum\nP1 = P1 * 2;                       % window amplitude correction\n\nplot(f(1:N/2+1), P1); xlim([0 100000]);\nxlabel('Frequency (Hz)'); ylabel('Amplitude (V)'); grid on;"
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#microphone-interface-circuit",
+    "href": "e80labs/lab5/lab5.html#microphone-interface-circuit",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "Microphone Interface Circuit",
+    "text": "Microphone Interface Circuit\nThe microphone signal needed a gain of 100. A single OP07 stage at a gain of 100 would have little bandwidth, so we split the gain into two inverting stages of 10 each (R_f/R_n = 100 kΩ/10 kΩ). With a gain-bandwidth product of 0.6 MHz:\n\nBW = \\frac{GBWP}{G} = \\frac{0.6\\ \\text{MHz}}{10} = 60\\ \\text{kHz per stage}\n\nThis comfortably covers the 9–13 kHz beacons.\n\n\n\n\n\n\nFigure 2: Two-stage inverting OP07 microphone amplifier with a 1 µF coupling capacitor and bypass capacitors.\n\n\n\nA hand clap measured 1.241 Vpp, with an FFT peak near 2.5 kHz and content up to about 11 kHz. That sits within human hearing (20 Hz–20 kHz) and overlaps the speech band (100 Hz–4 kHz)."
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#beacon-localization",
+    "href": "e80labs/lab5/lab5.html#beacon-localization",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "Beacon Localization",
+    "text": "Beacon Localization\n\n\n\n\n\n\nFigure 3: Tank microphone signal and its FFT, showing the beacon peaks with cursors.\n\n\n\nComparing peak heights at different positions, we identified Beacon 1 as 9 kHz, Beacon 2 as 13 kHz, and Beacon 3 as 11 kHz. Received amplitude was fit to V = c/r:\n\n\n\n\n\n\nFigure 4: Received voltage vs. distance with a V = c/r fit. The bumps on the measured data are multipath interference.\n\n\n\nMultipath: reflections from the tank walls interfere with the direct path. The ripple repeats about once per wavelength (\\lambda = c/f), so samples must be closer than a quarter-wavelength to resolve it.\n\n\n\nBeacon\nWavelength (c = 1430 m/s)\nSample spacing (λ/4)\n\n\n\n\n9 kHz\n0.159 m\n0.040 m\n\n\n11 kHz\n0.130 m\n0.033 m\n\n\n13 kHz\n0.110 m\n0.028 m"
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#sampling-rate-and-aliasing",
+    "href": "e80labs/lab5/lab5.html#sampling-rate-and-aliasing",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "Sampling Rate and Aliasing",
+    "text": "Sampling Rate and Aliasing\n\n\n\n\n\n\n\nFigure 5: 10 kS/s: the beacons alias down to 1 kHz (9 and 11 kHz) and 3 kHz (13 kHz).\n\n\n\n\n\n\n\n\n\nFigure 6: 100 kS/s: the true 9, 11, and 13 kHz peaks.\n\n\n\n\nAt 10 kS/s the Nyquist frequency is 5 kHz, so every beacon folds back: |9-10| = 1 kHz, |11-10| = 1 kHz, |13-10| = 3 kHz. To capture the highest beacon, Shannon’s theorem requires f_s \\ge 2 \\times 13 kHz = 26 kS/s. We used 30 kS/s for margin."
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#takeaways",
+    "href": "e80labs/lab5/lab5.html#takeaways",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nAn FFT peak’s location and shape depend on sample rate, record length, and window choice.\nSpreading gain across several stages preserves bandwidth.\nMultipath sets how finely a tank survey must be sampled; aliasing sets the minimum sample rate."
+  },
+  {
+    "objectID": "e80labs/lab5/lab5.html#references",
+    "href": "e80labs/lab5/lab5.html#references",
+    "title": "Lab 5: Underwater Acoustics and Fourier Analysis",
+    "section": "References",
+    "text": "References\n\nE80 Lab 5 specification"
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html",
+    "href": "e80labs/lab3/lab3.html",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#overview",
+    "href": "e80labs/lab3/lab3.html#overview",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "Overview",
+    "text": "Overview\nWe built the stages of a turbidity meter, a sensor that measures how cloudy water is. The stages are a single-supply offset amplifier, a 555-timer IR LED driver, and transimpedance amplifiers that turn photodiode current into voltage. We then calibrated the meter against six reference solutions.\nResult: The ratio of 90° scattered light to transmitted light rose linearly with turbidity from 96 to 1170 NTU, so the meter’s output can be used to predict turbidity.\nTeam: Ben Phung and Megan Tran · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#offset-amplifier",
+    "href": "e80labs/lab3/lab3.html#offset-amplifier",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "Offset Amplifier",
+    "text": "Offset Amplifier\nOn a single 0–5 V supply, a non-inverting amplifier clips the negative half of a 0 V-offset input at ground. An offset amplifier adds a DC shift through the non-inverting input so the whole waveform stays above 0 V.\n\nV_{out} = \\left(1 + \\frac{R_f}{R_{n1}}\\right)\\frac{R_g}{R_{p1} + R_g}V_{p1} - \\frac{R_f}{R_{n1}}V_{n1}\n\nFor a gain of −2, R_f = 2 kΩ and R_{n1} = 1 kΩ. Requiring V_{out} \\ge 0 for a 100 mV input gives R_g/(R_{p1}+R_g) \\ge 0.0133. With R_{p1} = 100 kΩ, this sets R_g \\approx 1.5 kΩ.\n\n\n\n\n\n\nFigure 1: Offset amplifier schematic (MCP6001) and the design calculations.\n\n\n\n\n\n\n\n\n\nFigure 2: Input (yellow, 109 mVpp) and output (green, 205 mVpp). The output is an inverted, unclipped sine with a gain of about 2."
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#timer-led-driver",
+    "href": "e80labs/lab3/lab3.html#timer-led-driver",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "555 Timer LED Driver",
+    "text": "555 Timer LED Driver\nThe IR LED is switched at 1 kHz with a 60% duty cycle, using C = 0.1 µF:\n\nR_A + 2R_B = \\frac{1.44}{f C} = 14{,}400\\ \\Omega, \\qquad \\frac{R_A + R_B}{R_A + 2R_B} = 0.6\n\nSolving gives R_B = 5760 Ω and R_A = 2880 Ω. From the datasheet, the IR LED has a forward voltage of 1.2 V at 20–40 mA, so we added a series resistor to limit its current to that range.\n\n\n\n\n\n\nFigure 3: 555 timer astable schematic."
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#transimpedance-amplifier",
+    "href": "e80labs/lab3/lab3.html#transimpedance-amplifier",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "Transimpedance Amplifier",
+    "text": "Transimpedance Amplifier\nWith negative feedback, the inverting input sits at the reference voltage, so all of the photodiode current flows through R_f:\n\nV_{out} = -I_D R_f\n\nThe maximum photodiode current is about 18 µA. For a 5 V swing, R_f \\approx 278 kΩ, so we chose 200 kΩ to leave headroom.\n\n\n\n\n\n\nFigure 4: Transimpedance amplifier (OPA950 photodiode, MCP6004 op-amp) and the feedback-resistor sizing."
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#turbidity-meter-calibration",
+    "href": "e80labs/lab3/lab3.html#turbidity-meter-calibration",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "Turbidity Meter Calibration",
+    "text": "Turbidity Meter Calibration\nTwo transimpedance channels read the photodiodes: one in line with the LED (transmitted light) and one at 90° (scattered light). Six cuvettes were calibrated against a TU-2016 reference meter.\n\n\n\n\n\n\nFigure 5: Calibration solutions from 96 to 1170 NTU.\n\n\n\n\n\n\nTurbidity (NTU)\n96\n251\n278\n550\n959\n1170\n\n\n\n\nV_{pp,90} (V)\n0.17\n0.14\n0.16\n0.18\n0.22\n0.24\n\n\nV_{pp,trans} (V)\n3.8\n3.3\n3.2\n2.3\n2.0\n1.4\n\n\n\n\n\n\n\n\n\nFigure 6: Scattered-to-transmitted ratio vs. turbidity with a linear fit, functional bounds, and observational bounds.\n\n\n\n\n\nShow linear regression code\n\nx = [96, 251, 278, 550, 959, 1170];          % calibrated turbidity (NTU)\nVpp90    = [0.17, 0.14, 0.16, 0.18, 0.22, 0.24];\nVppTrans = [3.8, 3.3, 3.2, 2.3, 2.0, 1.4];\ny = Vpp90 ./ VppTrans;\n\nN = length(y); xbar = mean(x); ybar = mean(y);\nSxx   = sum((x - xbar).^2);\nbeta1 = sum((x - xbar).*(y - ybar)) / Sxx;   % slope\nbeta0 = ybar - beta1*xbar;                   % intercept\nSe    = sqrt(sum((y - (beta0 + beta1*x)).^2)/(N-2));\nStdT  = tinv(0.975, N-2);\n\nxplot = linspace(min(x), max(x), 200);\nyplot = beta0 + beta1*xplot;\nlambdaFunc = StdT*Se*sqrt(1/N + (xplot - xbar).^2/Sxx);      % functional\nlambdaObs  = StdT*Se*sqrt(1 + 1/N + (xplot - xbar).^2/Sxx);  % observational\n\n\nWhy a switched LED?\nThe photodiodes also pick up ambient light. Flashing the LED and measuring peak-to-peak voltage isolates the LED’s contribution and rejects the constant background. Readings under normal and shadowed lighting were therefore consistent."
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#takeaways",
+    "href": "e80labs/lab3/lab3.html#takeaways",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nAn offset stage is required for any bipolar signal on a single-supply op-amp.\nA transimpedance amplifier’s gain is set entirely by R_f; size it from the maximum sensor current and the output swing.\nModulating the light source and measuring peak-to-peak voltage is a simple, effective way to reject ambient light."
+  },
+  {
+    "objectID": "e80labs/lab3/lab3.html#references",
+    "href": "e80labs/lab3/lab3.html#references",
+    "title": "Lab 3: Operational Amplifiers and Marine Sensors",
+    "section": "References",
+    "text": "References\n\nE80 Lab 3 specification"
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html",
+    "href": "e80labs/lab1/lab1.html",
+    "title": "Lab 1: Go Autonomous",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#overview",
+    "href": "e80labs/lab1/lab1.html#overview",
+    "title": "Lab 1: Go Autonomous",
+    "section": "Overview",
+    "text": "Overview\nOur team of four converted an E79 remotely operated vehicle into an autonomous underwater vehicle (AUV). We assembled the Teensy motherboard, calibrated its IMU, and programmed a timed, open-loop motor sequence to carry the robot through the test-tank obstacle course.\nResult: The robot completed the dive–forward–surface sequence on its own. Static IMU data gave a calibration of one accelerometer unit ≈ 0.0098 m/s², and the logged run shows each phase of the course.\nTeam: Team 46 (four members) · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#imu-calibration",
+    "href": "e80labs/lab1/lab1.html#imu-calibration",
+    "title": "Lab 1: Go Autonomous",
+    "section": "IMU Calibration",
+    "text": "IMU Calibration\nWith the board at rest, the z-axis reads gravity. Dividing g by the mean z reading gives the scale factor:\n\n\\frac{9.81\\ \\text{m/s}^2}{997.78\\ \\text{units}} \\approx 0.0098\\ \\frac{\\text{m/s}^2}{\\text{unit}}\n\n\n\n\n\n\n\nFigure 1: Static z-axis acceleration (gravity) with its mean and 95% confidence band.\n\n\n\n\nZero-acceleration offsets\nEach axis was logged while level and at rest. The 95% bounds use \\lambda = t \\cdot S_{\\bar{x}} with S_{\\bar{x}} = S/\\sqrt{N}.\n\n\n\nMeasurement\nMean (Teensy units)\n95% bound\n\n\n\n\nx at rest\n−17.89\n±0.88\n\n\ny at rest\n−26.19\n±0.79\n\n\nz at rest\n−2.39\n±1.84\n\n\nz under gravity\n998.37\n±1.95\n\n\n\nFor the gravity case, the standard deviation was 10.32 units and the standard error 0.984 units. Two-sample t-tests (ttest2) showed all three zero offsets are statistically different. For x vs. y, p = 1.91 \\times 10^{-36}, and the other two pairs gave p values that MATLAB rounded to zero. Each axis therefore needs its own offset correction.\n\n\n\n\n\n\nFigure 2: Zero-acceleration x data used for the offset calibration."
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#open-loop-navigation",
+    "href": "e80labs/lab1/lab1.html#open-loop-navigation",
+    "title": "Lab 1: Go Autonomous",
+    "section": "Open-Loop Navigation",
+    "text": "Open-Loop Navigation\nThe robot waits 60 s after power-on so it can be placed in the tank, then runs a timed thrust sequence.\n\n\n\nTime window\nMotors\nMotion\n\n\n\n\n0–60 s\noff\nPlacement delay\n\n\n60–65 s\nC = −255\nDive about 2 ft\n\n\n65–70 s\nA = 255, B = −255\nDrive forward about 6 ft\n\n\n70–74 s\nC = 255\nSurface through the final hoop\n\n\n&gt; 74 s\noff\nStop\n\n\n\n\n\nShow obstacle-course motor sequence\n\nif (currentTime &lt; 60000) {          // placement delay\n  motorDriver.drive(0, 0, 0);\n} else if (currentTime &lt; 65000) {   // dive (vertical thruster)\n  motorDriver.drive(0, 0, -255);\n} else if (currentTime &lt; 70000) {   // forward (horizontal thrusters)\n  motorDriver.drive(255, -255, 0);\n} else if (currentTime &lt; 74000) {   // surface\n  motorDriver.drive(0, 0, 255);\n} else {\n  motorDriver.drive(0, 0, 0);\n}"
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#results",
+    "href": "e80labs/lab1/lab1.html#results",
+    "title": "Lab 1: Go Autonomous",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\nFigure 3: Logged acceleration through the obstacle course. The first spike is the start of the dive, the middle band is forward travel, and the decaying spikes at the end are the ascent.\n\n\n\n\n\n\nAxis\nPeak acceleration\n\n\n\n\nx\n19.66 m/s²\n\n\ny\n16.83 m/s²\n\n\nz\n19.43 m/s²\n\n\n\n\nTheory vs. measurement\nFrom the E79 drag model, acceleration is greatest at rest, where drag is zero, so a_{peak} = F_{thrust}/m. At full PWM, the E79 thrust fit gives |F| = 0.6378 N. With a robot mass of 3.31 kg:\n\na_{peak} = \\frac{0.6378\\ \\text{N}}{3.3101\\ \\text{kg}} \\approx 0.193\\ \\text{m/s}^2\n\nThe measured z excursion was about 9.5 m/s² above gravity, far larger than the prediction. The constant-thrust model ignores motor start-up transients, and the motherboard was not guaranteed to stay level in the waterproof box. Impacts and tilt therefore project gravity and shocks onto the logged axes."
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#takeaways",
+    "href": "e80labs/lab1/lab1.html#takeaways",
+    "title": "Lab 1: Go Autonomous",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nCalibrate each IMU axis on its own; the zero offsets are statistically distinct.\nSpikes in raw accelerometer data come from tilt and impacts, so they are not a reliable measure of thrust.\nOpen-loop timing is enough for a simple course, but it gives no feedback on where the robot actually is."
+  },
+  {
+    "objectID": "e80labs/lab1/lab1.html#references",
+    "href": "e80labs/lab1/lab1.html#references",
+    "title": "Lab 1: Go Autonomous",
+    "section": "References",
+    "text": "References\n\nE80 Lab 1 specification\nE80 source code"
+  },
+  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "E155 Blog",
@@ -448,18 +665,200 @@
     "text": "Team and next iteration\nThis was a team project with Luke Pratt, Megan Tran, and Lucy Will. The next version should use seawater-matched pH standards, sealed modular gain settings, improved high-impedance shielding, and repeated fixed-depth profiles. The tether, staged-depth testing, and serial-monitor preflight checks should remain because they made field failures recoverable.\n\n  Read Final Report\n  View Project Poster"
   },
   {
+    "objectID": "e80.html",
+    "href": "e80.html",
+    "title": "Experimental Engineering",
+    "section": "",
+    "text": "These reports summarize my E80 lab work at Harvey Mudd College: circuit design, calibration, statistics, and analysis that led up to our autonomous underwater robot. Labs 2–4 were done in pairs and the rest as a team of four."
+  },
+  {
+    "objectID": "e80.html#final-project",
+    "href": "e80.html#final-project",
+    "title": "Experimental Engineering",
+    "section": "Final Project",
+    "text": "Final Project\nThese labs built up to our autonomous underwater robot. It measured pressure, temperature, pH, and light against depth, with a successful 2.61 m dive at Dana Point."
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html",
+    "href": "e80labs/lab2/lab2.html",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#overview",
+    "href": "e80labs/lab2/lab2.html#overview",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "Overview",
+    "text": "Overview\nWe characterized the Teensy’s analog input, then measured resistor dividers with a multimeter, oscilloscope probes, and the Teensy. Each instrument’s input impedance was modeled so we could predict how much it loads the circuit, and each prediction carried propagated uncertainty bounds. Finally, we used op-amp buffers to remove the loading.\nResult: One Teensy unit is about 3.2 mV, and the logger samples at roughly 200 kS/s. Loading-aware predictions matched the measurements within their 95% bounds in 13 of 15 cases. Both op-amp buffer cases also agreed within their bounds.\nTeam: Ben Phung and Luke Pratt · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#teensy-adc-characterization",
+    "href": "e80labs/lab2/lab2.html#teensy-adc-characterization",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "Teensy ADC Characterization",
+    "text": "Teensy ADC Characterization\n\nVoltage per Teensy unit\nThe function generator supplied a 200 Hz, 1 Vpp sine with a 0.4 V offset, so the input swings from −0.1 V to 0.9 V. The Teensy cannot read negative voltages and clips them to zero. The 0.9 V peak read as about 277 units:\n\n\\frac{0.9\\ \\text{V}}{277\\ \\text{units}} \\approx 3.2\\ \\text{mV per unit}\n\n\n\n\n\n\n\nFigure 1: Teensy samples of the 200 Hz input. The flat sections at zero are the negative half-cycles clipped by the ADC.\n\n\n\n\n\nSample rate and aliasing\nThe 5000 samples spanned five 200 Hz periods, which is 1000 samples per 5 ms period:\n\nf_s = N \\cdot f = 1000 \\times 200\\ \\text{Hz} = 200\\ \\text{kS/s}\n\nA 175 kHz input is above the Nyquist limit (f_s/2 = 100 kHz), so the sampled waveform aliases into an unreadable envelope.\n\n\n\n\n\n\nFigure 2: Teensy samples of a 175 kHz input. The signal is above the Nyquist frequency and aliases."
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#voltage-dividers-and-instrument-loading",
+    "href": "e80labs/lab2/lab2.html#voltage-dividers-and-instrument-loading",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "Voltage Dividers and Instrument Loading",
+    "text": "Voltage Dividers and Instrument Loading\nEach measurement device was modeled as an impedance Z_m in parallel with the bottom resistor, and the function generator’s 50 Ω output in series with the top resistor:\n\nZ_a = Z_1 + 50\\ \\Omega, \\qquad Z_b = \\frac{Z_2 Z_m}{Z_2 + Z_m}, \\qquad V_{out} = V_{in}\\frac{Z_b}{Z_a + Z_b}\n\nUncertainty bounds came from the root-sum-square of the partial derivatives, using 5% resistors, the 2% generator amplitude, and the instrument’s datasheet accuracy.\n\n\n\n\n\n\nFigure 3: Hand derivation of the loading model and its error-propagation partial derivatives.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nZ_1\nZ_2\nInstrument\nPredicted (Vrms)\nMeasured (Vrms)\nWithin 95%?\nError\n\n\n\n\n10 Ω\n20 Ω\nMultimeter\n0.0884\n0.085\n✓\n−3.8%\n\n\n10 Ω\n20 Ω\nTeensy\n0.0884\n0.099\n✗\n12.0%\n\n\n1 kΩ\n2 kΩ\nMultimeter\n0.2318\n0.232\n✓\n0.1%\n\n\n100 kΩ\n200 kΩ\n1× scope probe\n0.2209\n0.210\n✓\n−4.9%\n\n\n10 MΩ\n20 MΩ\nMultimeter\n0.2333\n0.231\n✓\n−1.0%\n\n\n10 MΩ\n20 MΩ\n10× scope probe\n0.2333\n0.234\n✓\n0.3%\n\n\n10 MΩ\n20 MΩ\nTeensy\n0.2347\n0.689\n✗\n194%\n\n\n\n\n\nShow all 15 divider measurements\n\n\n\n\n\n\n\n\n\n\n\n\n\nZ_1\nZ_2\nInstrument\nPredicted (Vrms)\nMeasured (Vrms)\nWithin 95%?\nError\n\n\n\n\n0\nopen\nMultimeter\n0.3536\n0.352\n✓\n−0.4%\n\n\n0\nopen\n1× scope probe\n0.3535\n0.3606\n✓\n2.0%\n\n\n0\nopen\n10× scope probe\n0.3536\n0.3553\n✓\n0.5%\n\n\n0\nopen\nTeensy\n0.3536\n0.3724\n✓\n5.3%\n\n\n10 Ω\n20 Ω\nMultimeter\n0.0884\n0.085\n✓\n−3.8%\n\n\n10 Ω\n20 Ω\nTeensy\n0.0884\n0.099\n✗\n12.0%\n\n\n1 kΩ\n2 kΩ\nMultimeter\n0.2318\n0.232\n✓\n0.1%\n\n\n1 kΩ\n2 kΩ\nTeensy\n0.2318\n0.240\n✓\n3.5%\n\n\n100 kΩ\n200 kΩ\nMultimeter\n0.2341\n0.231\n✓\n−1.3%\n\n\n100 kΩ\n200 kΩ\n1× scope probe\n0.2209\n0.210\n✓\n−4.9%\n\n\n100 kΩ\n200 kΩ\nTeensy\n0.2357\n0.250\n✓\n6.1%\n\n\n10 MΩ\n20 MΩ\nMultimeter\n0.2333\n0.231\n✓\n−1.0%\n\n\n10 MΩ\n20 MΩ\n1× scope probe\n0.2357\n0.2323\n✓\n−1.5%\n\n\n10 MΩ\n20 MΩ\n10× scope probe\n0.2333\n0.234\n✓\n0.3%\n\n\n10 MΩ\n20 MΩ\nTeensy\n0.2347\n0.689\n✗\n194%\n\n\n\n\nThe megaohm divider measured with the Teensy failed badly. Its source impedance is too high for the ADC input, so the Teensy could not get an accurate reading."
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#op-amp-buffers",
+    "href": "e80labs/lab2/lab2.html#op-amp-buffers",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "Op-Amp Buffers",
+    "text": "Op-Amp Buffers\nAn op-amp has very high input impedance and very low output impedance. A buffer at the input isolates the source; a buffer at the output lets an instrument read the divider without drawing current from it.\n\n\n\n\n\n\n\n\n\n\n\nBuffer location\nPredicted (Vrms)\nBound λ (V)\nMeasured (Vrms)\nWithin 95%?\nError\n\n\n\n\nInput\n0.2357\n±0.0040\n0.231\n✓\n1.6%\n\n\nOutput\n0.2357\n±0.0076\n0.233\n✓\n1.1%"
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#takeaways",
+    "href": "e80labs/lab2/lab2.html#takeaways",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nEvery instrument is part of the circuit; its input impedance must be in the model.\nThe Teensy ADC clips negative inputs and aliases signals above f_s/2, so the analog front end has to offset and band-limit signals first.\nA unity-gain buffer is the simplest fix for loading a high-impedance source."
+  },
+  {
+    "objectID": "e80labs/lab2/lab2.html#references",
+    "href": "e80labs/lab2/lab2.html#references",
+    "title": "Lab 2: Basic Electrical Measurements",
+    "section": "References",
+    "text": "References\n\nE80 Lab 2 specification"
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html",
+    "href": "e80labs/lab4/lab4.html",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#overview",
+    "href": "e80labs/lab4/lab4.html#overview",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Overview",
+    "text": "Overview\nWe built signal-conditioning circuits for an MPX5700 pressure sensor and a thermistor, fit the Steinhart–Hart equation to thermistor data, and decoded type-K thermocouple voltages. We also compared how fast each temperature sensor settles. These are the sensors later used on our final-project AUV.\nResult: The pressure interface gave a linear depth–voltage response over 0–40 cm. The thermocouple settled in under 1 s, compared with about 4.5 s for the thermistor and 9–15 s for the linear IC sensor.\nTeam: Ben Phung and Lucy Will · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#pressure-sensor-interface",
+    "href": "e80labs/lab4/lab4.html#pressure-sensor-interface",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Pressure Sensor Interface",
+    "text": "Pressure Sensor Interface\nThe MPX5700’s output changes only slightly over a few tens of centimeters of water. A buffer followed by an inverting offset amplifier (MCP6001) maps the 0–40 cm range onto roughly 1.1–2.2 V for the Teensy ADC. The design gain set R_f/R_{n1} = 43.6, and the R_{p1}–R_g divider sets the offset.\n\n\n\n\n\n\nFigure 1: Pressure sensor interface: buffer followed by an inverting offset amplifier.\n\n\n\n\n\n\n\n\n\n\n\n\n\nDepth (cm)\nPredicted (V)\nMeasured (V)\nError\nEstimated P (kPa)\n\n\n\n\n0\n2.200\n2.279\n3.6%\n96.71\n\n\n10\n1.925\n2.106\n9.4%\n97.33\n\n\n20\n1.650\n1.895\n14.8%\n98.08\n\n\n30\n1.375\n1.673\n21.7%\n98.87\n\n\n40\n1.100\n1.445\n31.4%\n99.69\n\n\n\n\n\n\n\n\n\nFigure 2: Depth vs. output voltage with a linear fit and 95% functional and observational bounds.\n\n\n\nThe measured slope is shallower than designed because the lab lacked the designed parts: we built R_{p1} from 50 kΩ + 10 kΩ and substituted 470 kΩ for the 440 kΩ R_f. The response stayed linear and inside the ADC range, so a calibration fit absorbs the gain change. The resistors’ 5% tolerance and the sensor’s 2.5% accuracy add further spread."
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#thermistor-interface",
+    "href": "e80labs/lab4/lab4.html#thermistor-interface",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Thermistor Interface",
+    "text": "Thermistor Interface\n\n\n\n\n\n\n\n\n\n\n\nTarget temp\nPredicted R\nPredicted V\nMeasured V\nActual temp\nActual R\n\n\n\n\n0 °C\n163 kΩ\n2.987\n2.68\n0.4 °C\n167 kΩ\n\n\n20 °C\n59.3 kΩ\n0.378\n0.23\n19.5 °C\n52 kΩ\n\n\n\nErrors come mostly from uneven bath temperatures and from the difference between nominal and actual thermistor resistance, which moves the divider’s operating point."
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#steinharthart-fit",
+    "href": "e80labs/lab4/lab4.html#steinharthart-fit",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Steinhart–Hart Fit",
+    "text": "Steinhart–Hart Fit\n\n\\frac{1}{T} = a + b\\ln R + c(\\ln R)^2 + d(\\ln R)^3\n\n\n\n\nT (°C)\n1.4\n19.9\n39.7\n52.1\n67.0\n73.2\n\n\n\n\nR (kΩ)\n127\n53\n21.1\n14\n8.7\n7.1\n\n\n\n\n\n\n\n\n\nFigure 3: Nonlinear Steinhart–Hart fit with functional and observational bounds.\n\n\n\n\n\n\nCoefficient\nValue\n95% interval\n\n\n\n\na\n−4.98\n(−26.56, 16.6)\n\n\nb\n1.622\n(−5.12, 8.364)\n\n\nc\n−0.1763\n(−0.8768, 0.5242)\n\n\nd\n0.006417\n(−0.01782, 0.03065)\n\n\n\nThe fit follows the data, but with only six points and four parameters the coefficient intervals are very wide. More calibration points would be needed before using this fit for precise temperature conversion."
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#thermocouple-decoding",
+    "href": "e80labs/lab4/lab4.html#thermocouple-decoding",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Thermocouple Decoding",
+    "text": "Thermocouple Decoding\nWe set the cold-junction compensation voltage to 0.838 mV, corresponding to 21 °C, then decoded each measured voltage from the type-K table.\n\n\n\n\n\n\n\n\n\nReference T_T (°C)\nMeter T_K (°C)\nV (mV)\nDecoded T_D (°C)\n\n\n\n\n4.4\n3\n−0.60\n6\n\n\n17.6\n16\n0.00\n21\n\n\n29.9\n29\n0.43\n31\n\n\n37.3\n37\n0.74\n39\n\n\n55.2\n53\n1.48\n58\n\n\n79.5\n79\n2.51\n82"
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#settling-times",
+    "href": "e80labs/lab4/lab4.html#settling-times",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Settling Times",
+    "text": "Settling Times\n\n\n\nSensor\nInto 0 °C\nInto 50 °C\n\n\n\n\nThermocouple\n0.76 s\n0.87 s\n\n\nThermistor\n4.6 s\n4.3 s\n\n\nLinear IC sensor\n15.12 s\n8.92 s\n\n\n\nFor the robot, the thermistor balances speed against an easy-to-read signal; the thermocouple is fastest but needs more amplification and cold-junction compensation. A cold junction changes slowly, so a thermistor or linear IC sensor is enough for compensation."
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#takeaways",
+    "href": "e80labs/lab4/lab4.html#takeaways",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nReal build tolerances and part substitutions change the gain, so calibrate against the built circuit, not the design.\nReport fit coefficients with confidence intervals; wide intervals signal too few calibration points.\nChoose a sensor by response time as well as accuracy."
+  },
+  {
+    "objectID": "e80labs/lab4/lab4.html#references",
+    "href": "e80labs/lab4/lab4.html#references",
+    "title": "Lab 4: Temperature and Pressure Sensors",
+    "section": "References",
+    "text": "References\n\nE80 Lab 4 specification"
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html",
+    "href": "e80labs/lab6/lab6.html",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "",
+    "text": "← All E80 labs"
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#overview",
+    "href": "e80labs/lab6/lab6.html#overview",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Overview",
+    "text": "Overview\nOur team of four measured drag on cylindrical nose cones and a one-third-scale robot model in a wind tunnel, then simulated the same geometries in COMSOL. We also compared lift from a flat plate and a NACA 6412 airfoil, and used similitude to connect air-tunnel results to a full-size robot moving through water.\nResult: The tunnel’s air speed was linear in fan speed up to about 45 m/s. Simulated drag followed the same trends as measured drag, and the NACA 6412 produced more lift than the flat plate at the same angle of attack.\nTeam: Team 46 (four members) · Course lab spec"
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#wind-tunnel-calibration",
+    "href": "e80labs/lab6/lab6.html#wind-tunnel-calibration",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Wind Tunnel Calibration",
+    "text": "Wind Tunnel Calibration\n\n\n\n\n\n\nFigure 1: Air velocity vs. fan speed with a linear fit and uncertainty bounds.\n\n\n\nPartway through data collection, the tunnel’s emergency stop was bumped and the breakers had to be reset. The instructors confirmed that our data matched what the tunnel reported after the reset. Before each run, we logged the zero-fan-speed drag and lift readings and subtracted them as an offset."
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#drag-on-cylindrical-objects",
+    "href": "e80labs/lab6/lab6.html#drag-on-cylindrical-objects",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Drag on Cylindrical Objects",
+    "text": "Drag on Cylindrical Objects\nFor the cylindrical noses, the characteristic length is the diameter D = 50 mm. The reference area is the frontal area:\n\nA = \\frac{\\pi D^2}{4} = 1.963 \\times 10^{-3}\\ \\text{m}^2, \\qquad C_D = \\frac{2F_D}{\\rho V^2 A}, \\qquad Re = \\frac{\\rho V D}{\\mu}\n\n\n\n\n\n\n\nFigure 2: COMSOL surface pressure on a nose-cone geometry. The stagnation pressure peaks at the leading face."
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#scale-robot-model-and-similitude",
+    "href": "e80labs/lab6/lab6.html#scale-robot-model-and-similitude",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Scale Robot Model and Similitude",
+    "text": "Scale Robot Model and Similitude\nThe one-third-scale model has a length of 0.0931 m and a frontal area of 0.00164 m². The full-scale robot has a length of 0.2794 m and a frontal area of 0.01476 m².\nSimilitude: if the Reynolds numbers match, the flow around a small model in air behaves like the flow around the full-size robot in water. Tunnel measurements on the scale model can therefore predict full-scale drag.\n\n\n\n\n\n\nFigure 3: Simulated full-scale robot drag force vs. Reynolds number.\n\n\n\nSimulated drag follows the measured trend but differs in magnitude. CFD assumes smooth surfaces and an idealized mesh. The tunnel adds sensor noise, mounting interference, surface roughness, and small misalignments, and the physical robot has more geometric detail than the simplified model."
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#lift-flat-plate-vs.-naca-6412",
+    "href": "e80labs/lab6/lab6.html#lift-flat-plate-vs.-naca-6412",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Lift: Flat Plate vs. NACA 6412",
+    "text": "Lift: Flat Plate vs. NACA 6412\nFor the wings, the chord c = 0.1 m is the characteristic length. The reference area is the planform area A = cL = 0.1 \\times 0.3 = 0.03 m².\n\n\n\n\n\n\nFigure 4: NACA 6412 lift coefficient vs. Reynolds number at 5°, 15°, and 45° angles of attack.\n\n\n\nAt a 15° angle of attack, the pressure is higher under each wing than above it, which produces lift. The NACA 6412 had a higher lift coefficient and a larger pressure difference than the flat plate, because its cambered shape speeds up the flow over the upper surface. At 45°, its C_L falls steeply as Re increases, which is consistent with the flow separating at that steep angle."
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#takeaways",
+    "href": "e80labs/lab6/lab6.html#takeaways",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nSimulation, hand analysis, and measurement should agree on trends; differences in magnitude point to modeling assumptions.\nMatching Reynolds number is what makes scale-model testing valid.\nWing shape matters: camber increases lift at moderate angles of attack."
+  },
+  {
+    "objectID": "e80labs/lab6/lab6.html#references",
+    "href": "e80labs/lab6/lab6.html#references",
+    "title": "Lab 6: Fluid Dynamics",
+    "section": "References",
+    "text": "References\n\nE80 Lab 6 specification"
+  },
+  {
     "objectID": "experience.html",
     "href": "experience.html",
     "title": "Experience",
     "section": "",
-    "text": "Sponsored engineering project · 2026–present · In progress\n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
+    "text": "Sponsored engineering project · 2026–present · In progress\n    \n      \n    \n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
   },
   {
     "objectID": "experience.html#pediatric-bronchoscope",
     "href": "experience.html#pediatric-bronchoscope",
     "title": "Experience",
     "section": "",
-    "text": "Sponsored engineering project · 2026–present · In progress\n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
+    "text": "Sponsored engineering project · 2026–present · In progress\n    \n      \n    \n    Pediatric rigid bronchoscope\n    Working with a seven-person Clinic team, surgeons, and engineers on an affordable pediatric rigid bronchoscopy system. The project is currently in design and preliminary prototype evaluation, with manufacturing and simulated validation still ahead.\n    My ownership\n    Distal-camera selection and integration, handle ideation, camera-cleaning prototypes, and endoscope heat testing.\n    Full Project Page →\n  \n\n\n\n\nManufactured pediatric bronchoscope prototype."
   },
   {
     "objectID": "experience.html#data-pillar",
@@ -473,7 +872,7 @@
     "href": "experience.html#muddsub",
     "title": "Experience",
     "section": "MuddSub",
-    "text": "MuddSub\n\n  \n    \n  \n  \n    PCB Team Member · January 2026–present\n    AUV power and signal electronics\n    Contribute to team-based board design and validation for MuddSub's eight-thruster autonomous underwater vehicle, including regulated power, thruster control, embedded interfaces, and the mechanical realities of underwater integration.\n    Beyond the boards\n    Contribute to chassis packaging, waterproofing, buoyancy, connector access, and serviceability so the electrical stack can be installed and tested as part of the complete vehicle.\n    \n      Full Project Page →\n      Team Website"
+    "text": "MuddSub\n\n  \n    \n  \n  \n    PCB Team Member · January 2026–present\n    \n      \n    \n    AUV power and signal electronics\n    Contribute to team-based board design and validation for MuddSub's eight-thruster autonomous underwater vehicle, including regulated power, thruster control, embedded interfaces, and the mechanical realities of underwater integration.\n    Beyond the boards\n    Contribute to chassis packaging, waterproofing, buoyancy, connector access, and serviceability so the electrical stack can be installed and tested as part of the complete vehicle.\n    \n      Full Project Page →\n      Team Website"
   },
   {
     "objectID": "experience.html#adaptive-design-at-mudd",
