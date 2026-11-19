@@ -14,6 +14,9 @@ toc-depth: 3
   </div>
   <div class="project-overview-body">
     <span class="tag">Partnerships for Global Surgery · Sponsored engineering project</span>
+    <a class="project-partner" href="https://partnershipsforglobalsurgery.org/" target="_blank" rel="noopener" aria-label="Visit Partnerships for Global Surgery">
+      <img src="Images/bronchoscope/pgs-logo.png" alt="Partnerships for Global Surgery logo" loading="lazy">
+    </a>
     <p><strong>Project brief</strong><br>
     Develop an affordable, durable pediatric rigid bronchoscopy system for foreign-body removal in resource-constrained clinical settings.</p>
     <p><strong>My focus</strong><br>

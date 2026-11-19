@@ -5,6 +5,8 @@ subtitle: "Selected design, prototyping, and verification work"
 
 ## Pediatric bronchoscopy {#pediatric-bronchoscopy}
 
+<a class="project-partner project-partner-list" href="https://partnershipsforglobalsurgery.org/" target="_blank" rel="noopener" aria-label="Visit Partnerships for Global Surgery"><img src="Images/bronchoscope/pgs-logo.png" alt="Partnerships for Global Surgery logo" loading="lazy"></a>
+
 **Partnerships for Global Surgery · Sponsored engineering project · 2026–present**
 
 A pediatric rigid bronchoscope should remain usable and durable in hospitals with very different resources. I’m working with a seven-person Clinic team and clinical advisors on an affordable system that integrates a rigid tube, handle, distal-camera endoscope, forceps, and suction. My contributions include miniature-camera selection and integration, handle ideation, camera-cleaning prototypes, and thermal testing. The current concept uses a **2.0 mm camera**, a **5.7 mm outer-diameter bronchoscope**, and a **720 × 720, 30 fps** video feed.
@@ -22,6 +24,8 @@ Our four-person team built an AUV for depth-resolved environmental sensing at Da
 [Read the full AUV project →](autonomous-underwater-robot.qmd){.text-link}
 
 ## MuddSub AUV electronics {#muddsub-electronics}
+
+<a class="project-partner project-partner-list project-partner-square" href="https://muddsub.org/" target="_blank" rel="noopener" aria-label="Visit MuddSub"><img src="Images/muddsub/muddsub-logo.jpg" alt="MuddSub logo" loading="lazy"></a>
 
 **PCB Team Member · 2026–present**
 

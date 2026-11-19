@@ -63,6 +63,11 @@ h2::after { content:""; position:absolute; left:0; bottom:-1px; width:48px; heig
 .project-overview-media img { width:100%; max-height:390px; object-fit:contain; }
 .project-overview-body p { color:var(--muted); }
 .project-overview-body p strong { color:var(--ink); }
+.project-partner { display:flex; width:max-content; max-width:100%; align-items:center; margin:.9rem 0 1.1rem; padding:.3rem .8rem; border:1px solid var(--ink); border-radius:9px; background:var(--ink); }
+.project-partner img { display:block; width:170px; max-width:100%; height:90px; object-fit:cover; }
+.project-partner-list { margin:1rem 0; }
+.project-partner-square { padding:0; border-color:#000; background:#000; overflow:hidden; }
+.project-partner-square img { width:90px; height:90px; object-fit:contain; }
 .bronchoscope-hero-media img { max-height:330px; }
 .sponsored-overview { grid-template-columns:minmax(260px,.8fr) minmax(0,1.4fr); }
 .sponsored-overview-media { min-height:250px; }
