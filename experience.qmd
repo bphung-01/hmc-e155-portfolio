@@ -27,7 +27,7 @@ subtitle: "Engineering work, teams, and tools"
 ![Manufactured pediatric bronchoscope prototype.](Images/bronchoscope/bronchoscope-prototype.png){.sponsored-device fig-alt="Manufactured pediatric bronchoscope prototype"}
 
 ## Data Pillar
-**Engineering Intern · May–August 2025**
+**Engineering Intern · May–August 2026**
 
 Developed Python tools for data processing, collaborated on C++ data-pipeline modules, and used MATLAB analysis and client feedback to guide backend improvements.
 
@@ -59,6 +59,31 @@ Developed Python tools for data processing, collaborated on C++ data-pipeline mo
 **Design Engineer · January 2024–present**
 
 Prototype assistive devices for community members using CAD and 3D printing, including a GIC checkerboard and wheelchair components.
+
+## Project Think
+
+```{=html}
+<section class="project-overview sponsored-overview" aria-label="Project Think teaching internship">
+  <div class="project-overview-media sponsored-overview-media projectthink-experience-media">
+    <img src="Images/projectthink/projectthink-logo.png" alt="Project Think logo">
+  </div>
+  <div class="project-overview-body">
+    <span class="tag">STEAM Teaching Intern · May–August 2025</span>
+    <p><strong>Hands-on STEAM enrichment at the Claremont Colleges</strong><br>
+    Taught daily as a classroom instructional intern at Project Think, a non-profit summer academic enrichment program for TK–8th-grade students held at Pitzer College, working alongside credentialed master teachers in small-group, project-based classes.</p>
+    <ul>
+      <li>Guided 2nd–8th-grade students in building digital story maps with real-world GIS tools and data sets, strengthening their technical literacy and problem-solving skills.</li>
+      <li>Co-led a coding class in which students designed and built their own interactive games.</li>
+      <li>Co-led a 3D-modeling class introducing students to core CAD principles through hands-on design projects.</li>
+      <li>Co-led a robotics class in which students wired sensors and electrical components to build marine-themed robots.</li>
+      <li>Partnered with teaching staff on classroom setup, lesson delivery, and staff meetings to foster an engaging, inclusive environment that encouraged student creativity, collaboration, and curiosity.</li>
+    </ul>
+    <div class="project-links">
+      <a class="action action-outline" href="https://www.projectthink.com/" target="_blank" rel="noopener">Program Website</a>
+    </div>
+  </div>
+</section>
+```
 
 ## Technical toolkit
 

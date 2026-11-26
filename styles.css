@@ -101,6 +101,9 @@ h2::after { content:""; position:absolute; left:0; bottom:-1px; width:48px; heig
 
 .muddsub-overview-media img { max-height:430px; }
 .muddsub-experience-media img { max-height:280px; }
+.projectthink-experience-media img { max-height:240px; padding:1rem; }
+.project-overview-body ul { color:var(--muted); padding-left:1.2rem; }
+.project-overview-body li { margin-bottom:.35rem; }
 .muddsub-board-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.2rem 0 2rem; }
 .muddsub-board { display:flex; flex-direction:column; min-width:0; padding:1rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
 .muddsub-board figure { display:flex; flex:1; align-items:center; justify-content:center; margin:0 0 .75rem; }
